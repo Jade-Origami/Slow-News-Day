@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://player_stats.gd" id="4_qr3ex"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4t3t"]
-bg_color = Color(0.68235296, 0.3882353, 0.47058824, 1)
+bg_color = Color(0.33333334, 0.21568628, 0.24705882, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrcqf"]
 bg_color = Color(0.49803922, 0.5921569, 0.5058824, 1)
@@ -41,10 +41,10 @@ horizontal_alignment = 1
 
 [node name="TypingProgress" type="ProgressBar" parent="WinItems" unique_id=1090657300]
 z_index = 1
-offset_left = 3.0
-offset_top = 572.0
-offset_right = 1149.0
-offset_bottom = 645.0
+offset_left = 8.0
+offset_top = 584.0
+offset_right = 1144.0
+offset_bottom = 640.0
 theme_override_styles/background = SubResource("StyleBoxFlat_c4t3t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xrcqf")
 show_percentage = false
@@ -80,12 +80,11 @@ vertical_alignment = 1
 script = ExtResource("2_xrcqf")
 
 [node name="SentenceTake" type="LineEdit" parent="Gameplay" unique_id=1077539471]
-offset_left = 9.0
-offset_top = 582.0
-offset_right = 1146.0
-offset_bottom = 638.0
-tooltip_text = "Type Here!"
-theme_override_font_sizes/font_size = 23
+offset_left = 8.0
+offset_top = 584.0
+offset_right = 1145.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 22
 alignment = 1
 keep_editing_on_text_submit = true
 context_menu_enabled = false

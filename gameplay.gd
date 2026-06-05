@@ -1,5 +1,7 @@
 extends Node
 
+@onready var sentences = get_node("/root/GameplayScreen/Gameplay/Rotate/SentenceShow")
+
 var correct_sentence
 var sentence_left
 var mistakes_made = 0
@@ -10,7 +12,6 @@ var max_timer_value : int
 var rotate_sentence = false
 var rotate_steps = [0.05,0.1,0.05,0,-0.05,-0.05,-0.1,-0.1,-0.1,0.05,-0.05,0,0.05,0.1,0.05]
 var current_step = 0
-@onready var sentences = get_node("/root/GameplayScreen/Gameplay/Rotate/SentenceShow")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,7 +53,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	else:
 		mistakes_made += 1
 		rotate_sentence = true
-	if sentence_left.is_empty(): #Sentence has been typed correctl
+	if sentence_left.is_empty(): #Sentence has been typed correctly
 		$Gameplay/Rotate.rotation = 0
 		$Gameplay/Rotate/SentenceShow.text = "Congrats! you made " + str(mistakes_made) + " mistakes"
 		$WinItems/TypingProgress.hide()
