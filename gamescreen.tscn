@@ -112,7 +112,5 @@ offset_right = 76.0
 offset_bottom = 47.0
 text = "Timer:"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Gameplay" unique_id=744951046]
-
 [connection signal="pressed" from="WinItems/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="text_changed" from="Gameplay/SentenceTake" to="." method="_on_sentence_take_text_changed"]

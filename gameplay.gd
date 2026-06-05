@@ -63,6 +63,4 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 
 
 func _on_shop_button_pressed() -> void:
-	$Gameplay/AudioStreamPlayer.stream = load("res://audio/5-button.mp3")
-	$Gameplay/AudioStreamPlayer.play()
 	get_tree().change_scene_to_file('res://shop_scene.tscn')
