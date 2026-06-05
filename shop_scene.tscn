@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b2emkececoexq"]
 
-[ext_resource type="Script" uid="uid://b705h65tavrb4" path="res://shop_scene.gd" id="1_42hh6"]
+[ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://shop_scene.gd" id="1_42hh6"]
+[ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://player_stats.gd" id="2_ylxq0"]
 
 [node name="ShopScene" type="Node2D" unique_id=1063027230]
 script = ExtResource("1_42hh6")
@@ -16,5 +17,15 @@ offset_top = 496.0
 offset_right = 1073.0
 offset_bottom = 568.0
 text = "Next round"
+
+[node name="Player" type="Node" parent="." unique_id=975278413]
+script = ExtResource("2_ylxq0")
+
+[node name="StatsText" type="RichTextLabel" parent="Player" unique_id=388855911]
+offset_left = 16.0
+offset_top = 464.0
+offset_right = 216.0
+offset_bottom = 632.0
+text = "Stats go here"
 
 [connection signal="pressed" from="newRound" to="." method="_on_new_round_pressed"]

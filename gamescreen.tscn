@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://vp8aq3w75a53"]
 
-[ext_resource type="Script" uid="uid://bono6rskxuyjb" path="res://gameplay.gd" id="1_igufd"]
+[ext_resource type="Script" uid="uid://d0bq4t5em8tti" path="res://gameplay.gd" id="1_igufd"]
 [ext_resource type="Script" uid="uid://xd2biytgk0mm" path="res://inputevents.gd" id="2_c4t3t"]
 [ext_resource type="Script" uid="uid://dhtaqa2r4sc0x" path="res://sentences.gd" id="2_xrcqf"]
+[ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://player_stats.gd" id="4_qr3ex"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4t3t"]
 bg_color = Color(0.68235296, 0.3882353, 0.47058824, 1)
@@ -24,10 +25,8 @@ script = ExtResource("1_igufd")
 
 [node name="Background" type="ColorRect" parent="." unique_id=910089657]
 z_index = -1
-offset_left = -17.0
-offset_top = -12.0
-offset_right = 1164.0
-offset_bottom = 666.0
+offset_right = 1152.0
+offset_bottom = 648.0
 color = Color(0.68235296, 0.3882353, 0.47058824, 1)
 
 [node name="WinItems" type="Node" parent="." unique_id=357157186]
@@ -111,6 +110,21 @@ offset_top = -1.0
 offset_right = 76.0
 offset_bottom = 47.0
 text = "Timer:"
+
+[node name="Player" type="Node" parent="." unique_id=1801745877]
+script = ExtResource("4_qr3ex")
+
+[node name="StatsText" type="RichTextLabel" parent="Player" unique_id=271683161]
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.09900001
+anchor_right = 0.014
+anchor_bottom = 0.09900001
+offset_left = -0.12800026
+offset_top = -0.15200806
+offset_right = 143.872
+offset_bottom = 199.84799
+text = "Stats go here"
 
 [connection signal="pressed" from="WinItems/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="text_changed" from="Gameplay/SentenceTake" to="." method="_on_sentence_take_text_changed"]
