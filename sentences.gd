@@ -13,5 +13,8 @@ var short_sentences = [
 	"How are you on this fine day?",
 	"Fee fi fo thumb, I smell an englishman on the run",
 	"Godot is a great game engine!",
-	"memento vivaldi."
+	"memento vivaldi.",
+	"Trans rights are humn rights <3",
+	"Black lives matter <3",
+	"Booo capitalism"
 ]
