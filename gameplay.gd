@@ -77,7 +77,7 @@ you got " + str(coins_increase) + " " + multiple_coin
 
 func give_rewards() -> void:
 	var percentage_of_time = $Gameplay/Timer_bar.value / max_timer_value
-	coins_increase = int(PlayerStats.flat_coin + ((1-percentage_of_time) * 6) - mistakes_made)
+	coins_increase = int(1 + ((1-percentage_of_time) * 9) - floor(mistakes_made/2)) + PlayerStats.flat_coin
 	if coins_increase < 1:
 		coins_increase = 1
 		multiple_coin = "Coin"

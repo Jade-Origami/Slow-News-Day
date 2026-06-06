@@ -24,5 +24,5 @@ func agitate_object(which_object) -> bool:
 
 var coins = 0
 var sentence_length = "mid"
-var flat_coin = 1
+var flat_coin = 0
 var round_time_mult = 1

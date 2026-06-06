@@ -46,12 +46,13 @@ func _on_item_1_pressed() -> void:
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
 
 func _item_1_bought() -> void:
-	if PlayerStats.coins > item_1.price:
+	if PlayerStats.coins >= item_1.price:
 		PlayerStats.coins -= item_1.price
 		Upgrades.apply_upgrade_by_id(item_1.id)
 		print(str(item_1) + " has been brought")
 		$Items_for_sale/Rotate_1/Item_1.hide()
 		$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
+		update_stats_text()
 	else:
 		rotate_item_1 = true
 
@@ -61,12 +62,13 @@ func _on_item_2_pressed() -> void:
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
 	
 func _item_2_bought() -> void:
-	if PlayerStats.coins > item_2.price:
+	if PlayerStats.coins >= item_2.price:
 		PlayerStats.coins -= item_2.price
 		Upgrades.apply_upgrade_by_id(item_2.id)
 		print(str(item_2) + " has been brought")
 		$Items_for_sale/Rotate_2/Item_2.hide()
-		$Items_for_sale/Rotate_3/Item_2/Buy_Button.hide()
+		$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
+		update_stats_text()
 	else:
 		rotate_item_2 = true
 
@@ -76,12 +78,13 @@ func _on_item_3_pressed() -> void:
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
 	
 func _item_3_bought() -> void:
-	if PlayerStats.coins > item_3.price:
+	if PlayerStats.coins >= item_3.price:
 		PlayerStats.coins -= item_3.price
 		Upgrades.apply_upgrade_by_id(item_3.id)
 		print(str(item_3) + " has been brought")
 		$Items_for_sale/Rotate_3/Item_3.hide()
 		$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
+		update_stats_text()
 	else:
 		rotate_item_3 = true
 
@@ -108,10 +111,14 @@ func reroll() -> void:
 	$Items_for_sale/Rotate_1/Item_1.show()
 	$Items_for_sale/Rotate_2/Item_2.show()
 	$Items_for_sale/Rotate_3/Item_3.show()
+	update_stats_text()
 
 
 func _on_reroll_button_pressed() -> void:
-	if PlayerStats.coins > reroll_cost:
+	if PlayerStats.coins >= reroll_cost:
 		PlayerStats.coins -= reroll_cost
 		reroll()
 	rotate_reroll_button = true
+
+func update_stats_text() -> void:
+	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
