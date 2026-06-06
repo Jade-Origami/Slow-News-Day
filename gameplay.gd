@@ -1,6 +1,8 @@
 extends Node
 
+
 @onready var sentences = get_node("/root/GameplayScreen/Gameplay/Rotate/SentenceShow")
+
 
 var correct_sentence
 var sentence_left
@@ -12,25 +14,45 @@ var max_timer_value : int
 var rotate_sentence = false
 var coins_increase = 0
 var multiple_coin
+
+
 var palette
 var palettes = [
 	{
 		"background": Color("#AE6378"),
-		"type_progress_bar": Color("#7E9680"),
 		"completed_text": "#7E9680",
-		"other_text": "#5F414F"
+		"other_text": "#5F414F",
+		"shop_colour_normal": Color("#FFFFFF"),
+		"shop_colour_hover": Color("cececeff"),
+		"shop_colour_pressed": Color("6f6f6fff"),
+		"shop_font": "#EABS95"
 	},
 	{
 		"background": Color("#138086"),
-		"type_progress_bar": Color("#534666"),
 		"completed_text": "#534666",
-		"other_text": "#FFFFFF"
+		"other_text": "#FFFFFF",
+		"shop_colour_normal": Color("#FFFFFF"),
+		"shop_colour_hover": Color("a9a9a9ff"),
+		"shop_colour_pressed": Color("3f3f3fff"),
+		"shop_font": "#CD7672"
 	},
 	{
 		"background": Color("#3C4CAD"),
-		"type_progress_bar": Color("#F04393"),
 		"completed_text": "#F04393",
-		"other_text": "#FFFFFF"
+		"other_text": "#FFFFFF" ,
+		"shop_colour_normal": Color("#FFFFFF"),
+		"shop_colour_hover": Color("939393ff"),
+		"shop_colour_pressed": Color("323232ff"),
+		"shop_font": "#FAA7B8"
+	},
+	{
+		"background": Color("#CCABDB"),
+		"completed_text": "#86E3CE",
+		"other_text": "#5F414F",
+		"shop_colour_normal": Color("#FFFFFF"),
+		"shop_colour_hover": Color("a4a4a4ff"),
+		"shop_colour_pressed": Color("5c5c5cff"),
+		"shop_font": "#FA897B"
 	}
 ]
 
@@ -54,6 +76,7 @@ func _ready() -> void:
 	$WinItems/ShopButton.hide()
 	update_stats(PlayerStats.coins)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if timer_active:
@@ -64,7 +87,7 @@ func _process(_delta: float) -> void:
 	if rotate_sentence:
 		if PlayerStats.agitate_object($Gameplay/Rotate):
 			rotate_sentence = false
-	
+
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
 	if !timer_active:
@@ -98,7 +121,7 @@ you got " + str(coins_increase) + " " + multiple_coin
 		is_first_letter = false
 		if PlayerStats.sentence_length == "short":
 			PlayerStats.sentence_length = "mid"
-		
+
 
 func give_rewards() -> void:
 	var percentage_of_time = $Gameplay/Timer_bar.value / max_timer_value
@@ -111,15 +134,34 @@ func give_rewards() -> void:
 	PlayerStats.coins += coins_increase
 	update_stats(PlayerStats.coins)
 
+
 func _on_shop_button_pressed() -> void:
 	get_tree().change_scene_to_file('res://shop_scene.tscn')
+
 
 func update_stats(coins) -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
 
+
+func make_stylebox(color: Color, corner_radius: int = 6) -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = color
+	sb.corner_radius_top_left = corner_radius
+	sb.corner_radius_top_right = corner_radius
+	sb.corner_radius_bottom_left = corner_radius
+	sb.corner_radius_bottom_right = corner_radius
+	return sb
+
+
 func apply_styling() -> void:
 	palette = palettes.pick_random()
 	$Background.color = palette.background
-	var fill := StyleBoxFlat.new()
-	fill.bg_color = palette.type_progress_bar
-	$WinItems/TypingProgress.add_theme_stylebox_override("fill", fill)
+	var bar_fill := StyleBoxFlat.new()
+	bar_fill.bg_color = Color(palette.completed_text)
+	$WinItems/TypingProgress.add_theme_stylebox_override("fill", bar_fill)
+	$WinItems/ShopButton.add_theme_stylebox_override("normal", make_stylebox(palette.shop_colour_normal))
+	$WinItems/ShopButton.add_theme_stylebox_override("hover", make_stylebox(palette.shop_colour_hover))
+	$WinItems/ShopButton.add_theme_stylebox_override("pressed", make_stylebox(palette.shop_colour_pressed))
+	$WinItems/ShopButton.add_theme_color_override("font_color", palette.shop_font)
+	$WinItems/ShopButton.add_theme_color_override("font_hover_color", palette.shop_font)
+	$WinItems/ShopButton.add_theme_color_override("font_pressed_color", palette.shop_font)
