@@ -14,7 +14,7 @@ var short_sentences = [
 	"Fee fi fo thumb, I smell an englishman on the run",
 	"Godot is a great game engine!",
 	"memento vivaldi.",
-	"Trans rights are humn rights <3",
+	"Trans rights are human rights <3",
 	"Black lives matter <3",
 	"Booo capitalism"
 ]
