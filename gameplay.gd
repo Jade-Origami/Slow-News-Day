@@ -22,37 +22,37 @@ var palettes = [
 		"background": Color("#AE6378"),
 		"completed_text": "#7E9680",
 		"other_text": "#5F414F",
-		"shop_colour_normal": Color("#FFFFFF"),
-		"shop_colour_hover": Color("cececeff"),
-		"shop_colour_pressed": Color("6f6f6fff"),
-		"shop_font": "#EABS95"
+		"shop_colour_normal": Color("#EAB595"),
+		"shop_colour_hover": Color("da956aff"),
+		"shop_colour_pressed": Color("c57f54ff"),
+		"shop_font": ""
 	},
 	{
 		"background": Color("#138086"),
 		"completed_text": "#534666",
 		"other_text": "#FFFFFF",
-		"shop_colour_normal": Color("#FFFFFF"),
-		"shop_colour_hover": Color("a9a9a9ff"),
-		"shop_colour_pressed": Color("3f3f3fff"),
-		"shop_font": "#CD7672"
+		"shop_colour_normal": Color("#CD7672"),
+		"shop_colour_hover": Color("bc6561ff"),
+		"shop_colour_pressed": Color("954947ff"),
+		"shop_font": ""
 	},
 	{
 		"background": Color("#3C4CAD"),
 		"completed_text": "#F04393",
 		"other_text": "#FFFFFF" ,
-		"shop_colour_normal": Color("#FFFFFF"),
-		"shop_colour_hover": Color("939393ff"),
-		"shop_colour_pressed": Color("323232ff"),
-		"shop_font": "#FAA7B8"
+		"shop_colour_normal": Color("#FAA7B8"),
+		"shop_colour_hover": Color("f786a1ff"),
+		"shop_colour_pressed": Color("e64879ff"),
+		"shop_font": ""
 	},
 	{
 		"background": Color("#CCABDB"),
 		"completed_text": "#86E3CE",
 		"other_text": "#5F414F",
-		"shop_colour_normal": Color("#FFFFFF"),
-		"shop_colour_hover": Color("a4a4a4ff"),
-		"shop_colour_pressed": Color("5c5c5cff"),
-		"shop_font": "#FA897B"
+		"shop_colour_normal": Color("#FA897B"),
+		"shop_colour_hover": Color("f56456ff"),
+		"shop_colour_pressed": Color("e73f35ff"),
+		"shop_font": ""
 	}
 ]
 

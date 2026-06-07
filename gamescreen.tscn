@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0bq4t5em8tti" path="res://gameplay.gd" id="1_igufd"]
 [ext_resource type="Script" uid="uid://xd2biytgk0mm" path="res://inputevents.gd" id="2_c4t3t"]
+[ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://rotate_controller.gd" id="2_sdn3h"]
 [ext_resource type="Script" uid="uid://dhtaqa2r4sc0x" path="res://sentences.gd" id="2_xrcqf"]
 [ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://player_stats.gd" id="4_qr3ex"]
 
@@ -101,6 +102,7 @@ text = "Shop"
 
 [node name="Rotate" type="Node2D" parent="Gameplay" unique_id=1801247505]
 position = Vector2(576, 200)
+script = ExtResource("2_sdn3h")
 
 [node name="SentenceShow" type="RichTextLabel" parent="Gameplay/Rotate" unique_id=1225372798]
 offset_left = -432.0

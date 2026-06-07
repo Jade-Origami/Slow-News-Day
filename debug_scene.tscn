@@ -28,5 +28,13 @@ theme_override_font_sizes/font_size = 66
 text = "GAME TITLE HERE"
 horizontal_alignment = 1
 
+[node name="Button" type="Button" parent="." unique_id=1240355136]
+offset_left = 16.0
+offset_top = 552.0
+offset_right = 185.45013
+offset_bottom = 615.11005
+text = "give 100 coins"
+
 [connection signal="pressed" from="shop_scene" to="." method="_on_shop_scene_pressed"]
 [connection signal="pressed" from="Gamescreen" to="." method="_on_gamescreen_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

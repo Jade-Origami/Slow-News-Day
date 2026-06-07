@@ -118,7 +118,13 @@ func _on_reroll_button_pressed() -> void:
 	if PlayerStats.coins >= reroll_cost:
 		PlayerStats.coins -= reroll_cost
 		reroll()
+		rotate_item_1 = true
+		rotate_item_2 = true
+		rotate_item_3 = true
 	rotate_reroll_button = true
+	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
+	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
+	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 
 func update_stats_text() -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)

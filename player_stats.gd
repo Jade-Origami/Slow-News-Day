@@ -12,12 +12,11 @@ func _process(_delta: float) -> void:
 
 #not stats, but usefull to be available everywhere
 var rotate_steps = [0.05,0.1,0.05,0,-0.05,-0.05,-0.1,-0.1,-0.1,0.05,-0.05,0,0.05,0.1,0.05]
-var current_step = 0
 func agitate_object(which_object) -> bool:
-	which_object.rotate(rotate_steps[current_step])
-	current_step += 1
-	if current_step == rotate_steps.size():
-		current_step = 0
+	which_object.rotate(rotate_steps[which_object.current_step])
+	which_object.current_step += 1
+	if which_object.current_step == rotate_steps.size():
+		which_object.current_step = 0
 		return true
 	else:
 		return false

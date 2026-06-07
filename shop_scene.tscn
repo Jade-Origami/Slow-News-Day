@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://shop_scene.gd" id="1_42hh6"]
 [ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://player_stats.gd" id="2_ylxq0"]
+[ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://rotate_controller.gd" id="3_tlo24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
 bg_color = Color(0.49803922, 0.6745098, 0.8392157, 1)
@@ -186,6 +187,7 @@ text = "Coins: {coins}"
 
 [node name="Rotate_1" type="Node2D" parent="Items_for_sale" unique_id=963216354]
 position = Vector2(216, 120)
+script = ExtResource("3_tlo24")
 
 [node name="Item_1" type="Button" parent="Items_for_sale/Rotate_1" unique_id=2028086448]
 offset_left = -152.0
@@ -216,6 +218,7 @@ text = "Coins"
 
 [node name="Rotate_2" type="Node2D" parent="Items_for_sale" unique_id=675225385]
 position = Vector2(576, 120)
+script = ExtResource("3_tlo24")
 
 [node name="Item_2" type="Button" parent="Items_for_sale/Rotate_2" unique_id=1989279313]
 offset_left = -144.0
@@ -246,6 +249,7 @@ text = "Coins"
 
 [node name="Rotate_3" type="Node2D" parent="Items_for_sale" unique_id=2094369185]
 position = Vector2(936, 120)
+script = ExtResource("3_tlo24")
 
 [node name="Item_3" type="Button" parent="Items_for_sale/Rotate_3" unique_id=1754266222]
 offset_left = -152.0
@@ -277,6 +281,7 @@ text = "Coins"
 
 [node name="Rotate_Reroll" type="Node2D" parent="Items_for_sale" unique_id=1635466870]
 position = Vector2(1024, 456)
+script = ExtResource("3_tlo24")
 
 [node name="Reroll_button" type="Button" parent="Items_for_sale/Rotate_Reroll" unique_id=2003342236]
 offset_left = -64.0
