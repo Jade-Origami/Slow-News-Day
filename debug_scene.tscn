@@ -35,6 +35,46 @@ offset_right = 185.45013
 offset_bottom = 615.11005
 text = "give 100 coins"
 
+[node name="OptionButton" type="OptionButton" parent="." unique_id=512682962]
+offset_left = 928.0
+offset_top = 32.0
+offset_right = 1125.0
+offset_bottom = 72.0
+tooltip_text = "This does aboslutely nothing.
+trust me, it's open source
+check the code yourself"
+allow_reselect = true
+item_count = 6
+popup/item_0/text = "Female"
+popup/item_0/id = 0
+popup/item_1/text = "Male"
+popup/item_1/id = 1
+popup/item_2/text = "What are you? A cop?"
+popup/item_2/id = 2
+popup/item_3/text = "Open-Source"
+popup/item_3/id = 3
+popup/item_4/text = "Non-defined"
+popup/item_4/id = 4
+popup/item_5/text = "Other"
+popup/item_5/id = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionButton" unique_id=1511196057]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 96.0
+text = "Gender:"
+vertical_alignment = 2
+
+[node name="LinkButton" type="LinkButton" parent="." unique_id=1147026359]
+offset_left = 1088.0
+offset_top = 616.0
+offset_right = 1152.0
+offset_bottom = 648.0
+button_mask = 3
+text = "Github"
+underline = 1
+uri = "https://github.com/Joni-Origami/typing-roguelike"
+
 [connection signal="pressed" from="shop_scene" to="." method="_on_shop_scene_pressed"]
 [connection signal="pressed" from="Gamescreen" to="." method="_on_gamescreen_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
