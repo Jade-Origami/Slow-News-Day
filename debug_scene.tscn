@@ -23,10 +23,12 @@ text = "Gamescreen"
 offset_left = 296.0
 offset_top = 48.0
 offset_right = 856.0
-offset_bottom = 152.0
-theme_override_font_sizes/font_size = 66
-text = "GAME TITLE HERE"
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 69
+text = "Slow news day"
 horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
 
 [node name="Button" type="Button" parent="." unique_id=1240355136]
 offset_left = 16.0

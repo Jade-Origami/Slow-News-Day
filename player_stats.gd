@@ -22,15 +22,15 @@ func agitate_object(which_object) -> bool:
 		return false
 
 var coins = 0
-var sentence_length = "mid"
 var flat_coin = 0
 var round_time_mult = 1
 var mistake_penalty_mult = 2.5
+var double_bypass = false
 
 var palettes = [
 	{
 		"background": Color("#AE6378"),
-		"completed_text": "#7E9680",
+		"completed_text": "7E968080",
 		"other_text": "#5F414F",
 		"shop_colour_normal": Color("#EAB595"),
 		"shop_colour_hover": Color("de9b71ff"),
@@ -39,7 +39,7 @@ var palettes = [
 	},
 	{
 		"background": Color("#138086"),
-		"completed_text": "#534666",
+		"completed_text": "53466680",
 		"other_text": "#FFFFFF",
 		"shop_colour_normal": Color("#CD7672"),
 		"shop_colour_hover": Color("bc6561ff"),
@@ -48,7 +48,7 @@ var palettes = [
 	},
 	{
 		"background": Color("#3C4CAD"),
-		"completed_text": "#F04393",
+		"completed_text": "F0439380",
 		"other_text": "#FFFFFF" ,
 		"shop_colour_normal": Color("#FAA7B8"),
 		"shop_colour_hover": Color("f786a1ff"),
@@ -57,7 +57,7 @@ var palettes = [
 	},
 	{
 		"background": Color("#CCABDB"),
-		"completed_text": "#86E3CE",
+		"completed_text": "86E3CE80",
 		"other_text": "#5F414F",
 		"shop_colour_normal": Color("#FA897B"),
 		"shop_colour_hover": Color("f56456ff"),

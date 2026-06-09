@@ -41,6 +41,12 @@ func item_brought(_item_num) -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
 
 func _on_item_1_pressed() -> void:
+	if $Items_for_sale/Rotate_1/Item_1/Buy_Button.visible:
+		$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
+	else:
+		$Items_for_sale/Rotate_1/Item_1.text = item_1.explanation
+	$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
+	$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.visible = !$Items_for_sale/Rotate_1/Item_1/Buy_Button.visible
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
@@ -57,6 +63,12 @@ func _item_1_bought() -> void:
 		rotate_item_1 = true
 
 func _on_item_2_pressed() -> void:
+	if $Items_for_sale/Rotate_2/Item_2/Buy_Button.visible:
+		$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
+	else:
+		$Items_for_sale/Rotate_2/Item_2.text = item_2.explanation
+	$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
+	$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible = !$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
@@ -73,6 +85,12 @@ func _item_2_bought() -> void:
 		rotate_item_2 = true
 
 func _on_item_3_pressed() -> void:
+	if $Items_for_sale/Rotate_3/Item_3/Buy_Button.visible:
+		$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
+	else:
+		$Items_for_sale/Rotate_3/Item_3.text = item_3.explanation
+	$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
+	$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible = !$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()

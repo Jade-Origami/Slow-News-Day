@@ -201,6 +201,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1g438")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_hp0fw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_71p40")
 text = "Item 1"
+autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Items_for_sale/Rotate_1/Item_1" unique_id=395467926]
 layout_mode = 0
@@ -232,6 +233,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4af7v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dav6d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gi6au")
 text = "Item 2"
+autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Items_for_sale/Rotate_2/Item_2" unique_id=1832687138]
 layout_mode = 0
@@ -264,6 +266,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0h6nl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3rvmk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fuotj")
 text = "Item 3"
+autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Items_for_sale/Rotate_3/Item_3" unique_id=227296107]
 layout_mode = 0

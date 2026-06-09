@@ -23,15 +23,11 @@ var player_total
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apply_styling()
-	sentences.correct_sentence = decide_sentence()
-	sentence_left = sentences.correct_sentence
-	$WinItems/TypingProgress.max_value = sentences.correct_sentence.length()
-	$Gameplay/Rotate/SentenceShow.text = ("Type this sentence:\n[color=%s]" % palette.other_text) + sentences.correct_sentence
-	$Gameplay/SentenceTake.grab_focus()
+	discard_sentence()
+	$Gameplay/SentenceTake.position = Vector2(8.0, 1000.0)
 	$WinItems/RevealText.hide()
-	max_timer_value = int(sentences.correct_sentence.length() * 15 * PlayerStats.round_time_mult)
-	$Gameplay/Timer_bar.max_value = max_timer_value
 	$WinItems/ShopButton.hide()
+	$Gameplay/Timer_bar.value = 0
 	update_stats(PlayerStats.coins)
 
 
@@ -54,13 +50,20 @@ func _process(_delta: float) -> void:
 func _on_sentence_take_text_changed(new_text: String) -> void:
 	if !timer_active:
 		timer_active = true
+		$Gameplay/Rotate_Discard/Discard_Button.hide()
 	var next_letter = sentence_left[0].to_lower()
 	var latest_letter = new_text[-1].to_lower()
 	if latest_letter == next_letter:
 		sentence_left = sentence_left.substr(1,-1)
+		if PlayerStats.double_bypass:
+			if sentence_left == "":
+				pass
+			elif latest_letter == sentence_left[0].to_lower(): #this is the letter after next_letter
+				sentence_left = sentence_left.substr(1,-1)
+				$Gameplay/Rotate/TypingProgress.value += 1
 		var not_typed = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
-		$Gameplay/Rotate/SentenceShow.text = ("\n[color=%s]" % palette.completed_text) + not_typed + ("[/color][color=%s]" % palette.other_text) + sentence_left 
-		$WinItems/TypingProgress.value += 1
+		$Gameplay/Rotate/SentenceShow.text = ("\n[color=%s]" % palette.completed_text) + not_typed + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		$Gameplay/Rotate/TypingProgress.value += 1
 	else:
 		mistakes_made += 1
 		rotate_sentence = true
@@ -70,19 +73,18 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 			multiple_mistakes = "mistake"
 		else:
 			multiple_mistakes = "mistakes"
+		$Gameplay/SentenceTake.position = Vector2(8.0, 584.0)
 		give_rewards()
 		$Gameplay/Rotate.rotation_degrees = 0
 		$Gameplay/Rotate/SentenceShow.text = "Round clear!
 You made " + str(mistakes_made) + " " + multiple_mistakes + "
 you got " + str(coins_increase) + " " + multiple_coin
-		$WinItems/TypingProgress.hide()
+		$Gameplay/Rotate/TypingProgress.hide()
 		$WinItems/RevealText.show()
 		$Gameplay/Timer_bar.show_percentage = true
 		$WinItems/ShopButton.show()
 		timer_active = false
 		is_first_letter = false
-		if PlayerStats.sentence_length == "short":
-			PlayerStats.sentence_length = "mid"
 
 
 func give_rewards() -> void:
@@ -120,7 +122,7 @@ func apply_styling() -> void:
 	$Background.color = palette.background
 	var bar_fill := StyleBoxFlat.new()
 	bar_fill.bg_color = Color(palette.completed_text)
-	$WinItems/TypingProgress.add_theme_stylebox_override("fill", bar_fill)
+	$Gameplay/Rotate/TypingProgress.add_theme_stylebox_override("fill", bar_fill)
 	$WinItems/ShopButton.add_theme_stylebox_override("normal", make_stylebox(palette.shop_colour_normal))
 	$WinItems/ShopButton.add_theme_stylebox_override("hover", make_stylebox(palette.shop_colour_hover))
 	$WinItems/ShopButton.add_theme_stylebox_override("pressed", make_stylebox(palette.shop_colour_pressed))
@@ -132,21 +134,16 @@ func apply_styling() -> void:
 func _on_discard_button_pressed() -> void:
 	if can_discard:
 		can_discard = false
-		sentences.correct_sentence = decide_sentence()
-		$Gameplay/Rotate/SentenceShow.text = ("Type this sentence:\n[color=%s]" % palette.other_text) + sentences.correct_sentence
 		rotate_discards = true
 		rotate_sentence = true
+		discard_sentence()
 
 
-func decide_sentence() -> String:
-	if PlayerStats.sentence_length == "mid":
-		sentences.mid_sentences.shuffle()
-		sentences.correct_sentence = sentences.mid_sentences.pop_front()
-	elif PlayerStats.sentence_length == "short":
-		sentences.short_sentences.shuffle()
-		sentences.correct_sentence = sentences.short_sentences.pop_front()
-	if sentences.mid_sentences.is_empty():
-		sentences.mid_sentences = sentences.mid_sentences_bak.duplicate()
-	if sentences.short_sentences.is_empty():
-		sentences.short_sentences = sentences.short_sentences_bak.duplicate()
-	return sentences.correct_sentence
+func discard_sentence() -> void:
+	sentences.correct_sentence = sentences.create_sentence()
+	sentence_left = sentences.correct_sentence
+	$Gameplay/Rotate/TypingProgress.max_value = sentences.correct_sentence.length()
+	$Gameplay/Rotate/SentenceShow.text = ("New Story!:\n[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
+	max_timer_value = int(sentences.correct_sentence.length() * 18 * PlayerStats.round_time_mult)
+	$Gameplay/Timer_bar.max_value = max_timer_value
+	$Gameplay/Rotate.rotation_degrees = randi_range(-25, 25)

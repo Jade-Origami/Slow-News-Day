@@ -15,16 +15,18 @@ func _process(_delta: float) -> void:
 
 var upgrades = [
 	{
-		"pretty_text": "Shorter sentence next round",
-		"id": "short_sentence",
+		"pretty_text": "Predicitive text",
+		"explanation": "Automatically types the next letter in a double-letter group",
+		"id": "double_letters_bypass",
 		"mode": "set",
-		"target": "sentence_length",
-		"value": "short",
+		"target": "double_bypass",
+		"value": true,
 		"price": 5,
 		"rarity": "0.5" #common
 	},
 	{
-		"pretty_text": "More coins in reward",
+		"pretty_text": "Higher wages",
+		"explanation": "Increase the amount of money given after round by 2",
 		"id": "flat_coin_increase",
 		"mode": "add",
 		"target": "flat_coin",
@@ -33,16 +35,18 @@ var upgrades = [
 		"rarity": "0.2" #uncommon
 	},
 	{
-		"pretty_text": "More round time",
+		"pretty_text": "Longer deadlines",
+		"explanation": "Increase the amount of time allowed for a story to by completed by x1.25",
 		"id": "round_time_increase",
 		"mode": "mult",
 		"target": "round_time_mult",
 		"value": 1.25,
-		"price": 5,
+		"price": 10,
 		"rarity": "0.2" #uncommon
 	},
 	{
-		"pretty_text": "Decrease mistake penalty",
+		"pretty_text": "Autocorrect",
+		"explanation": "Decrease the punishment for making a mistake by 0.25",
 		"id": "mistake_penalty",
 		"mode": "add",
 		"target": "mistake_penalty_mult",
@@ -52,11 +56,13 @@ var upgrades = [
 	}
 ]
 
+
 func apply_upgrade_by_id(id: String) -> void:
 	for upgrade in upgrades:
 		if upgrade["id"] == id:
 			apply_upgrade(upgrade)
 			break
+
 
 func apply_upgrade(upgrade: Dictionary) -> void:
 	var target = upgrade["target"]
