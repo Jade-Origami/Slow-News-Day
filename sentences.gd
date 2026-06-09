@@ -2,7 +2,7 @@ extends Node
 
 var nouns = [
 	"table ", "chair ", "tea ", "mug ", "computer ", "laptop ", "hedgehog ", "phone ",
-	"shoe ", "slipper ", "leaf ", "glass ", "spectacles ", "pottery ", "hand cream ",
+	"shoe ", "slipper ", "leaf ", "glass ", "booklet ", "pottery ", "hand cream ",
 	"book ", "flag ", "man ", "woman ", "enby ", "person ", "drum ", "nail polish ", "poster ",
 	"paper ", "wii sports ", "origami ", "kitten ", "cat ", "dog ", "puppy ", "fox ", "snail ",
 	"nintendo 3ds ", "deoderant ", "controller ", "prison warden ", "door ", "sloth ",
