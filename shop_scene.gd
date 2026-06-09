@@ -125,7 +125,7 @@ func reroll() -> void:
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.text = str(item_3.price) + " Coins"
 	shop_items[2] = item_3.id
 	reroll_cost += 1
-	$Items_for_sale/Rotate_Reroll/Reroll_button.text = "Reroll: " + str(reroll_cost)
+	$Items_for_sale/Rotate_Reroll/Reroll_button.text = "Reroll: " + str(reroll_cost) + " Coins"
 	$Items_for_sale/Rotate_1/Item_1.show()
 	$Items_for_sale/Rotate_2/Item_2.show()
 	$Items_for_sale/Rotate_3/Item_3.show()

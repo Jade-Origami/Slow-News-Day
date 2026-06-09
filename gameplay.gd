@@ -18,17 +18,21 @@ var multiple_coin
 var palette
 var round_total
 var player_total
+var typed_already
+var used_predictive = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apply_styling()
 	discard_sentence()
-	$Gameplay/SentenceTake.position = Vector2(8.0, 1000.0)
+	$Gameplay/SentenceTake.position = Vector2(8.0, -1000.0)
 	$WinItems/RevealText.hide()
 	$WinItems/ShopButton.hide()
 	$Gameplay/Timer_bar.value = 0
 	update_stats(PlayerStats.coins)
+	if PlayerStats.reroll_sentence_amount >= 0:
+		$Gameplay/Rotate_Discard/Discard_Button.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,6 +52,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
+	typed_already = new_text
 	if !timer_active:
 		timer_active = true
 		$Gameplay/Rotate_Discard/Discard_Button.hide()
@@ -61,30 +66,34 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 			elif latest_letter == sentence_left[0].to_lower(): #this is the letter after next_letter
 				sentence_left = sentence_left.substr(1,-1)
 				$Gameplay/Rotate/TypingProgress.value += 1
-		var not_typed = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
-		$Gameplay/Rotate/SentenceShow.text = ("\n[color=%s]" % palette.completed_text) + not_typed + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/Rotate/TypingProgress.value += 1
 	else:
 		mistakes_made += 1
 		rotate_sentence = true
 	if sentence_left.is_empty(): #Sentence has been typed correctly
-		var multiple_mistakes
-		if mistakes_made == 1:
-			multiple_mistakes = "mistake"
-		else:
-			multiple_mistakes = "mistakes"
-		$Gameplay/SentenceTake.position = Vector2(8.0, 584.0)
-		give_rewards()
-		$Gameplay/Rotate.rotation_degrees = 0
-		$Gameplay/Rotate/SentenceShow.text = "Round clear!
+		sentence_finished()
+
+
+func sentence_finished() -> void:
+	var multiple_mistakes
+	if mistakes_made == 1:
+		multiple_mistakes = "mistake"
+	else:
+		multiple_mistakes = "mistakes"
+	$Gameplay/SentenceTake.position = Vector2(8.0, 584.0)
+	give_rewards()
+	$Gameplay/Rotate.rotation_degrees = 0
+	$Gameplay/Rotate/SentenceShow.text = "Round clear!
 You made " + str(mistakes_made) + " " + multiple_mistakes + "
 you got " + str(coins_increase) + " " + multiple_coin
-		$Gameplay/Rotate/TypingProgress.hide()
-		$WinItems/RevealText.show()
-		$Gameplay/Timer_bar.show_percentage = true
-		$WinItems/ShopButton.show()
-		timer_active = false
-		is_first_letter = false
+	$Gameplay/Rotate/TypingProgress.hide()
+	$WinItems/RevealText.show()
+	$Gameplay/Timer_bar.show_percentage = true
+	$WinItems/ShopButton.show()
+	timer_active = false
+	is_first_letter = false
 
 
 func give_rewards() -> void:
@@ -132,7 +141,10 @@ func apply_styling() -> void:
 
 
 func _on_discard_button_pressed() -> void:
-	if can_discard:
+	if can_discard and PlayerStats.reroll_sentence_amount > 0:
+		PlayerStats.reroll_sentence_amount -= 1
+		if PlayerStats.reroll_sentence_amount >= 0:
+			$Gameplay/Rotate_Discard/Discard_Button.hide()
 		can_discard = false
 		rotate_discards = true
 		rotate_sentence = true
@@ -143,7 +155,37 @@ func discard_sentence() -> void:
 	sentences.correct_sentence = sentences.create_sentence()
 	sentence_left = sentences.correct_sentence
 	$Gameplay/Rotate/TypingProgress.max_value = sentences.correct_sentence.length()
-	$Gameplay/Rotate/SentenceShow.text = ("New Story!:\n[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
+	$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
 	max_timer_value = int(sentences.correct_sentence.length() * 18 * PlayerStats.round_time_mult)
 	$Gameplay/Timer_bar.max_value = max_timer_value
 	$Gameplay/Rotate.rotation_degrees = randi_range(-25, 25)
+
+
+func get_word_start_index(text: String, char_index: int) -> int:
+	# Find the last space before char_index
+	var last_space: int = -1
+	for i in range(char_index):
+		if text[i] == ' ':
+			last_space = i
+	return last_space + 1
+
+
+func tab_autofill() -> void:
+	if PlayerStats.amount_tab_fill > 0 and !used_predictive:
+		used_predictive = true
+		PlayerStats.amount_tab_fill -= 1
+		var index_currently_typed = typed_already.length() - 1
+		var index_of_word = get_word_start_index(sentences.correct_sentence, index_currently_typed)
+		var length_of_containing_word = 0
+		var index_helper = index_of_word
+		while sentences.correct_sentence[index_helper] != " " and index_helper != (sentences.correct_sentence.length()-1):
+			index_helper += 1
+			length_of_containing_word += 1
+		sentence_left = sentence_left.substr((length_of_containing_word - (index_currently_typed - index_of_word)),-1)
+		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		$Gameplay/SentenceTake.text = typed_already
+		$Gameplay/SentenceTake.caret_column = $Gameplay/SentenceTake.text.length()
+		$Gameplay/Rotate/TypingProgress.value += (length_of_containing_word - (index_currently_typed - index_of_word))
+		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		if sentence_left.is_empty():
+			sentence_finished()

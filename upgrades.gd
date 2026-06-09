@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 var upgrades = [
 	{
-		"pretty_text": "Predicitive text",
+		"pretty_text": "Ghost writer",
 		"explanation": "Automatically types the next letter in a double-letter group",
 		"id": "double_letters_bypass",
 		"mode": "set",
@@ -26,12 +26,12 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Higher wages",
-		"explanation": "Increase the amount of money given after round by 2",
+		"explanation": "Increase the amount of money given after round by 1",
 		"id": "flat_coin_increase",
 		"mode": "add",
 		"target": "flat_coin",
-		"value": 2,
-		"price": 3,
+		"value": 1,
+		"price": 4,
 		"rarity": "0.2" #uncommon
 	},
 	{
@@ -53,6 +53,26 @@ var upgrades = [
 		"value": -0.25,
 		"price": 10,
 		"rarity": "0.1" #rare
+	},
+	{
+		"pretty_text": "Editor's note",
+		"explanation": "Tell your editor you want a different story!",
+		"id": "reroll_sentence",
+		"mode": "add",
+		"target": "reroll_sentence_amount",
+		"value": 1,
+		"price": 20,
+		"rarity": "0.1" #rare
+	},
+	{
+		"pretty_text": "Predictive text",
+		"explanation": "Press Tab to automatically fill in the current word",
+		"id": "tab_to_fill",
+		"mode": "add",
+		"target": "amount_tab_fill",
+		"value": 1,
+		"price": 25,
+		"rarity": "0.1" #common
 	}
 ]
 

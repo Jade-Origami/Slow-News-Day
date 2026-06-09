@@ -100,6 +100,7 @@ offset_left = 448.0
 offset_top = 552.0
 offset_right = 704.0
 offset_bottom = 581.0
+theme_override_colors/font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 text = "↓ This is what you typed ↓"
 horizontal_alignment = 1
 
@@ -120,10 +121,11 @@ position = Vector2(576, 280)
 script = ExtResource("2_sdn3h")
 
 [node name="SentenceShow" type="RichTextLabel" parent="Gameplay/Rotate" unique_id=1225372798]
-offset_left = -288.0
-offset_top = -216.0
-offset_right = 288.0
-offset_bottom = -80.0
+z_index = 1
+offset_left = -240.0
+offset_top = -192.0
+offset_right = 240.0
+offset_bottom = -88.0
 theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "Sentence zone"
@@ -135,22 +137,34 @@ script = ExtResource("2_xrcqf")
 
 [node name="Newspaper" type="ColorRect" parent="Gameplay/Rotate" unique_id=805639919]
 z_index = -1
-offset_left = -288.0
-offset_top = -184.0
-offset_right = 288.0
-offset_bottom = 248.0
+offset_left = -248.0
+offset_top = -248.0
+offset_right = 248.0
+offset_bottom = 352.0
 color = Color(0.9411765, 0.81960785, 0.64705884, 1)
 
 [node name="TypingProgress" type="ProgressBar" parent="Gameplay/Rotate" unique_id=1090657300]
-z_index = 1
-offset_left = -288.0
-offset_top = -80.0
-offset_right = 288.0
-offset_bottom = 248.0
+offset_left = -248.0
+offset_top = -144.0
+offset_right = 248.0
+offset_bottom = 352.0
 theme_override_styles/background = SubResource("StyleBoxFlat_c4t3t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xrcqf")
 fill_mode = 2
 show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Gameplay/Rotate" unique_id=1628593781]
+offset_left = -248.0
+offset_top = -248.0
+offset_right = 248.0
+offset_bottom = -181.0
+theme_override_colors/default_color = Color(0.18359047, 0.18359044, 0.18359047, 1)
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[b]THE NEWSPAPER[/b]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 3
 
 [node name="SentenceTake" type="LineEdit" parent="Gameplay" unique_id=1077539471]
 offset_left = 8.0

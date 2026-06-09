@@ -26,6 +26,8 @@ var flat_coin = 0
 var round_time_mult = 1
 var mistake_penalty_mult = 2.5
 var double_bypass = false
+var reroll_sentence_amount = 0
+var amount_tab_fill = 0
 
 var palettes = [
 	{
