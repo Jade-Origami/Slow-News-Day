@@ -15,29 +15,26 @@ var rotate_discards = false
 var rotate_base = false
 var rotate_mult = false
 var can_discard = true
-var coins_increase = 0
 var multiple_coin
 var palette
 var round_total
 var player_total
 var typed_already
 var used_predictive = false
-var base = 0
-var mult = 0
+var base : int
+var mult : int
+var required_score = 300
+var total_score = 0
+var sentences_used = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apply_styling()
-	discard_sentence()
-	$Gameplay/SentenceTake.position = Vector2(8.0, -1000.0)
 	$WinItems/ShopButton.hide()
-	$Gameplay/Timer_bar.value = 0
-	$Gameplay/Base_Rotate/Base_Text.text = str(base)
-	$Gameplay/Mult_Rotate/Mult_Text.text = str(mult)
 	update_stats(PlayerStats.coins)
-	if PlayerStats.reroll_sentence_amount >= 0:
-		$Gameplay/Rotate_Discard/Discard_Button.hide()
+	$Gameplay/RequiredScoreRead.text = str(required_score)
+	sentence_start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -99,6 +96,11 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 
 
 func sentence_finished() -> void:
+	timer_active = false
+	is_first_letter = false
+	var percentage_of_time = 1 - ($Gameplay/Timer_bar.value / max_timer_value)
+	var score_this_sentence = int(floor((base * mult) * percentage_of_time))
+	total_score += score_this_sentence
 	$Gameplay/Rotate.rotation_degrees = 0
 	var multiple_mistakes
 	if mistakes_made == 1:
@@ -106,21 +108,40 @@ func sentence_finished() -> void:
 	else:
 		multiple_mistakes = "mistakes"
 	$Gameplay/Rotate/SentenceShow.text = "Round clear!
-You made " + str(mistakes_made) + " " + multiple_mistakes
-	timer_active = false
+You made " + str(mistakes_made) + " " + multiple_mistakes +"
+score: " + str(score_this_sentence)
+	$Gameplay/Total_Score_Rotate/Total_Score.text = str(total_score)
+	if total_score >= required_score:
+		round_finished()
+	else:
+		$Gameplay/Rotate_Discard/Discard_Button.hide()
+		$Gameplay/Rotate_Discard/Next_Button.show()
+
+
+func sentence_start():
+	discard_sentence()
+	time_passed = 0
+	$Gameplay/Timer_bar.value = time_passed
+	$Gameplay/Rotate/TypingProgress.value = 0
+	base = 0
+	mult = 0
+	$Gameplay/Base_Rotate/Base_Text.text = str(base)
+	$Gameplay/Mult_Rotate/Mult_Text.text = str(mult)
+	$Gameplay/Rotate_Discard/Discard_Button.hide()
+	if PlayerStats.reroll_sentence_amount > 0:
+		$Gameplay/Rotate_Discard/Discard_Button.show()
+	$Gameplay/Rotate_Discard/Next_Button.hide()
 	is_first_letter = true
 
 
 func round_finished() -> void:
 	give_rewards()
 	$Gameplay/Rotate/TypingProgress.hide()
-	$Gameplay/Timer_bar.show_percentage = true
 	$WinItems/ShopButton.show()
 
 
 func give_rewards() -> void:
-	var percentage_of_time = $Gameplay/Timer_bar.value / max_timer_value
-	coins_increase = int(1 + ((1-percentage_of_time) * 9) - floor(mistakes_made/PlayerStats.mistake_penalty_div)) + PlayerStats.flat_coin
+	var coins_increase = ((4 - sentences_used) * 2) + PlayerStats.flat_coin
 	if coins_increase < 1:
 		coins_increase = 1
 		multiple_coin = "Coin"
@@ -178,7 +199,7 @@ func discard_sentence() -> void:
 	sentence_left = sentences.correct_sentence
 	$Gameplay/Rotate/TypingProgress.max_value = sentences.correct_sentence.length()
 	$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
-	max_timer_value = int(sentences.correct_sentence.length() * 18 * PlayerStats.round_time_mult)
+	max_timer_value = int(sentences.correct_sentence.length() * 20 * PlayerStats.round_time_mult)
 	$Gameplay/Timer_bar.max_value = max_timer_value
 	$Gameplay/Rotate.rotation_degrees = randi_range(-25, 25)
 
@@ -211,3 +232,8 @@ func tab_autofill() -> void:
 		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		if sentence_left.is_empty():
 			sentence_finished()
+
+
+func _on_next_button_pressed() -> void:
+	sentences_used += 1
+	sentence_start()

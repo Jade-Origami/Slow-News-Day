@@ -8,7 +8,7 @@ var nouns = [
 	"nintendo 3ds ", "deoderant ", "controller ", "prison warden ", "door ", "sloth ",
 	"mountain climber ", "tire ", "guitar ", "mouse ", "rat ", "spray bottle ", "tintin ",
 	"slinky ", "vaseline ", "lanyard ", "trouser leg ", "skirt ", "shirt ", "vampire ", "sun ",
-	"daughter ", "son ", "follower ", "streamer ", "wire", "USB stick ", "keychain ",
+	"daughter ", "son ", "follower ", "streamer ", "wire ", "USB stick ", "keychain ",
 	"lost keys ", "pajamas ", "scissors ", "flashcard ", "lamp ", "timer ", "magnet ",
 	"scarf ", "bag ", "music festival ", "examiner "
 ]
@@ -27,7 +27,7 @@ var verbs = [
 	"steals ", "sings about ", "wants ", "runs alongside ", "punches ", "rips ", "pushes ", "drowns ",
 	"agitates ", "annoys ", "pioneers ", "destroys ", "discovers ", "saves ", "growls at ", "barks at ",
 	"meows at ", "yips at ", "snarls at ", "bites at ", "kisses ", "marries ", "hugs ", "confuses ",
-	"pinches ", "kicks  ", "licks ", "flicks at ", "throws a stone at ", "pulls at ", "frowns at ",
+	"pinches ", "kicks ", "licks ", "flicks at ", "throws a stone at ", "pulls at ", "frowns at ",
 	"rubs ", "brawls with ", "holds up ", "eats whole ", "sits on "
 ]
 
