@@ -9,8 +9,8 @@ var nouns = [
 	"mountain climber ", "tire ", "guitar ", "mouse ", "rat ", "spray bottle ", "tintin ",
 	"slinky ", "vaseline ", "lanyard ", "trouser leg ", "skirt ", "shirt ", "vampire ", "sun ",
 	"daughter ", "son ", "follower ", "streamer ", "wire", "USB stick ", "keychain ",
-	"lost keys ", "pajamas ", "scissors ", "flashcards ", "lamp ", "timer ", "magnet ",
-	"scarf ", "bag ", "music festival "
+	"lost keys ", "pajamas ", "scissors ", "flashcard ", "lamp ", "timer ", "magnet ",
+	"scarf ", "bag ", "music festival ", "examiner "
 ]
 
 var adjectives = [
@@ -20,7 +20,7 @@ var adjectives = [
 	"angry ", "sticky ", "heated ", "crazy ", "cracked ", "sloppy ", "american ",
 	"british ", "french ", "german ", "spanish ", "scottish ", "welsh ", "irish ",
 	"purple ", "puzzled ", "confused ", "unusual ", "cold ", "warm ", "ace ",
-	"straight ", "dissapointed ", "new ", "swanky ", "drunk "
+	"straight ", "dissapointed ", "new ", "swanky ", "drunk ", "nonplussed "
 ]
 
 var verbs = [
@@ -34,7 +34,8 @@ var verbs = [
 var adverbs = [
 	"regrettably ", "quickly ", "light-heartedly ", "heavy-heartedly ", "speedily ", "smoothly ",
 	"harshly ", "slowly ", "annoyedly ", "tiredly ", "energetically ", "sloppily ", "angrily ",
-	"gaily ", "begrudgingly ", "happily ", "unfortunately ", "stupidly ", "lazily "
+	"gaily ", "begrudgingly ", "happily ", "unfortunately ", "stupidly ", "lazily ", "", #blank
+	"ultimately "
 ]
 
 var connectives = [

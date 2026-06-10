@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Typing Roguelike"
+config/name="Slow News Day"
 run/main_scene="uid://ddtkxyigw5b4g"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
