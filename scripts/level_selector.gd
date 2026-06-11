@@ -1,8 +1,20 @@
 extends Node2D
 
 
+var level_mult
+var round_1_required : int
+var round_2_required : int
+var round_3_required : int
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	@warning_ignore("integer_division")
+	var completed_levels = floor(PlayerStats.completed_rounds / 3)
+	level_mult = completed_levels + 0.5
+	round_1_required = 200 * level_mult
+	round_2_required = 300 * level_mult
+	round_3_required = 400 * level_mult
 	$Stage_1.disabled = true
 	$Stage_2.disabled = true
 	$Stage_3.disabled = true
@@ -12,6 +24,9 @@ func _ready() -> void:
 		$Stage_2.disabled = false
 	else:
 		$Stage_3.disabled = false
+	$Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
+	$Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
+	$Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,15 +35,15 @@ func _process(_delta: float) -> void:
 
 
 func _on_stage_1_pressed() -> void:
-	PlayerStats.target_this_round = 300
+	PlayerStats.target_this_round = round_1_required
 	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
 
 
 func _on_stage_2_pressed() -> void:
-	PlayerStats.target_this_round = 450
+	PlayerStats.target_this_round = round_2_required
 	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
 
 
 func _on_stage_3_pressed() -> void:
-	PlayerStats.target_this_round = 600
+	PlayerStats.target_this_round = round_3_required
 	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")

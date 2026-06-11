@@ -141,6 +141,13 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0ix"]
+bg_color = Color(0.67304265, 0.46641088, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="GameplayScreen" type="Node2D" unique_id=724252821]
 script = ExtResource("1_bp0ix")
 
@@ -329,6 +336,20 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/disabled = SubResource("StyleBoxFlat_qi3u4")
 disabled = true
 text = "Total Score"
+
+[node name="Hands_Rotate" type="Node2D" parent="Gameplay" unique_id=36159459]
+position = Vector2(1040, 64)
+
+[node name="Hands_Counter" type="Button" parent="Gameplay/Hands_Rotate" unique_id=403110168]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 40.0
+theme_override_colors/font_disabled_color = Color(0.96035105, 0.96035105, 0.96035093, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bp0ix")
+disabled = true
+text = "Hands Here"
 
 [node name="Player" type="Node" parent="." unique_id=1801745877]
 script = ExtResource("5_avas0")

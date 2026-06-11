@@ -31,7 +31,7 @@ var sentences_used = 0
 func _ready() -> void:
 	apply_styling()
 	$WinItems/ShopButton.hide()
-	update_stats(PlayerStats.coins)
+	update_stats()
 	$Gameplay/RequiredScoreRead.text = str(PlayerStats.target_this_round)
 	sentence_start()
 
@@ -76,14 +76,6 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay/Base_Rotate/Base_Text.text = str(base)
 		$Gameplay/Mult_Rotate/Mult_Text.text = str(mult)
 		
-		if PlayerStats.double_bypass:
-			if sentence_left == "":
-				pass
-			elif latest_letter == sentence_left[0].to_lower(): #this is the letter after next_letter
-				check_for_upgrades(sentence_left[0])
-				sentence_left = sentence_left.substr(1,-1)
-				$Gameplay/Rotate/TypingProgress.value += 1
-		
 		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/SentenceTake.text = typed_already
@@ -106,6 +98,17 @@ func check_for_upgrades(letter) -> void:
 			mult += 2
 			base += 2
 			rotate_mult = true
+	
+	if PlayerStats.double_bypass:
+		mult += 2
+		if sentence_left == "":
+			pass
+		elif letter == sentence_left[0].to_lower(): #this is the letter after next_letter
+			PlayerStats.double_bypass = false #stops this from being an infinite loop
+			check_for_upgrades(sentence_left[0])
+			PlayerStats.double_bypass = true #make sure you don't lose the ability
+			sentence_left = sentence_left.substr(1,-1)
+			$Gameplay/Rotate/TypingProgress.value += 1
 
 
 func sentence_finished() -> void:
@@ -118,16 +121,16 @@ func sentence_finished() -> void:
 	if score_this_sentence < 10:
 		score_this_sentence = 10
 	total_score += score_this_sentence
-	$Gameplay/Rotate.rotation_degrees = 0
 	var multiple_mistakes
 	if mistakes_made == 1:
 		multiple_mistakes = "mistake"
 	else:
 		multiple_mistakes = "mistakes"
+	$Gameplay/Rotate.rotation_degrees = 0
 	$Gameplay/Rotate/SentenceShow.text = "Round clear!
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
-	$Gameplay/Total_Score_Rotate/Total_Score.text = str(total_score)
+	update_stats()
 	if total_score >= PlayerStats.target_this_round:
 		round_finished()
 	elif sentences_used >= PlayerStats.sentences_allowed:
@@ -168,7 +171,7 @@ func give_rewards() -> void:
 	else:
 		multiple_coin = "Coins"
 	PlayerStats.coins += coins_increase
-	update_stats(PlayerStats.coins)
+	update_stats()
 
 
 func _on_shop_button_pressed() -> void:
@@ -176,8 +179,10 @@ func _on_shop_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/shop_scene.tscn")
 
 
-func update_stats(coins) -> void:
+func update_stats() -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
+	$Gameplay/Hands_Rotate/Hands_Counter.text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
+	$Gameplay/Total_Score_Rotate/Total_Score.text = str(total_score)
 
 
 func make_stylebox(color: Color, corner_radius: int = 6) -> StyleBoxFlat:

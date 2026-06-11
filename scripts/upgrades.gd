@@ -12,7 +12,7 @@ func _ready() -> void:
 var upgrades = [
 	{
 		"pretty_text": "Ghost writer",
-		"explanation": "Automatically types the next letter in a double-letter group \n[can only be brought once]",
+		"explanation": "Automatically types the next letter in a double-letter group\nand gives +3 mult every time\n[can only be brought once]",
 		"id": "double_letters_bypass",
 		"mode": "set",
 		"target": "double_bypass",
