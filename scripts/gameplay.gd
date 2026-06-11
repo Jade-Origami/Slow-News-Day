@@ -100,10 +100,10 @@ func check_for_upgrades(letter) -> void:
 			rotate_mult = true
 	
 	if PlayerStats.double_bypass:
-		mult += 2
 		if sentence_left == "":
 			pass
 		elif letter == sentence_left[0].to_lower(): #this is the letter after next_letter
+			mult += 2
 			PlayerStats.double_bypass = false #stops this from being an infinite loop
 			check_for_upgrades(sentence_left[0])
 			PlayerStats.double_bypass = true #make sure you don't lose the ability
