@@ -12,7 +12,7 @@ func _ready() -> void:
 var upgrades = [
 	{
 		"pretty_text": "Ghost writer",
-		"explanation": "Automatically types the next letter in a double-letter group",
+		"explanation": "Automatically types the next letter in a double-letter group \n[can only be brought once]",
 		"id": "double_letters_bypass",
 		"mode": "set",
 		"target": "double_bypass",
@@ -70,6 +70,16 @@ var upgrades = [
 		"price": 25,
 		"rarity": "0.2" #uncommon
 	},
+	{
+		"pretty_text": "Ace writer",
+		"explanation": "Every typed \"A\" gives +2 mult and +2 base \n[can only be brought once]",
+		"id": "a_upgrade",
+		"mode": "set",
+		"target": "a_gives_mult",
+		"value": true,
+		"price": 20,
+		"rarity": "0.2" #uncommon
+	},
 ]
 
 
@@ -86,6 +96,8 @@ func apply_upgrade(upgrade: Dictionary) -> void:
 	var value = upgrade["value"]
 	
 	if upgrade["id"] == "double_letters_bypass":
+		upgrades.erase(upgrade)
+	if upgrade["id"] == "a_upgrade":
 		upgrades.erase(upgrade)
 	
 	match mode:

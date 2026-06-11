@@ -71,9 +71,9 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		
 		base += 1
 		rotate_base = true
-		if latest_letter.to_lower() == " ":
-			mult += 1
-			rotate_mult = true
+		
+		check_for_upgrades(latest_letter)
+		
 		$Gameplay/Base_Rotate/Base_Text.text = str(base)
 		$Gameplay/Mult_Rotate/Mult_Text.text = str(mult)
 		
@@ -81,11 +81,10 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 			if sentence_left == "":
 				pass
 			elif latest_letter == sentence_left[0].to_lower(): #this is the letter after next_letter
+				check_for_upgrades(sentence_left[0])
 				sentence_left = sentence_left.substr(1,-1)
 				$Gameplay/Rotate/TypingProgress.value += 1
-				if sentence_left[0].to_lower() == " ":
-					mult += 1
-					rotate_mult = true
+		
 		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/SentenceTake.text = typed_already
@@ -98,10 +97,23 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		sentence_finished()
 
 
+func check_for_upgrades(letter) -> void:
+	if letter.to_lower() == " ":
+			mult += 1
+			rotate_mult = true
+	
+	if letter.to_lower() == "a":
+		mult += 2
+		base += 2
+		rotate_mult = true
+	
+	
+
+
 func sentence_finished() -> void:
 	timer_active = false
 	is_first_letter = false
-	var percentage_of_time = 1.5 - ($Gameplay/Timer_bar.value / max_timer_value)
+	var percentage_of_time = 1.2 - ($Gameplay/Timer_bar.value / max_timer_value)
 	var score_this_sentence = int(floor((base * mult) * percentage_of_time)) - (mistakes_made * PlayerStats.mistake_mult_num) + 10
 	if score_this_sentence < 10:
 		score_this_sentence = 10
