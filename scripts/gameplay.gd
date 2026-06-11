@@ -113,7 +113,7 @@ func sentence_finished() -> void:
 	print(sentences_used)
 	timer_active = false
 	is_first_letter = false
-	var percentage_of_time = 1.2 - ($Gameplay/Timer_bar.value / max_timer_value)
+	var percentage_of_time = 1.5 - ($Gameplay/Timer_bar.value / max_timer_value)
 	var score_this_sentence = int(floor((base * mult) * percentage_of_time)) - (mistakes_made * PlayerStats.mistake_mult_num) + 10
 	if score_this_sentence < 10:
 		score_this_sentence = 10

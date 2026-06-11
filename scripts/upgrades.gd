@@ -37,7 +37,7 @@ var upgrades = [
 		"mode": "mult",
 		"target": "round_time_mult",
 		"value": 1.25,
-		"price": 10,
+		"price": 7,
 		"rarity": "0.2" #uncommon
 	},
 	{
@@ -47,7 +47,7 @@ var upgrades = [
 		"mode": "add",
 		"target": "mistake_mult_num",
 		"value": 5,
-		"price": 10,
+		"price": 7,
 		"rarity": "0.1" #rare
 	},
 	{
@@ -57,7 +57,7 @@ var upgrades = [
 		"mode": "add",
 		"target": "reroll_sentence_amount",
 		"value": 1,
-		"price": 20,
+		"price": 7,
 		"rarity": "0.1" #rare
 	},
 	{
@@ -67,7 +67,7 @@ var upgrades = [
 		"mode": "add",
 		"target": "amount_tab_fill",
 		"value": 1,
-		"price": 25,
+		"price": 15,
 		"rarity": "0.2" #uncommon
 	},
 	{
@@ -77,7 +77,7 @@ var upgrades = [
 		"mode": "set",
 		"target": "a_gives_mult",
 		"value": true,
-		"price": 20,
+		"price": 15,
 		"rarity": "0.2" #uncommon
 	},
 ]
