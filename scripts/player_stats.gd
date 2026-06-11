@@ -19,6 +19,9 @@ var mistake_mult_num = 20
 var double_bypass = false
 var reroll_sentence_amount = 0
 var amount_tab_fill = 0
+var completed_rounds = 0
+var target_this_round : int
+var sentences_allowed = 4
 
 var palettes = [
 	{

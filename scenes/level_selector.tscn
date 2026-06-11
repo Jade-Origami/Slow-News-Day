@@ -10,18 +10,25 @@ offset_left = 128.0
 offset_top = 256.0
 offset_right = 320.0
 offset_bottom = 384.0
-text = "Stage 1: 300 points"
+text = "Stage 1: 
+300 points"
 
 [node name="Stage_2" type="Button" parent="." unique_id=754825441]
 offset_left = 480.0
 offset_top = 256.0
 offset_right = 672.0
 offset_bottom = 384.0
-text = "Stage 2: 450 points"
+text = "Stage 2: 
+450 points"
 
 [node name="Stage_3" type="Button" parent="." unique_id=1929257894]
 offset_left = 832.0
 offset_top = 256.0
 offset_right = 1024.0
 offset_bottom = 384.0
-text = "Stage 3: 600 points"
+text = "Stage 3: 
+600 points"
+
+[connection signal="pressed" from="Stage_1" to="." method="_on_stage_1_pressed"]
+[connection signal="pressed" from="Stage_2" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="Stage_3" to="." method="_on_stage_3_pressed"]

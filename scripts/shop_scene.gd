@@ -10,6 +10,7 @@ var rotate_item_1
 var rotate_item_2
 var rotate_item_3
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
@@ -17,6 +18,7 @@ func _ready() -> void:
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
 	reroll()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -33,12 +35,10 @@ func _process(_delta: float) -> void:
 		if PlayerStats.agitate_object($Items_for_sale/Rotate_3):
 			rotate_item_3 = false
 
-func _on_new_round_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
 
-func item_brought(_item_num) -> void:
-	#item buy logic here
-	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)
+func _on_new_round_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/level_selector.tscn")
+
 
 func _on_item_1_pressed() -> void:
 	if $Items_for_sale/Rotate_1/Item_1/Buy_Button.visible:
@@ -51,6 +51,7 @@ func _on_item_1_pressed() -> void:
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
 
+
 func _item_1_bought() -> void:
 	if PlayerStats.coins >= item_1.price:
 		PlayerStats.coins -= item_1.price
@@ -62,6 +63,7 @@ func _item_1_bought() -> void:
 	else:
 		rotate_item_1 = true
 
+
 func _on_item_2_pressed() -> void:
 	if $Items_for_sale/Rotate_2/Item_2/Buy_Button.visible:
 		$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
@@ -72,7 +74,9 @@ func _on_item_2_pressed() -> void:
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible = !$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
-	
+
+
+
 func _item_2_bought() -> void:
 	if PlayerStats.coins >= item_2.price:
 		PlayerStats.coins -= item_2.price
@@ -84,6 +88,7 @@ func _item_2_bought() -> void:
 	else:
 		rotate_item_2 = true
 
+
 func _on_item_3_pressed() -> void:
 	if $Items_for_sale/Rotate_3/Item_3/Buy_Button.visible:
 		$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
@@ -94,7 +99,8 @@ func _on_item_3_pressed() -> void:
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible = !$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
-	
+
+
 func _item_3_bought() -> void:
 	if PlayerStats.coins >= item_3.price:
 		PlayerStats.coins -= item_3.price
@@ -105,6 +111,7 @@ func _item_3_bought() -> void:
 		update_stats_text()
 	else:
 		rotate_item_3 = true
+
 
 func reroll() -> void:
 	var shop_items = ["","",""]
@@ -143,6 +150,7 @@ func _on_reroll_button_pressed() -> void:
 	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
 	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
 	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
+
 
 func update_stats_text() -> void:
 	$Player/StatsText.text = "Coins: " + str(PlayerStats.coins)

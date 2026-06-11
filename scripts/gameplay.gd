@@ -23,7 +23,6 @@ var typed_already
 var used_predictive = false
 var base : int
 var mult : int
-var required_score = 300
 var total_score = 0
 var sentences_used = 0
 
@@ -33,7 +32,7 @@ func _ready() -> void:
 	apply_styling()
 	$WinItems/ShopButton.hide()
 	update_stats(PlayerStats.coins)
-	$Gameplay/RequiredScoreRead.text = str(required_score)
+	$Gameplay/RequiredScoreRead.text = str(PlayerStats.target_this_round)
 	sentence_start()
 
 
@@ -111,6 +110,8 @@ func check_for_upgrades(letter) -> void:
 
 
 func sentence_finished() -> void:
+	sentences_used += 1
+	print(sentences_used)
 	timer_active = false
 	is_first_letter = false
 	var percentage_of_time = 1.2 - ($Gameplay/Timer_bar.value / max_timer_value)
@@ -128,8 +129,10 @@ func sentence_finished() -> void:
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
 	$Gameplay/Total_Score_Rotate/Total_Score.text = str(total_score)
-	if total_score >= required_score:
+	if total_score >= PlayerStats.target_this_round:
 		round_finished()
+	elif sentences_used >= PlayerStats.sentences_allowed:
+		$Gameplay/Rotate/SentenceShow.text = "Game over \nPlease restart the game"
 	else:
 		$Gameplay/Rotate_Discard/Discard_Button.hide()
 		$Gameplay/Rotate_Discard/Next_Button.show()
@@ -170,6 +173,7 @@ func give_rewards() -> void:
 
 
 func _on_shop_button_pressed() -> void:
+	PlayerStats.completed_rounds += 1
 	get_tree().change_scene_to_file("res://scenes/shop_scene.tscn")
 
 
@@ -253,5 +257,4 @@ func tab_autofill() -> void:
 
 
 func _on_next_button_pressed() -> void:
-	sentences_used += 1
 	sentence_start()
