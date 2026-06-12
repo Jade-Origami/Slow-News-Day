@@ -1,14 +1,6 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var rarity_list_of_upgrades = []
-	for i in range(upgrades.size()):
-		rarity_list_of_upgrades.append(float(upgrades[i].rarity))
-	print(rarity_list_of_upgrades)
-
-
 var upgrades = [
 	{
 		"pretty_text": "Ghost writer",

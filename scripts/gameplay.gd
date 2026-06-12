@@ -27,6 +27,7 @@ var mult : int
 var total_score = 0
 var sentences_used = 0
 var percentage_of_time = 0
+var timer_even = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,12 +41,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if timer_active:
+	if timer_active and timer_even:
 		time_passed += 1
 		$Gameplay/Timer_bar.value = time_passed
 		if time_passed >= max_timer_value:
 			timer_active = false
-		percentage_of_time = 2 - ($Gameplay/Timer_bar.value / max_timer_value)
+		percentage_of_time = 1.5 - ($Gameplay/Timer_bar.value / max_timer_value)
 		$Gameplay/Timer_Rotate/Timer_Percentage.text = str(snapped(percentage_of_time, 0.01))
 	if rotate_sentence:
 		if PlayerStats.agitate_object($Gameplay/Rotate):
