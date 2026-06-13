@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vp8aq3w75a53"]
 
 [ext_resource type="Script" uid="uid://d0bq4t5em8tti" path="res://scripts/gameplay.gd" id="1_bp0ix"]
+[ext_resource type="PackedScene" uid="uid://c8fj8jhui6516" path="res://scenes/upgrades_panel.tscn" id="2_31tqg"]
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="2_82mmq"]
 [ext_resource type="Script" uid="uid://dhtaqa2r4sc0x" path="res://scripts/sentences.gd" id="3_31tqg"]
 [ext_resource type="Script" uid="uid://xd2biytgk0mm" path="res://scripts/inputevents.gd" id="4_6v8b5"]
@@ -52,6 +53,12 @@ bg_color = Color(0.16862746, 0.16862746, 0.16862746, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrcqf"]
 bg_color = Color(0.49803922, 0.5921569, 0.5058824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm4f2"]
+bg_color = Color(0.9242239, 0.7800199, 0.57765245, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 1
+corner_radius_bottom_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otpj5"]
 bg_color = Color(0.33333334, 0.21568628, 0.24705882, 0.6156863)
@@ -166,7 +173,7 @@ corner_radius_bottom_left = 4
 script = ExtResource("1_bp0ix")
 
 [node name="Background" type="ColorRect" parent="." unique_id=910089657]
-z_index = -1
+z_index = -2
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.68235296, 0.3882353, 0.47058824, 1)
@@ -175,16 +182,18 @@ script = SubResource("GDScript_qr3ex")
 [node name="WinItems" type="Node" parent="." unique_id=357157186]
 
 [node name="ShopButton" type="Button" parent="WinItems" unique_id=428270089]
-offset_left = 960.0
-offset_top = 512.0
-offset_right = 1088.0
-offset_bottom = 587.0
+offset_left = 992.0
+offset_top = 544.0
+offset_right = 1120.0
+offset_bottom = 619.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qr3ex")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0vh2s")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sdn3h")
 text = "Shop"
 
 [node name="Gameplay" type="Node" parent="." unique_id=2084868176]
+
+[node name="Upgrades_Panel" parent="Gameplay" unique_id=883776731 instance=ExtResource("2_31tqg")]
 
 [node name="Rotate" type="Node2D" parent="Gameplay" unique_id=1801247505]
 position = Vector2(550, 271.62)
@@ -198,20 +207,14 @@ offset_right = 240.0
 offset_bottom = -88.0
 theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
-text = "Sentence zone"
+text = "_ Headline goes here _
+_
+_"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 horizontal_alignment = 1
 script = ExtResource("3_31tqg")
-
-[node name="Newspaper" type="ColorRect" parent="Gameplay/Rotate" unique_id=805639919]
-z_index = -1
-offset_left = -248.0
-offset_top = -248.0
-offset_right = 248.0
-offset_bottom = 352.0
-color = Color(0.9411765, 0.81960785, 0.64705884, 1)
 
 [node name="TypingProgress" type="ProgressBar" parent="Gameplay/Rotate" unique_id=1090657300]
 offset_left = -248.0
@@ -235,6 +238,14 @@ text = "[b]THE NEWSPAPER[/b]"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 3
+
+[node name="Newspaper" type="Panel" parent="Gameplay/Rotate" unique_id=375755720]
+z_index = -1
+offset_left = -246.0
+offset_top = -247.62
+offset_right = 250.0
+offset_bottom = 352.38
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm4f2")
 
 [node name="SentenceTake" type="LineEdit" parent="Gameplay" unique_id=1077539471]
 offset_left = 40.0

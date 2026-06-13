@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://scripts/shop_scene.gd" id="1_hovpq"]
 [ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://scripts/player_stats.gd" id="2_ykrk4"]
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="3_fdhsn"]
+[ext_resource type="PackedScene" uid="uid://c8fj8jhui6516" path="res://scenes/upgrades_panel.tscn" id="4_ykrk4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
 bg_color = Color(0.49803922, 0.6745098, 0.8392157, 1)
@@ -295,6 +296,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_hwlf8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iv8jd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_av8qb")
 text = "Reroll: {coins}"
+
+[node name="Upgrades_Panel" parent="." unique_id=883776731 instance=ExtResource("4_ykrk4")]
 
 [connection signal="pressed" from="newRound" to="." method="_on_new_round_pressed"]
 [connection signal="pressed" from="Items_for_sale/Rotate_1/Item_1" to="." method="_on_item_1_pressed"]
