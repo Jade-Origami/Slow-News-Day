@@ -34,12 +34,12 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Autocorrect",
-		"explanation": "Decrease the punishment for making a mistake by 5 points",
+		"explanation": "3/4 the time that the timer is sped up when making a mistake",
 		"id": "mistake_penalty",
-		"mode": "add",
+		"mode": "mult",
 		"target": "mistake_mult_num",
-		"value": 5,
-		"price": 7,
+		"value": 0.75,
+		"price": 8,
 		"rarity": "0.1" #rare
 	},
 	{

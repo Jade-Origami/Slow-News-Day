@@ -14,12 +14,12 @@ var rotate_sentence = false
 var rotate_discards = false
 var rotate_base = false
 var rotate_mult = false
-var rotate_hands
+var rotate_hands = false
 var can_discard = true
-var multiple_coin
+var multiple_coin : String
 var palette
-var round_total
-var player_total
+var round_total : int
+var player_total : int
 var typed_already
 var used_predictive = false
 var base : int
@@ -44,7 +44,7 @@ func timer_increment() -> void:
 	$Gameplay/Timer_bar.value = time_passed
 	if time_passed >= max_timer_value:
 		timer_active = false
-	percentage_of_time = 1.5 - ($Gameplay/Timer_bar.value / max_timer_value)
+	percentage_of_time = 1.25 - ($Gameplay/Timer_bar.value / max_timer_value)
 	$Gameplay/Timer_Rotate/Timer_Percentage.text = str(snapped(percentage_of_time, 0.01))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -98,7 +98,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay/Rotate/TypingProgress.value += 1
 	else:
 		mistakes_made += 1
-		double_speed_amount += 30
+		double_speed_amount += 30 * PlayerStats.mistake_mult_num
 		rotate_sentence = true
 	if sentence_left.is_empty(): #Sentence has been typed correctly
 		sentence_finished()
@@ -243,7 +243,7 @@ func discard_sentence() -> void:
 	sentence_left = sentences.correct_sentence
 	$Gameplay/Rotate/TypingProgress.max_value = sentences.correct_sentence.length()
 	$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
-	max_timer_value = int(sentences.correct_sentence.length() * 17.5 * PlayerStats.round_time_mult)
+	max_timer_value = int(sentences.correct_sentence.length() * 20 * PlayerStats.round_time_mult)
 	$Gameplay/Timer_bar.max_value = max_timer_value
 	$Gameplay/Rotate.rotation_degrees = randi_range(-25, 25)
 

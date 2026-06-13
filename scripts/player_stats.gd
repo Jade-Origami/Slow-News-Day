@@ -15,7 +15,7 @@ func agitate_object(which_object) -> bool:
 var coins = 0
 var flat_coin = 0
 var round_time_mult = 1
-var mistake_mult_num = 20
+var mistake_mult_num = 1
 var double_bypass = false
 var reroll_sentence_amount = 0
 var amount_tab_fill = 0
