@@ -1,6 +1,9 @@
 extends Node
 
 
+signal update_stats_signal
+
+
 var sentence_left
 var mistakes_made = 0
 var time_passed = 0
@@ -124,6 +127,11 @@ func check_for_upgrades(letter) -> void:
 			$Gameplay/Rotate/TypingProgress.value += 1
 
 
+func update_stats():
+	rotate_hands = true
+	SignalBus.update_stats_signal.emit()
+
+
 func sentence_finished() -> void:
 	sentences_used += 1
 	print(sentences_used)
@@ -191,13 +199,6 @@ func give_rewards() -> void:
 func _on_shop_button_pressed() -> void:
 	PlayerStats.completed_rounds += 1
 	get_tree().change_scene_to_file("res://scenes/shop_scene.tscn")
-
-
-func update_stats() -> void:
-	$Player/StatsText.text = "£" + str(PlayerStats.coins)
-	rotate_hands = true
-	$Gameplay/Hands_Rotate/Hands_Counter.text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
-	$Gameplay/Total_Score_Rotate/Total_Score.text = str(total_score)
 
 
 func make_stylebox(color: Color, corner_radius: int = 6) -> StyleBoxFlat:

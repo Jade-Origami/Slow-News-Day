@@ -2,33 +2,53 @@
 
 [ext_resource type="Script" uid="uid://b53mkv13sbr12" path="res://scripts/level_selector.gd" id="1_aeu7d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeu7d"]
+bg_color = Color(0.2074669, 0.60695016, 0.33810252, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkmvm"]
+bg_color = Color(0.16416308, 0.48943907, 0.2698125, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tr5s6"]
+bg_color = Color(0.19287616, 0.5658653, 0.3131361, 1)
+
 [node name="Level_selector" type="Node2D" unique_id=938700675]
 script = ExtResource("1_aeu7d")
 
-[node name="Stage_1" type="Button" parent="." unique_id=556212078]
-offset_left = 240.0
-offset_top = 256.0
-offset_right = 432.0
-offset_bottom = 384.0
+[node name="Panel" type="Panel" parent="." unique_id=438823998]
+offset_right = 632.0
+offset_bottom = 408.0
+
+[node name="Stage_1" type="Button" parent="Panel" unique_id=556212078]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(0.13682607, 0.13682559, 0.13682577, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_aeu7d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkmvm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tr5s6")
 text = "Stage 1: 
 {points} points"
 
-[node name="Stage_2" type="Button" parent="." unique_id=754825441]
-offset_left = 456.0
-offset_top = 256.0
-offset_right = 648.0
-offset_bottom = 384.0
+[node name="Stage_2" type="Button" parent="Panel" unique_id=754825441]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 16.0
+offset_right = 400.0
+offset_bottom = 144.0
 text = "Stage 2: 
 {points} points"
 
-[node name="Stage_3" type="Button" parent="." unique_id=1929257894]
-offset_left = 672.0
-offset_top = 256.0
-offset_right = 864.0
-offset_bottom = 384.0
+[node name="Stage_3" type="Button" parent="Panel" unique_id=1929257894]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 16.0
+offset_right = 608.0
+offset_bottom = 144.0
 text = "Stage 3: 
 {points} points"
 
-[connection signal="pressed" from="Stage_1" to="." method="_on_stage_1_pressed"]
-[connection signal="pressed" from="Stage_2" to="." method="_on_stage_2_pressed"]
-[connection signal="pressed" from="Stage_3" to="." method="_on_stage_3_pressed"]
+[connection signal="pressed" from="Panel/Stage_1" to="." method="_on_stage_1_pressed"]
+[connection signal="pressed" from="Panel/Stage_2" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="Panel/Stage_3" to="." method="_on_stage_3_pressed"]

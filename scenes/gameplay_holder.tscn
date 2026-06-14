@@ -29,3 +29,4 @@ anchor_top = -0.018518519
 anchor_bottom = 0.0061728396
 
 [node name="Level_selector" parent="." unique_id=938700675 instance=ExtResource("3_frtkl")]
+position = Vector2(264, 240)

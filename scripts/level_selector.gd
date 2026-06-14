@@ -15,18 +15,18 @@ func _ready() -> void:
 	round_1_required = 200 * level_mult
 	round_2_required = 300 * level_mult
 	round_3_required = 400 * level_mult
-	$Stage_1.disabled = true
-	$Stage_2.disabled = true
-	$Stage_3.disabled = true
+	$Panel/Stage_1.disabled = true
+	$Panel/Stage_2.disabled = true
+	$Panel/Stage_3.disabled = true
 	if PlayerStats.completed_rounds % 3 == 0:
-		$Stage_1.disabled = false
+		$Panel/Stage_1.disabled = false
 	elif PlayerStats.completed_rounds % 3 == 1:
-		$Stage_2.disabled = false
+		$Panel/Stage_2.disabled = false
 	else:
-		$Stage_3.disabled = false
-	$Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
-	$Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
-	$Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"
+		$Panel/Stage_3.disabled = false
+	$Panel/Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
+	$Panel/Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
+	$Panel/Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
