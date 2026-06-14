@@ -6,25 +6,25 @@
 script = ExtResource("1_aeu7d")
 
 [node name="Stage_1" type="Button" parent="." unique_id=556212078]
-offset_left = 128.0
+offset_left = 240.0
 offset_top = 256.0
-offset_right = 320.0
+offset_right = 432.0
 offset_bottom = 384.0
 text = "Stage 1: 
 {points} points"
 
 [node name="Stage_2" type="Button" parent="." unique_id=754825441]
-offset_left = 480.0
+offset_left = 456.0
 offset_top = 256.0
-offset_right = 672.0
+offset_right = 648.0
 offset_bottom = 384.0
 text = "Stage 2: 
 {points} points"
 
 [node name="Stage_3" type="Button" parent="." unique_id=1929257894]
-offset_left = 832.0
+offset_left = 672.0
 offset_top = 256.0
-offset_right = 1024.0
+offset_right = 864.0
 offset_bottom = 384.0
 text = "Stage 3: 
 {points} points"

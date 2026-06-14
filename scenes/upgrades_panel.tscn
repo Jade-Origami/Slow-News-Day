@@ -1,18 +1,13 @@
 [gd_scene format=3 uid="uid://c8fj8jhui6516"]
 
 [ext_resource type="Script" uid="uid://bcj7pedtdvbep" path="res://scripts/upgrades_panel.gd" id="1_lg1w1"]
+[ext_resource type="StyleBox" uid="uid://c71yiyil10vb0" path="res://sprites/styles/upgrades.tres" id="2_0s7kc"]
+[ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="2_648e1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v8b5"]
 bg_color = Color(0.25929368, 0.25929374, 0.2592936, 0.3764706)
 corner_radius_top_left = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avas0"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo7xt"]
 bg_color = Color(1, 0.6666667, 0.40784314, 1)
@@ -31,28 +26,33 @@ corner_radius_bottom_left = 6
 
 [node name="Upgrades_Panel" type="Panel" unique_id=883776731]
 z_index = -1
-offset_left = 912.0
-offset_top = 16.0
-offset_right = 1152.0
-offset_bottom = 520.0
+offset_right = 216.0
+offset_bottom = 504.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6v8b5")
 script = ExtResource("1_lg1w1")
 
 [node name="Rotate_Item_1" type="Node2D" parent="." unique_id=656893138]
 z_index = 1
-position = Vector2(120, 72)
+position = Vector2(112, 72)
+script = ExtResource("2_648e1")
 
 [node name="Item" type="Button" parent="Rotate_Item_1" unique_id=939031970]
-offset_left = -88.0
+offset_left = -80.0
 offset_top = -48.0
-offset_right = 96.0
+offset_right = 80.0
 offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_pressed_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_hover_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 theme_override_colors/font_disabled_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_avas0")
-disabled = true
+theme_override_styles/normal = ExtResource("2_0s7kc")
+theme_override_styles/pressed = ExtResource("2_0s7kc")
+theme_override_styles/hover = ExtResource("2_0s7kc")
+theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 1"
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_1/Item" unique_id=1676119624]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 24.0
@@ -66,19 +66,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
 [node name="Rotate_Item_2" type="Node2D" parent="." unique_id=1940665034]
-position = Vector2(120, 192)
+position = Vector2(112, 192)
+script = ExtResource("2_648e1")
 
 [node name="Item" type="Button" parent="Rotate_Item_2" unique_id=1087624343]
-offset_left = -88.0
+offset_left = -80.0
 offset_top = -48.0
-offset_right = 96.0
+offset_right = 80.0
 offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_pressed_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_hover_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 theme_override_colors/font_disabled_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_avas0")
-disabled = true
+theme_override_styles/normal = ExtResource("2_0s7kc")
+theme_override_styles/pressed = ExtResource("2_0s7kc")
+theme_override_styles/hover = ExtResource("2_0s7kc")
+theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 2"
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_2/Item" unique_id=1679977878]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 24.0
@@ -92,19 +99,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
 [node name="Rotate_Item_3" type="Node2D" parent="." unique_id=1938798463]
-position = Vector2(120, 312)
+position = Vector2(112, 312)
+script = ExtResource("2_648e1")
 
 [node name="Item" type="Button" parent="Rotate_Item_3" unique_id=526320655]
-offset_left = -88.0
+offset_left = -80.0
 offset_top = -48.0
-offset_right = 96.0
+offset_right = 80.0
 offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_pressed_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_hover_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 theme_override_colors/font_disabled_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_avas0")
-disabled = true
+theme_override_styles/normal = ExtResource("2_0s7kc")
+theme_override_styles/pressed = ExtResource("2_0s7kc")
+theme_override_styles/hover = ExtResource("2_0s7kc")
+theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 3"
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_3/Item" unique_id=1344829349]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 24.0
@@ -118,19 +132,26 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
 [node name="Rotate_Item_4" type="Node2D" parent="." unique_id=1482027253]
-position = Vector2(120, 432)
+position = Vector2(112, 432)
+script = ExtResource("2_648e1")
 
 [node name="Item" type="Button" parent="Rotate_Item_4" unique_id=60838536]
-offset_left = -88.0
+offset_left = -80.0
 offset_top = -48.0
-offset_right = 96.0
+offset_right = 80.0
 offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_pressed_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_colors/font_hover_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 theme_override_colors/font_disabled_color = Color(0.12225223, 0.12225223, 0.12225223, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_avas0")
-disabled = true
+theme_override_styles/normal = ExtResource("2_0s7kc")
+theme_override_styles/pressed = ExtResource("2_0s7kc")
+theme_override_styles/hover = ExtResource("2_0s7kc")
+theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 4"
 
 [node name="Sell_button" type="Button" parent="Rotate_Item_4/Item" unique_id=1367531224]
+visible = false
 layout_mode = 0
 offset_left = -40.0
 offset_top = 24.0
@@ -142,3 +163,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fo7xt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
+
+[connection signal="pressed" from="Rotate_Item_1/Item" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Rotate_Item_2/Item" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="Rotate_Item_3/Item" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="Rotate_Item_4/Item" to="." method="_on_item_4_pressed"]

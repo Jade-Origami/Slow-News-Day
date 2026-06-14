@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://scripts/shop_scene.gd" id="1_hovpq"]
 [ext_resource type="Script" uid="uid://6x7gpulcuuau" path="res://scripts/player_stats.gd" id="2_ykrk4"]
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="3_fdhsn"]
-[ext_resource type="PackedScene" uid="uid://c8fj8jhui6516" path="res://scenes/upgrades_panel.tscn" id="4_ykrk4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
 bg_color = Color(0.49803922, 0.6745098, 0.8392157, 1)
@@ -159,15 +158,16 @@ corner_radius_bottom_left = 7
 script = ExtResource("1_hovpq")
 
 [node name="background" type="ColorRect" parent="." unique_id=1845885667]
+z_index = -4
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.7529412, 0.7254902, 0.85882354, 1)
 
 [node name="newRound" type="Button" parent="." unique_id=1678798280]
-offset_left = 960.0
-offset_top = 512.0
-offset_right = 1089.0
-offset_bottom = 584.0
+offset_left = 952.0
+offset_top = 536.0
+offset_right = 1081.0
+offset_bottom = 608.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylxq0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c04yc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tlo24")
@@ -251,7 +251,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wsk4o")
 text = "Coins"
 
 [node name="Rotate_3" type="Node2D" parent="Items_for_sale" unique_id=2094369185]
-position = Vector2(936, 120)
+position = Vector2(584, 352)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_3" type="Button" parent="Items_for_sale/Rotate_3" unique_id=1754266222]
@@ -284,7 +284,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_smcpb")
 text = "Coins"
 
 [node name="Rotate_Reroll" type="Node2D" parent="Items_for_sale" unique_id=1635466870]
-position = Vector2(1024, 456)
+position = Vector2(840, 576)
 script = ExtResource("3_fdhsn")
 
 [node name="Reroll_button" type="Button" parent="Items_for_sale/Rotate_Reroll" unique_id=2003342236]
@@ -296,8 +296,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_hwlf8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iv8jd")
 theme_override_styles/hover = SubResource("StyleBoxFlat_av8qb")
 text = "Reroll: {coins}"
-
-[node name="Upgrades_Panel" parent="." unique_id=883776731 instance=ExtResource("4_ykrk4")]
 
 [connection signal="pressed" from="newRound" to="." method="_on_new_round_pressed"]
 [connection signal="pressed" from="Items_for_sale/Rotate_1/Item_1" to="." method="_on_item_1_pressed"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dcotq14km8bws"]
+
+[ext_resource type="PackedScene" uid="uid://c8fj8jhui6516" path="res://scenes/upgrades_panel.tscn" id="1_6i4yd"]
+[ext_resource type="PackedScene" uid="uid://dluwejacfbrop" path="res://scenes/score_panel.tscn" id="2_6i4yd"]
+[ext_resource type="PackedScene" uid="uid://mgkmrdc8dcj5" path="res://scenes/level_selector.tscn" id="3_frtkl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viwtt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="GameplayHolder" type="Node2D" unique_id=821096197]
+
+[node name="Panels" type="Panel" parent="." unique_id=893437777]
+z_index = -1
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
+
+[node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
+z_index = 0
+layout_mode = 0
+offset_left = 936.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 528.0
+
+[node name="Timer_bar" parent="Panels" unique_id=908773948 instance=ExtResource("2_6i4yd")]
+layout_mode = 1
+anchor_top = -0.018518519
+anchor_bottom = 0.0061728396
+
+[node name="Level_selector" parent="." unique_id=938700675 instance=ExtResource("3_frtkl")]

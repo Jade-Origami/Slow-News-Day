@@ -1,7 +1,7 @@
 extends LineEdit
 
 func _gui_input(event):
-	var gameplay = get_node("/root/GameplayScreen")
+	var gameplay = get_node("/root/GameplayHolder/GameplayScreen")
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_BACKSPACE:
 			accept_event()

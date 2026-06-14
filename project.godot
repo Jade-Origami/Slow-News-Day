@@ -19,6 +19,7 @@ config/icon="res://sprites/icon.svg"
 
 PlayerStats="*uid://6x7gpulcuuau"
 Upgrades="*uid://4s2u0xhk78gu"
+Sentences="*uid://dhtaqa2r4sc0x"
 
 [physics]
 

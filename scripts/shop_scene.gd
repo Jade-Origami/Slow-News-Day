@@ -55,6 +55,7 @@ func _on_item_1_pressed() -> void:
 func _item_1_bought() -> void:
 	if PlayerStats.coins >= item_1.price:
 		PlayerStats.coins -= item_1.price
+		$Upgrades_Panel.set_item_1(item_1)
 		Upgrades.apply_upgrade_by_id(item_1.id)
 		print(str(item_1) + " has been brought")
 		$Items_for_sale/Rotate_1/Item_1.hide()

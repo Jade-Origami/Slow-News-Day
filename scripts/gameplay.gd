@@ -1,9 +1,6 @@
 extends Node
 
 
-@onready var sentences = get_node("/root/GameplayScreen/Gameplay/Rotate/SentenceShow")
-
-
 var sentence_left
 var mistakes_made = 0
 var time_passed = 0
@@ -91,7 +88,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay/Base_Rotate/Base_Text.text = str(base)
 		$Gameplay/Mult_Rotate/Mult_Text.text = str(mult)
 		
-		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/SentenceTake.text = typed_already
 		$Gameplay/SentenceTake.caret_column = $Gameplay/SentenceTake.text.length()
@@ -239,11 +236,11 @@ func _on_discard_button_pressed() -> void:
 
 
 func discard_sentence() -> void:
-	sentences.correct_sentence = sentences.create_sentence()
-	sentence_left = sentences.correct_sentence
-	$Gameplay/Rotate/TypingProgress.max_value = sentences.correct_sentence.length()
-	$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.other_text) + sentences.correct_sentence + "!"
-	max_timer_value = int(sentences.correct_sentence.length() * 20 * PlayerStats.round_time_mult)
+	Sentences.correct_sentence = Sentences.create_sentence()
+	sentence_left = Sentences.correct_sentence
+	$Gameplay/Rotate/TypingProgress.max_value = Sentences.correct_sentence.length()
+	$Gameplay/Rotate/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
+	max_timer_value = int(Sentences.correct_sentence.length() * 20 * PlayerStats.round_time_mult)
 	$Gameplay/Timer_bar.max_value = max_timer_value
 	$Gameplay/Rotate.rotation_degrees = randi_range(-25, 25)
 
@@ -262,14 +259,14 @@ func tab_autofill() -> void:
 		used_predictive = true
 		PlayerStats.amount_tab_fill -= 1
 		var index_currently_typed = typed_already.length() - 1
-		var index_of_word = get_word_start_index(sentences.correct_sentence, index_currently_typed)
+		var index_of_word = get_word_start_index(Sentences.correct_sentence, index_currently_typed)
 		var length_of_containing_word = 0
 		var index_helper = index_of_word
-		while sentences.correct_sentence[index_helper] != " " and index_helper != (sentences.correct_sentence.length()-1):
+		while Sentences.correct_sentence[index_helper] != " " and index_helper != (Sentences.correct_sentence.length()-1):
 			index_helper += 1
 			length_of_containing_word += 1
 		sentence_left = sentence_left.substr((length_of_containing_word - (index_currently_typed - index_of_word)),-1)
-		typed_already = sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/SentenceTake.text = typed_already
 		$Gameplay/SentenceTake.caret_column = $Gameplay/SentenceTake.text.length()
 		$Gameplay/Rotate/TypingProgress.value += (length_of_containing_word - (index_currently_typed - index_of_word))

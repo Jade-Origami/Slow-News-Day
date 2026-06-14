@@ -11,4 +11,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_gamescreen_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level_selector.tscn")
+	get_tree().change_scene_to_file("res://scenes/gameplay_holder.tscn")

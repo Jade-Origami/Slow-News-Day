@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://dluwejacfbrop"]
+
+[ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="1_lwh8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otpj5"]
+bg_color = Color(0.019607844, 0.007843138, 0.011764706, 0.2)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3crv"]
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euf5d"]
+bg_color = Color(0.18717611, 0.18717617, 0.18717602, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8317985, 0.3043133, 0.4500401, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi3u4"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl20n"]
+bg_color = Color(0.19337255, 0.5412684, 0.806771, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhcie"]
+bg_color = Color(0.91633177, 0.2106561, 0.17792833, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31tqg"]
+bg_color = Color(0.7080092, 0.11673295, 0.8369716, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0ix"]
+bg_color = Color(0.67304265, 0.46641088, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwh8y"]
+bg_color = Color(0.9419479, 0.7675507, 0.35745594, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Timer_bar" type="ProgressBar" unique_id=908773948]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.055555556
+anchor_right = 1.0
+anchor_bottom = -0.030864198
+offset_left = -1152.0
+offset_top = 36.0
+offset_right = -904.0
+offset_bottom = 428.0
+theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r3crv")
+fill_mode = 2
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="RequiredScoreRead" type="Button" parent="." unique_id=1616469899]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -0.056603774
+anchor_right = 1.0
+anchor_bottom = -0.056603774
+offset_left = -232.0
+offset_top = 40.0
+offset_right = -16.0
+offset_bottom = 104.0
+theme_override_colors/font_disabled_color = Color(0.8862618, 0.88626146, 0.8862615, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_euf5d")
+disabled = true
+text = "Required"
+metadata/_edit_use_anchors_ = true
+
+[node name="Total_Score_Rotate" type="Node2D" parent="." unique_id=1604122338]
+position = Vector2(120, 128)
+
+[node name="Total_Score" type="Button" parent="Total_Score_Rotate" unique_id=895069753]
+offset_left = -104.0
+offset_top = -32.0
+offset_right = 112.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.9297146, 0.9297147, 0.9297146, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qi3u4")
+disabled = true
+text = "Total "
+metadata/_edit_use_anchors_ = true
+
+[node name="Base_Rotate" type="Node2D" parent="." unique_id=1777456104]
+position = Vector2(56, 208)
+script = ExtResource("1_lwh8y")
+
+[node name="Base_Text" type="Button" parent="Base_Rotate" unique_id=1436366666]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wl20n")
+disabled = true
+text = "Base"
+
+[node name="Mult_Rotate" type="Node2D" parent="." unique_id=898455618]
+position = Vector2(192, 208)
+script = ExtResource("1_lwh8y")
+
+[node name="Mult_Text" type="Button" parent="Mult_Rotate" unique_id=187965351]
+offset_left = -40.0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bhcie")
+disabled = true
+text = "Mult"
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer_Rotate" type="Node2D" parent="." unique_id=1726083451]
+position = Vector2(120, 280)
+script = ExtResource("1_lwh8y")
+
+[node name="Timer_Percentage" type="Button" parent="Timer_Rotate" unique_id=1432556715]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 40.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
+theme_override_styles/disabled = SubResource("StyleBoxFlat_31tqg")
+disabled = true
+text = "Timer"
+
+[node name="X" type="RichTextLabel" parent="." unique_id=1149398001]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 176.0
+offset_right = 152.0
+offset_bottom = 240.0
+theme_override_font_sizes/normal_font_size = 29
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hands_Rotate" type="Node2D" parent="." unique_id=1976796842]
+position = Vector2(184, 360)
+script = ExtResource("1_lwh8y")
+
+[node name="Hands_Counter" type="Button" parent="Hands_Rotate" unique_id=1660878830]
+offset_left = -48.0
+offset_top = -32.0
+offset_right = 48.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.96035105, 0.96035105, 0.96035093, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bp0ix")
+disabled = true
+text = "Hands"
+metadata/_edit_use_anchors_ = true
+
+[node name="Coins_Rotate" type="Node2D" parent="." unique_id=330715971]
+position = Vector2(184, 360)
+script = ExtResource("1_lwh8y")
+
+[node name="Coins_Counter" type="Button" parent="Coins_Rotate" unique_id=1344737547]
+offset_left = -168.0
+offset_top = -32.0
+offset_right = -72.0
+offset_bottom = 32.0
+theme_override_colors/font_disabled_color = Color(0.96035105, 0.96035105, 0.96035093, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lwh8y")
+disabled = true
+text = "Coins"
+metadata/_edit_use_anchors_ = true
