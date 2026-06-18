@@ -12,7 +12,7 @@ func agitate_object(which_object) -> bool:
 	else:
 		return false
 
-var coins = 9999
+var coins = 0
 var flat_coin = 0
 var round_time_mult = 1
 var mistake_mult_num = 1

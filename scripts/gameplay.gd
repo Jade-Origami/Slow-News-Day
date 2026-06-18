@@ -121,7 +121,9 @@ func check_for_upgrades(letter) -> void:
 
 func update_stats():
 	rotate_hands = true
+	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
 	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score".text = str(total_score)
+	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
 
 
 func sentence_finished() -> void:

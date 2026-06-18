@@ -22,16 +22,16 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if rotate_reroll_button:
-		if PlayerStats.agitate_object($Items_for_sale/Rotate_Reroll):
+		if PlayerStats.agitate_object($Rotate_Reroll):
 			rotate_reroll_button = false
 	if rotate_item_1:
-		if PlayerStats.agitate_object($Items_for_sale/Rotate_1):
+		if PlayerStats.agitate_object($Rotate_1):
 			rotate_item_1 = false
 	if rotate_item_2:
-		if PlayerStats.agitate_object($Items_for_sale/Rotate_2):
+		if PlayerStats.agitate_object($Rotate_2):
 			rotate_item_2 = false
 	if rotate_item_3:
-		if PlayerStats.agitate_object($Items_for_sale/Rotate_3):
+		if PlayerStats.agitate_object($Rotate_3):
 			rotate_item_3 = false
 
 
@@ -40,15 +40,14 @@ func _on_new_round_pressed() -> void:
 
 
 func _on_item_1_pressed() -> void:
-	if $Items_for_sale/Rotate_1/Item_1/Buy_Button.visible:
-		$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
+	reset_item_views()
+	if $Rotate_1/Item_1/Buy_Button.visible:
+		$Rotate_1/Item_1.text = item_1.pretty_text
 	else:
-		$Items_for_sale/Rotate_1/Item_1.text = item_1.explanation
-	$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
-	$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
-	$Items_for_sale/Rotate_1/Item_1/Buy_Button.visible = !$Items_for_sale/Rotate_1/Item_1/Buy_Button.visible
-	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
-	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
+		$Rotate_1/Item_1.text = item_1.explanation
+	$Rotate_1/Item_1/Buy_Button.visible = !$Rotate_1/Item_1/Buy_Button.visible
+	$Rotate_2/Item_2/Buy_Button.hide()
+	$Rotate_3/Item_3/Buy_Button.hide()
 
 
 func _item_1_bought() -> void:
@@ -57,23 +56,22 @@ func _item_1_bought() -> void:
 		$Upgrades_Panel.set_item_1(item_1)
 		Upgrades.apply_upgrade_by_id(item_1.id)
 		print(str(item_1) + " has been brought")
-		$Items_for_sale/Rotate_1/Item_1.hide()
-		$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
+		$Rotate_1/Item_1.hide()
+		$Rotate_1/Item_1/Buy_Button.hide()
 		update_stats_text()
 	else:
 		rotate_item_1 = true
 
 
 func _on_item_2_pressed() -> void:
-	if $Items_for_sale/Rotate_2/Item_2/Buy_Button.visible:
-		$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
+	reset_item_views()
+	if $Rotate_2/Item_2/Buy_Button.visible:
+		$Rotate_2/Item_2.text = item_2.pretty_text
 	else:
-		$Items_for_sale/Rotate_2/Item_2.text = item_2.explanation
-	$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
-	$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
-	$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible = !$Items_for_sale/Rotate_2/Item_2/Buy_Button.visible
-	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
-	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
+		$Rotate_2/Item_2.text = item_2.explanation
+	$Rotate_2/Item_2/Buy_Button.visible = !$Rotate_2/Item_2/Buy_Button.visible
+	$Rotate_1/Item_1/Buy_Button.hide()
+	$Rotate_3/Item_3/Buy_Button.hide()
 
 
 
@@ -90,15 +88,14 @@ func _item_2_bought() -> void:
 
 
 func _on_item_3_pressed() -> void:
-	if $Items_for_sale/Rotate_3/Item_3/Buy_Button.visible:
-		$Items_for_sale/Rotate_3/Item_3.text = item_3.pretty_text
+	reset_item_views()
+	if $Rotate_3/Item_3/Buy_Button.visible:
+		$Rotate_3/Item_3.text = item_3.pretty_text
 	else:
-		$Items_for_sale/Rotate_3/Item_3.text = item_3.explanation
-	$Items_for_sale/Rotate_1/Item_1.text = item_1.pretty_text
-	$Items_for_sale/Rotate_2/Item_2.text = item_2.pretty_text
-	$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible = !$Items_for_sale/Rotate_3/Item_3/Buy_Button.visible
-	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
-	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
+		$Rotate_3/Item_3.text = item_3.explanation
+	$Rotate_3/Item_3/Buy_Button.visible = !$Rotate_3/Item_3/Buy_Button.visible
+	$Rotate_1/Item_1/Buy_Button.hide()
+	$Rotate_2/Item_2/Buy_Button.hide()
 
 
 func _item_3_bought() -> void:
@@ -154,3 +151,9 @@ func _on_reroll_button_pressed() -> void:
 
 func update_stats_text() -> void:
 	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
+
+
+func reset_item_views():
+	$Rotate_1/Item_1.text = item_1.pretty_text
+	$Rotate_2/Item_2.text = item_2.pretty_text
+	$Rotate_3/Item_3.text = item_3.pretty_text

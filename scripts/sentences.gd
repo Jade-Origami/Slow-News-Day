@@ -5,7 +5,7 @@ var nouns = [
 	"shoe ", "slipper ", "leaf ", "glass ", "booklet ", "pottery ", "hand cream ",
 	"book ", "flag ", "man ", "woman ", "enby ", "person ", "drum ", "nail polish ", "poster ",
 	"paper ", "wii sports ", "origami ", "kitten ", "cat ", "dog ", "puppy ", "fox ", "snail ",
-	"nintendo 3ds ", "deoderant ", "controller ", "prison warden ", "door ", "sloth ",
+	"nintendo 3ds ", "deodorant ", "controller ", "prison warden ", "door ", "sloth ",
 	"mountain climber ", "tire ", "guitar ", "mouse ", "rat ", "spray bottle ", "tintin ",
 	"slinky ", "vaseline ", "lanyard ", "trouser leg ", "skirt ", "shirt ", "vampire ", "sun ",
 	"daughter ", "son ", "follower ", "streamer ", "wire ", "USB stick ", "keychain ",
@@ -21,7 +21,7 @@ var adjectives = [
 	"angry ", "sticky ", "heated ", "crazy ", "cracked ", "sloppy ", "american ",
 	"british ", "french ", "german ", "spanish ", "scottish ", "welsh ", "irish ",
 	"purple ", "puzzled ", "confused ", "unusual ", "cold ", "warm ", "ace ",
-	"straight ", "dissapointed ", "new ", "swanky ", "drunk ", "nonplussed ", "", #blank
+	"straight ", "disappointed ", "new ", "swanky ", "drunk ", "nonplussed ", "", #blank
 	"young ", "fickle ", "idiotic ", "ridiculous ", "pointless ", "orange ",
 	"hairy "
 ]
@@ -37,7 +37,7 @@ var verbs = [
 
 var adverbs = [
 	"regrettably ", "quickly ", "light-heartedly ", "heavy-heartedly ", "speedily ", "smoothly ",
-	"harshly ", "slowly ", "annoyedly ", "tiredly ", "energetically ", "sloppily ", "angrily ",
+	"harshly ", "slowly ", "annoyedly ", "tiredly ", "energetically ", "sloppilly ", "angrily ",
 	"gaily ", "begrudgingly ", "happily ", "unfortunately ", "stupidly ", "lazily ", "", #blank
 	"ultimately ", "loosely ", "thinly ", "boringly ", "unfortunately ", "undoubtedly "
 ]
