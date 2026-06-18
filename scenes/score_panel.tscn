@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bj22o3p5wngvt" path="res://scripts/score_panel.gd" id="1_tfry6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otpj5"]
-bg_color = Color(0.019607844, 0.007843138, 0.011764706, 0.2)
+bg_color = Color(0.25882354, 0.25882354, 0.25882354, 0.3764706)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
@@ -72,14 +72,8 @@ corner_radius_bottom_left = 4
 
 [node name="Timer_bar" type="ProgressBar" unique_id=908773948]
 anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.055555556
-anchor_right = 1.0
-anchor_bottom = -0.030864198
-offset_left = -1152.0
-offset_top = 36.0
-offset_right = -904.0
-offset_bottom = 428.0
+offset_right = 248.0
+offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r3crv")
 fill_mode = 2

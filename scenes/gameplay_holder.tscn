@@ -13,7 +13,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="GameplayHolder" type="Node2D" unique_id=821096197]
 script = ExtResource("1_cpam5")
 
+[node name="Background" type="ColorRect" parent="." unique_id=530079828]
+z_index = -5
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 0.68125224, 0.9844572, 1)
+
 [node name="GameplayScreen" parent="." unique_id=724252821 instance=ExtResource("2_cpam5")]
+visible = false
 
 [node name="Panels" type="Panel" parent="." unique_id=893437777]
 offset_right = 16.0
@@ -22,13 +29,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
 
 [node name="Timer_bar" parent="Panels" unique_id=908773948 instance=ExtResource("2_6i4yd")]
 layout_mode = 1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
+anchor_bottom = 0.9753094
 offset_top = 16.0
-offset_right = 248.0
 offset_bottom = 408.39505
 
 [node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
@@ -41,7 +43,25 @@ offset_bottom = 512.0
 [node name="Level_selector" parent="." unique_id=938700675 instance=ExtResource("3_frtkl")]
 position = Vector2(264, 240)
 
+[node name="Panel" parent="Level_selector" index="0" unique_id=438823998]
+offset_left = 8.0
+offset_right = 640.0
+
 [node name="ShopScene" parent="." unique_id=1063027230 instance=ExtResource("6_gkdmu")]
+visible = false
+position = Vector2(336, 56)
+
+[node name="newRound" parent="ShopScene" index="0" unique_id=1678798280]
+offset_left = 656.0
+offset_top = 488.0
+offset_right = 785.0
+offset_bottom = 560.0
+
+[node name="Rotate_Reroll" parent="ShopScene" index="4" unique_id=1635466870]
+position = Vector2(568, 528)
+
+[connection signal="level_select" from="." to="Level_selector" method="_on_gameplay_holder_level_select"]
+[connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]

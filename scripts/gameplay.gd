@@ -29,11 +29,7 @@ var double_speed_amount = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apply_styling()
-	$ShopButton.hide()
-	update_stats()
-	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
-	sentence_start()
+	_on_gameplay_holder_new_round()
 
 
 func timer_increment() -> void:
@@ -125,12 +121,11 @@ func check_for_upgrades(letter) -> void:
 
 func update_stats():
 	rotate_hands = true
-	
+	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score".text = str(total_score)
 
 
 func sentence_finished() -> void:
 	sentences_used += 1
-	print(sentences_used)
 	timer_active = false
 	is_first_letter = false
 	
@@ -148,6 +143,7 @@ func sentence_finished() -> void:
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
 	update_stats()
+	print(PlayerStats.target_this_round)
 	if total_score >= PlayerStats.target_this_round:
 		round_finished()
 	elif sentences_used >= PlayerStats.sentences_allowed:
@@ -175,6 +171,7 @@ func sentence_start():
 
 
 func round_finished() -> void:
+	PlayerStats.completed_rounds += 1
 	give_rewards()
 	$Gameplay/TypingProgress.hide()
 	$ShopButton.show()
@@ -193,7 +190,6 @@ func give_rewards() -> void:
 
 
 func _on_shop_button_pressed() -> void:
-	PlayerStats.completed_rounds += 1
 	$"..".initiate_shop()
 
 
@@ -209,7 +205,7 @@ func make_stylebox(color: Color, corner_radius: int = 6) -> StyleBoxFlat:
 
 func apply_styling() -> void:
 	palette = PlayerStats.palettes.pick_random()
-	$Background.color = palette.background
+	$"../Background".color = palette.background
 	var bar_fill := StyleBoxFlat.new()
 	bar_fill.bg_color = Color(palette.completed_text)
 	$Gameplay/TypingProgress.add_theme_stylebox_override("fill", bar_fill)
@@ -271,4 +267,13 @@ func tab_autofill() -> void:
 
 
 func _on_next_button_pressed() -> void:
+	sentence_start()
+
+
+func _on_gameplay_holder_new_round() -> void:
+	total_score = 0
+	apply_styling()
+	$ShopButton.hide()
+	update_stats()
+	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
 	sentence_start()

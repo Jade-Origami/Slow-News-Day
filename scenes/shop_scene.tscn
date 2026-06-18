@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2emkececoexq"]
 
-[ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://scripts/shop_scene.gd" id="1_hovpq"]
+[ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://scripts/shop.gd" id="1_hovpq"]
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="3_fdhsn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
@@ -156,31 +156,25 @@ corner_radius_bottom_left = 7
 [node name="ShopScene" type="Node2D" unique_id=1063027230]
 script = ExtResource("1_hovpq")
 
-[node name="background" type="ColorRect" parent="." unique_id=1845885667]
-z_index = -4
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.7529412, 0.7254902, 0.85882354, 1)
-
 [node name="newRound" type="Button" parent="." unique_id=1678798280]
-offset_left = 952.0
-offset_top = 536.0
-offset_right = 1081.0
-offset_bottom = 608.0
+offset_left = 1008.0
+offset_top = 560.0
+offset_right = 1137.0
+offset_bottom = 632.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ylxq0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_c04yc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tlo24")
 text = "Next round"
 
 [node name="Rotate_1" type="Node2D" parent="." unique_id=963216354]
-position = Vector2(216, 120)
+position = Vector2(112, 72)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_1" type="Button" parent="Rotate_1" unique_id=2028086448]
-offset_left = -152.0
-offset_top = -64.0
-offset_right = 152.0
-offset_bottom = 72.0
+offset_left = -112.0
+offset_top = -72.0
+offset_right = 112.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -192,9 +186,9 @@ autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_1/Item_1" unique_id=395467926]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 64.0
 offset_top = 136.0
-offset_right = 203.0
+offset_right = 163.0
 offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.172833, 0.17283255, 0.17283264, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -205,14 +199,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_a6bpy")
 text = "Coins"
 
 [node name="Rotate_2" type="Node2D" parent="." unique_id=675225385]
-position = Vector2(576, 120)
+position = Vector2(400, 72)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_2" type="Button" parent="Rotate_2" unique_id=1989279313]
-offset_left = -144.0
-offset_top = -64.0
-offset_right = 160.0
-offset_bottom = 72.0
+offset_left = -112.0
+offset_top = -72.0
+offset_right = 112.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -224,9 +218,9 @@ autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_2/Item_2" unique_id=1832687138]
 layout_mode = 0
-offset_left = 96.0
+offset_left = 64.0
 offset_top = 136.0
-offset_right = 195.0
+offset_right = 163.0
 offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -237,14 +231,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wsk4o")
 text = "Coins"
 
 [node name="Rotate_3" type="Node2D" parent="." unique_id=2094369185]
-position = Vector2(584, 352)
+position = Vector2(112, 280)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_3" type="Button" parent="Rotate_3" unique_id=1754266222]
-offset_left = -152.0
-offset_top = -64.0
-offset_right = 152.0
-offset_bottom = 72.0
+offset_left = -112.0
+offset_top = -72.0
+offset_right = 112.0
+offset_bottom = 64.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_focus_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -257,9 +251,9 @@ autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_3/Item_3" unique_id=227296107]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 64.0
 offset_top = 136.0
-offset_right = 203.0
+offset_right = 163.0
 offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
@@ -270,7 +264,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_smcpb")
 text = "Coins"
 
 [node name="Rotate_Reroll" type="Node2D" parent="." unique_id=1635466870]
-position = Vector2(840, 576)
+position = Vector2(912, 600)
 script = ExtResource("3_fdhsn")
 
 [node name="Reroll_button" type="Button" parent="Rotate_Reroll" unique_id=2003342236]

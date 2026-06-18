@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_new_round_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level_selector.tscn")
+	$"..".initiate_level_select()
 
 
 func _on_item_1_pressed() -> void:

@@ -5,34 +5,6 @@
 [ext_resource type="Script" uid="uid://dhtaqa2r4sc0x" path="res://scripts/sentences.gd" id="3_31tqg"]
 [ext_resource type="Script" uid="uid://xd2biytgk0mm" path="res://scripts/inputevents.gd" id="4_6v8b5"]
 
-[sub_resource type="GDScript" id="GDScript_qr3ex"]
-script/source = "extends ColorRect
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	palette = palettes.pick_random()
-	$\".\".color = palette.background
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-var palette
-var palettes = [
-	{
-		\"background\": Color(\"#AE6378\"),
-		\"type_progress_bar\": Color(\"#7E9680\")
-	},
-	{
-		\"background\": Color(\"#138086\"),
-		\"type_progress_bar\": Color(\"#534666\")
-	}
-]
-"
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr3ex"]
 bg_color = Color(0.91764706, 0.70980394, 0.58431375, 1)
 corner_radius_top_left = 10
@@ -102,13 +74,6 @@ corner_radius_bottom_left = 6
 
 [node name="GameplayScreen" type="Node2D" unique_id=724252821]
 script = ExtResource("1_bp0ix")
-
-[node name="Background" type="ColorRect" parent="." unique_id=910089657]
-z_index = -2
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.68235296, 0.3882353, 0.47058824, 1)
-script = SubResource("GDScript_qr3ex")
 
 [node name="SentenceTake" type="LineEdit" parent="." unique_id=1077539471]
 offset_left = 40.0

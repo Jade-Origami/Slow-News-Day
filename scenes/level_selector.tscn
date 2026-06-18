@@ -4,12 +4,24 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeu7d"]
 bg_color = Color(0.2074669, 0.60695016, 0.33810252, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkmvm"]
 bg_color = Color(0.16416308, 0.48943907, 0.2698125, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tr5s6"]
 bg_color = Color(0.19287616, 0.5658653, 0.3131361, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Level_selector" type="Node2D" unique_id=938700675]
 script = ExtResource("1_aeu7d")
