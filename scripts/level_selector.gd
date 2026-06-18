@@ -36,14 +36,14 @@ func _process(_delta: float) -> void:
 
 func _on_stage_1_pressed() -> void:
 	PlayerStats.target_this_round = round_1_required
-	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
+	$"..".initiate_round()
 
 
 func _on_stage_2_pressed() -> void:
 	PlayerStats.target_this_round = round_2_required
-	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
+	$"..".initiate_round()
 
 
 func _on_stage_3_pressed() -> void:
 	PlayerStats.target_this_round = round_3_required
-	get_tree().change_scene_to_file("res://scenes/gamescreen.tscn")
+	$"..".initiate_round()

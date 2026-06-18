@@ -163,17 +163,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_31tqg")
 disabled = true
 text = "Timer"
 
-[node name="X" type="RichTextLabel" parent="." unique_id=1149398001]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 176.0
-offset_right = 152.0
-offset_bottom = 240.0
-theme_override_font_sizes/normal_font_size = 29
-text = "X"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Hands_Rotate" type="Node2D" parent="." unique_id=1976796842]
 position = Vector2(184, 360)
 script = ExtResource("1_lwh8y")
@@ -205,3 +194,14 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_lwh8y")
 disabled = true
 text = "Coins"
 metadata/_edit_use_anchors_ = true
+
+[node name="X" type="RichTextLabel" parent="." unique_id=1149398001]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 176.0
+offset_right = 152.0
+offset_bottom = 240.0
+theme_override_font_sizes/normal_font_size = 29
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

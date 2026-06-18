@@ -1,32 +1,50 @@
 [gd_scene format=3 uid="uid://dcotq14km8bws"]
 
 [ext_resource type="PackedScene" uid="uid://c8fj8jhui6516" path="res://scenes/upgrades_panel.tscn" id="1_6i4yd"]
+[ext_resource type="Script" uid="uid://dasn5rimb8f5a" path="res://scripts/gameplay_manager.gd" id="1_cpam5"]
 [ext_resource type="PackedScene" uid="uid://dluwejacfbrop" path="res://scenes/score_panel.tscn" id="2_6i4yd"]
+[ext_resource type="PackedScene" uid="uid://vp8aq3w75a53" path="res://scenes/gamescreen.tscn" id="2_cpam5"]
 [ext_resource type="PackedScene" uid="uid://mgkmrdc8dcj5" path="res://scenes/level_selector.tscn" id="3_frtkl"]
+[ext_resource type="PackedScene" uid="uid://b2emkececoexq" path="res://scenes/shop_scene.tscn" id="6_gkdmu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viwtt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="GameplayHolder" type="Node2D" unique_id=821096197]
+script = ExtResource("1_cpam5")
+
+[node name="GameplayScreen" parent="." unique_id=724252821 instance=ExtResource("2_cpam5")]
 
 [node name="Panels" type="Panel" parent="." unique_id=893437777]
-z_index = -1
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 16.0
+offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
-
-[node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
-z_index = 0
-layout_mode = 0
-offset_left = 936.0
-offset_top = 24.0
-offset_right = 1152.0
-offset_bottom = 528.0
 
 [node name="Timer_bar" parent="Panels" unique_id=908773948 instance=ExtResource("2_6i4yd")]
 layout_mode = 1
-anchor_top = -0.018518519
-anchor_bottom = 0.0061728396
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 16.0
+offset_right = 248.0
+offset_bottom = 408.39505
+
+[node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 8.0
+offset_right = 1152.0
+offset_bottom = 512.0
 
 [node name="Level_selector" parent="." unique_id=938700675 instance=ExtResource("3_frtkl")]
 position = Vector2(264, 240)
+
+[node name="ShopScene" parent="." unique_id=1063027230 instance=ExtResource("6_gkdmu")]
+
+[editable path="GameplayScreen"]
+[editable path="Panels/Timer_bar"]
+[editable path="Panels/Upgrades_Panel"]
+[editable path="Level_selector"]
+[editable path="ShopScene"]
