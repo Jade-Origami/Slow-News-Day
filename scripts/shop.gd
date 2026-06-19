@@ -53,8 +53,7 @@ func _on_item_1_pressed() -> void:
 func _item_1_bought() -> void:
 	if PlayerStats.coins >= item_1.price:
 		PlayerStats.coins -= item_1.price
-		$Upgrades_Panel.set_item_1(item_1)
-		Upgrades.apply_upgrade_by_id(item_1.id)
+		$"../Panels/Upgrades_Panel".item_added(item_1)
 		print(str(item_1) + " has been brought")
 		$Rotate_1/Item_1.hide()
 		$Rotate_1/Item_1/Buy_Button.hide()
@@ -78,7 +77,7 @@ func _on_item_2_pressed() -> void:
 func _item_2_bought() -> void:
 	if PlayerStats.coins >= item_2.price:
 		PlayerStats.coins -= item_2.price
-		Upgrades.apply_upgrade_by_id(item_2.id)
+		$"../Panels/Upgrades_Panel".item_added(item_2)
 		print(str(item_2) + " has been brought")
 		$Items_for_sale/Rotate_2/Item_2.hide()
 		$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
@@ -101,7 +100,7 @@ func _on_item_3_pressed() -> void:
 func _item_3_bought() -> void:
 	if PlayerStats.coins >= item_3.price:
 		PlayerStats.coins -= item_3.price
-		Upgrades.apply_upgrade_by_id(item_3.id)
+		$"../Panels/Upgrades_Panel".item_added(item_3)
 		print(str(item_3) + " has been brought")
 		$Items_for_sale/Rotate_3/Item_3.hide()
 		$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
