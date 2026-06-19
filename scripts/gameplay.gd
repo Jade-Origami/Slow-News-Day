@@ -25,6 +25,7 @@ var total_score = 0
 var sentences_used = 0
 var percentage_of_time = 0
 var double_speed_amount = 0
+var latest_letter = ""
 
 
 # Called when the node enters the scene tree for the first time.
@@ -72,14 +73,18 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
 	var next_letter = sentence_left[0].to_lower()
-	var latest_letter = new_text[-1].to_lower()
+	latest_letter = new_text[-1].to_lower()
 	if latest_letter == next_letter:
 		sentence_left = sentence_left.substr(1,-1)
 		
 		base += 1
 		rotate_base = true
 		
-		check_for_upgrades(latest_letter)
+		if latest_letter.to_lower() == " ": #When word finished
+			mult += 1
+			rotate_mult = true
+		
+		check_upgrades("on_type")
 		
 		$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
@@ -93,29 +98,6 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		rotate_sentence = true
 	if sentence_left.is_empty(): #Sentence has been typed correctly
 		sentence_finished()
-
-
-func check_for_upgrades(letter) -> void:
-	if letter.to_lower() == " ": #When word finished
-			mult += 1
-			rotate_mult = true
-	
-	if PlayerStats.a_gives_mult: #Ace Writer
-		if letter.to_lower() == "a":
-			mult += 2
-			base += 2
-			rotate_mult = true
-	
-	if PlayerStats.double_bypass:
-		if sentence_left == "":
-			pass
-		elif letter == sentence_left[0].to_lower(): #this is the letter after next_letter
-			mult += 2
-			PlayerStats.double_bypass = false #stops this from being an infinite loop
-			check_for_upgrades(sentence_left[0])
-			PlayerStats.double_bypass = true #make sure you don't lose the ability
-			sentence_left = sentence_left.substr(1,-1)
-			$Gameplay/TypingProgress.value += 1
 
 
 func update_stats():
@@ -280,3 +262,33 @@ func _on_gameplay_holder_new_round() -> void:
 	update_stats()
 	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
 	sentence_start()
+
+
+func upgrade_apply(upgrade):
+	if upgrade.id == "a_upgrade":
+		if latest_letter.to_lower() == "a":
+			mult += 2
+			base += 2
+			rotate_mult = true
+	if upgrade.id == "flat_coin_increase":
+		PlayerStats.coins += 1
+	if upgrade.id == "double_letters_bypass":
+		if sentence_left == "": #prevents overstepping index
+			pass
+		elif latest_letter == sentence_left[0].to_lower(): #if current letter is also next letter
+			mult += 2
+			sentence_left = sentence_left.substr(1,-1)
+			$Gameplay/TypingProgress.value += 1
+			check_upgrades("on_type", upgrade.id)
+
+
+func check_upgrades(time, bypass = null):
+	var active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
+	for i in range(active_upgrades.size()):
+		var upgrade = active_upgrades[i]
+		if upgrade == null:
+			pass
+		elif upgrade.id == bypass:
+			pass
+		elif upgrade.trigger_time == time:
+			upgrade_apply(upgrade)

@@ -10,7 +10,8 @@ var upgrades = [
 		"target": "double_bypass",
 		"value": true,
 		"price": 5,
-		"rarity": "0.5" #common
+		"rarity": "0.5", #common
+		"trigger_time": "on_type"
 	},
 	{
 		"pretty_text": "Higher wages",
@@ -20,7 +21,8 @@ var upgrades = [
 		"target": "flat_coin",
 		"value": 1,
 		"price": 4,
-		"rarity": "0.2" #uncommon
+		"rarity": "0.2", #uncommon
+		"trigger_time": "end"
 	},
 	{
 		"pretty_text": "Longer deadlines",
@@ -30,7 +32,8 @@ var upgrades = [
 		"target": "round_time_mult",
 		"value": 1.25,
 		"price": 7,
-		"rarity": "0.2" #uncommon
+		"rarity": "0.2", #uncommon
+		"trigger_time": "start"
 	},
 	{
 		"pretty_text": "Autocorrect",
@@ -40,7 +43,8 @@ var upgrades = [
 		"target": "mistake_mult_num",
 		"value": 0.75,
 		"price": 8,
-		"rarity": "0.1" #rare
+		"rarity": "0.1", #rare
+		"trigger_time": "start"
 	},
 	{
 		"pretty_text": "Editor's note",
@@ -49,8 +53,9 @@ var upgrades = [
 		"mode": "add",
 		"target": "reroll_sentence_amount",
 		"value": 1,
-		"price": 7,
-		"rarity": "0.1" #rare
+		"price": 3,
+		"rarity": "0.1", #rare
+		"trigger_time": "start"
 	},
 	{
 		"pretty_text": "Predictive text",
@@ -60,7 +65,8 @@ var upgrades = [
 		"target": "amount_tab_fill",
 		"value": 1,
 		"price": 15,
-		"rarity": "0.2" #uncommon
+		"rarity": "0.2", #uncommon
+		"trigger_time": "during"
 	},
 	{
 		"pretty_text": "Ace writer",
@@ -69,8 +75,9 @@ var upgrades = [
 		"mode": "set",
 		"target": "a_gives_mult",
 		"value": true,
-		"price": 15,
-		"rarity": "0.2" #uncommon
+		"price": 6,
+		"rarity": "0.2", #uncommon
+		"trigger_time": "on_type"
 	},
 ]
 
