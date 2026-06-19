@@ -165,6 +165,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
 [connection signal="pressed" from="Rotate_Item_1/Item" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Rotate_Item_1/Item/Sell_Button" to="." method="_on_sell_button_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_2/Item" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="Rotate_Item_2/Item/Sell_Button" to="." method="_on_sell_button_2_pressed"]
 [connection signal="pressed" from="Rotate_Item_3/Item" to="." method="_on_item_3_pressed"]
+[connection signal="pressed" from="Rotate_Item_3/Item/Sell_Button" to="." method="_on_sell_button_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_4/Item" to="." method="_on_item_4_pressed"]
+[connection signal="pressed" from="Rotate_Item_4/Item/Sell_button" to="." method="_on_sell_button_4_pressed"]

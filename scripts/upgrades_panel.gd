@@ -3,7 +3,10 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Rotate_Item_1/Item.hide()
+	$Rotate_Item_2/Item.hide()
+	$Rotate_Item_3/Item.hide()
+	$Rotate_Item_4/Item.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -41,12 +44,16 @@ func _on_item_4_pressed() -> void:
 func item_added(item):
 	if active_upgrades[0] == null:
 		set_item(item, 0)
+		$Rotate_Item_1/Item.show()
 	elif active_upgrades[1] == null:
 		set_item(item, 1)
+		$Rotate_Item_2/Item.show()
 	elif active_upgrades[2] == null:
 		set_item(item, 2)
+		$Rotate_Item_3/Item.show()
 	elif active_upgrades[3] == null:
 		set_item(item, 3)
+		$Rotate_Item_4/Item.show()
 
 
 func check_availability():
@@ -71,3 +78,24 @@ func update_panel(item, pos):
 		$Rotate_Item_3/Item.text = item.pretty_text
 	elif pos == 3:
 		$Rotate_Item_4/Item.text = item.pretty_text
+
+
+func _on_sell_button_1_pressed() -> void:
+	$Rotate_Item_1/Item.hide()
+	active_upgrades[0] = null
+
+
+func _on_sell_button_2_pressed() -> void:
+	$Rotate_Item_2/Item.hide()
+	active_upgrades[1] = null
+
+
+func _on_sell_button_3_pressed() -> void:
+	$Rotate_Item_3/Item.hide()
+	active_upgrades[2] = null
+
+
+func _on_sell_button_4_pressed() -> void:
+	$Rotate_Item_4/Item.hide()
+	active_upgrades[3] = null
+	

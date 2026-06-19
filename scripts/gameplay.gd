@@ -168,7 +168,9 @@ func sentence_start():
 		$Rotate_Discard/Discard_Button.show()
 	$Rotate_Discard/Next_Button.hide()
 	mistakes_made = 0
+	sentences_used = 0
 	is_first_letter = true
+	update_stats()
 
 
 func round_finished() -> void:
