@@ -13,9 +13,6 @@ var rotate_item_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Rotate_1/Item_1/Buy_Button.hide()
-	$Rotate_2/Item_2/Buy_Button.hide()
-	$Rotate_3/Item_3/Buy_Button.hide()
 	reroll()
 
 
@@ -51,7 +48,7 @@ func _on_item_1_pressed() -> void:
 
 
 func _item_1_bought() -> void:
-	if PlayerStats.coins >= item_1.price:
+	if (PlayerStats.coins >= item_1.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_1.price
 		$"../Panels/Upgrades_Panel".item_added(item_1)
 		print(str(item_1) + " has been brought")
@@ -75,12 +72,12 @@ func _on_item_2_pressed() -> void:
 
 
 func _item_2_bought() -> void:
-	if PlayerStats.coins >= item_2.price:
+	if (PlayerStats.coins >= item_2.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_2.price
 		$"../Panels/Upgrades_Panel".item_added(item_2)
 		print(str(item_2) + " has been brought")
-		$Items_for_sale/Rotate_2/Item_2.hide()
-		$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
+		$Rotate_2/Item_2.hide()
+		$Rotate_2/Item_2/Buy_Button.hide()
 		update_stats_text()
 	else:
 		rotate_item_2 = true
@@ -98,12 +95,12 @@ func _on_item_3_pressed() -> void:
 
 
 func _item_3_bought() -> void:
-	if PlayerStats.coins >= item_3.price:
+	if (PlayerStats.coins >= item_3.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_3.price
 		$"../Panels/Upgrades_Panel".item_added(item_3)
 		print(str(item_3) + " has been brought")
-		$Items_for_sale/Rotate_3/Item_3.hide()
-		$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
+		$Rotate_3/Item_3.hide()
+		$Rotate_3/Item_3/Buy_Button.hide()
 		update_stats_text()
 	else:
 		rotate_item_3 = true
@@ -129,6 +126,9 @@ func reroll() -> void:
 	shop_items[2] = item_3.id
 	reroll_cost += 1
 	$Rotate_Reroll/Reroll_button.text = "Reroll: " + str(reroll_cost) + " Coins"
+	$Rotate_1/Item_1/Buy_Button.hide()
+	$Rotate_2/Item_2/Buy_Button.hide()
+	$Rotate_3/Item_3/Buy_Button.hide()
 	$Rotate_1/Item_1.show()
 	$Rotate_2/Item_2.show()
 	$Rotate_3/Item_3.show()
@@ -143,9 +143,6 @@ func _on_reroll_button_pressed() -> void:
 		rotate_item_2 = true
 		rotate_item_3 = true
 	rotate_reroll_button = true
-	$Items_for_sale/Rotate_3/Item_3/Buy_Button.hide()
-	$Items_for_sale/Rotate_2/Item_2/Buy_Button.hide()
-	$Items_for_sale/Rotate_1/Item_1/Buy_Button.hide()
 
 
 func update_stats_text() -> void:
@@ -156,3 +153,7 @@ func reset_item_views():
 	$Rotate_1/Item_1.text = item_1.pretty_text
 	$Rotate_2/Item_2.text = item_2.pretty_text
 	$Rotate_3/Item_3.text = item_3.pretty_text
+
+
+func _on_gameplay_holder_shop_start() -> void:
+	reroll()

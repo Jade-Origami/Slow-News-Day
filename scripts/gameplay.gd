@@ -35,11 +35,10 @@ func _ready() -> void:
 func timer_increment() -> void:
 	time_passed += 1
 	$"../Panels/Timer_bar".value = time_passed
+	percentage_of_time = 1.25 - snapped((float(time_passed) / max_timer_value), 0.01)
+	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(percentage_of_time)
 	if time_passed >= max_timer_value:
 		timer_active = false
-	@warning_ignore("integer_division")
-	percentage_of_time = 1.25 - snapped((time_passed / max_timer_value), 0.01)
-	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(percentage_of_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -52,7 +51,7 @@ func _process(_delta: float) -> void:
 		if PlayerStats.agitate_object($Gameplay):
 			rotate_sentence = false
 	if rotate_discards:
-		if PlayerStats.agitate_object($Gameplay/Rotate_Discard):
+		if PlayerStats.agitate_object($Rotate_Discard):
 			rotate_discards = false
 			can_discard = true
 	if rotate_base:
@@ -71,7 +70,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	typed_already = new_text
 	if !timer_active:
 		timer_active = true
-		$Gameplay/Rotate_Discard/Discard_Button.hide()
+		$Rotate_Discard/Discard_Button.hide()
 	var next_letter = sentence_left[0].to_lower()
 	var latest_letter = new_text[-1].to_lower()
 	if latest_letter == next_letter:
@@ -151,8 +150,8 @@ score: " + str(score_this_sentence)
 	elif sentences_used >= PlayerStats.sentences_allowed:
 		$Gameplay/SentenceShow.text = "Game over \nPlease restart the game"
 	else:
-		$Gameplay/Rotate_Discard/Discard_Button.hide()
-		$Gameplay/Rotate_Discard/Next_Button.show()
+		$Rotate_Discard/Discard_Button.hide()
+		$Rotate_Discard/Next_Button.show()
 
 
 func sentence_start():
@@ -164,10 +163,10 @@ func sentence_start():
 	mult = 0
 	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
-	$Gameplay/Rotate_Discard/Discard_Button.hide()
+	$Rotate_Discard/Discard_Button.hide()
 	if PlayerStats.reroll_sentence_amount > 0:
-		$Gameplay/Rotate_Discard/Discard_Button.show()
-	$Gameplay/Rotate_Discard/Next_Button.hide()
+		$Rotate_Discard/Discard_Button.show()
+	$Rotate_Discard/Next_Button.hide()
 	mistakes_made = 0
 	is_first_letter = true
 
@@ -223,7 +222,7 @@ func _on_discard_button_pressed() -> void:
 	if can_discard and PlayerStats.reroll_sentence_amount > 0:
 		PlayerStats.reroll_sentence_amount -= 1
 		if PlayerStats.reroll_sentence_amount >= 0:
-			$Gameplay/Rotate_Discard/Discard_Button.hide()
+			$Rotate_Discard/Discard_Button.hide()
 		can_discard = false
 		rotate_discards = true
 		rotate_sentence = true
@@ -235,7 +234,7 @@ func discard_sentence() -> void:
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
 	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
-	max_timer_value = int(Sentences.correct_sentence.length() * 20 * PlayerStats.round_time_mult)
+	max_timer_value = int(Sentences.correct_sentence.length() * 23 * PlayerStats.round_time_mult)
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
 

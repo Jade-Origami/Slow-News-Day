@@ -37,7 +37,7 @@ var verbs = [
 
 var adverbs = [
 	"regrettably ", "quickly ", "light-heartedly ", "heavy-heartedly ", "speedily ", "smoothly ",
-	"harshly ", "slowly ", "annoyedly ", "tiredly ", "energetically ", "sloppilly ", "angrily ",
+	"harshly ", "slowly ", "annoyedly ", "tiredly ", "energetically ", "sloppily ", "angrily ",
 	"gaily ", "begrudgingly ", "happily ", "unfortunately ", "stupidly ", "lazily ", "", #blank
 	"ultimately ", "loosely ", "thinly ", "boringly ", "unfortunately ", "undoubtedly "
 ]

@@ -1,6 +1,7 @@
 extends Node2D
 signal level_select
 signal new_round
+signal shop_start
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,7 @@ func initiate_round():
 	$Level_selector.hide()
 
 func initiate_shop():
+	shop_start.emit()
 	$GameplayScreen.hide()
 	$ShopScene.show()
 

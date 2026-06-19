@@ -62,6 +62,7 @@ position = Vector2(568, 528)
 
 [connection signal="level_select" from="." to="Level_selector" method="_on_gameplay_holder_level_select"]
 [connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
+[connection signal="shop_start" from="." to="ShopScene" method="_on_gameplay_holder_shop_start"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]

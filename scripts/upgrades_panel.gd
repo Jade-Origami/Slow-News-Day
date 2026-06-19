@@ -38,7 +38,7 @@ func _on_item_4_pressed() -> void:
 	$Rotate_Item_3/Item/Sell_Button.visible = false
 
 
-func item_added(item) -> void:
+func item_added(item):
 	if active_upgrades[0] == null:
 		set_item(item, 0)
 	elif active_upgrades[1] == null:
@@ -47,22 +47,27 @@ func item_added(item) -> void:
 		set_item(item, 2)
 	elif active_upgrades[3] == null:
 		set_item(item, 3)
-	pass
+
+
+func check_availability():
+	for i in range(active_upgrades.size()):
+		if active_upgrades[i] == null:
+			return true
 
 
 func set_item(item, pos) -> void:
 	active_upgrades[pos] = item
 	print(active_upgrades)
 	Upgrades.apply_upgrade_by_id(item.id)
-	update_whole_panel()
+	update_panel(item, pos)
 
 
-func update_whole_panel():
-	if $Rotate_Item_1/Item.text != null:
-		$Rotate_Item_1/Item.text = active_upgrades[0].pretty_text
-	if $Rotate_Item_2/Item.text != null:
-		$Rotate_Item_2/Item.text = active_upgrades[1].pretty_text
-	if $Rotate_Item_3/Item.text != null:
-		$Rotate_Item_3/Item.text = active_upgrades[2].pretty_text
-	if $Rotate_Item_4/Item.text != null:
-		$Rotate_Item_4/Item.text = active_upgrades[3].pretty_text
+func update_panel(item, pos):
+	if pos == 0:
+		$Rotate_Item_1/Item.text = item.pretty_text
+	elif pos == 1:
+		$Rotate_Item_2/Item.text = item.pretty_text
+	elif pos == 2:
+		$Rotate_Item_3/Item.text = item.pretty_text
+	elif pos == 3:
+		$Rotate_Item_4/Item.text = item.pretty_text

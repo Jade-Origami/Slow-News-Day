@@ -127,10 +127,11 @@ horizontal_alignment = 1
 script = ExtResource("3_31tqg")
 
 [node name="TypingProgress" type="ProgressBar" parent="Gameplay" unique_id=1090657300]
-offset_left = -248.0
-offset_top = -144.0
-offset_right = 248.0
-offset_bottom = 352.0
+z_index = 1
+offset_left = -246.0
+offset_top = -143.62
+offset_right = 250.0
+offset_bottom = 352.38
 theme_override_styles/background = SubResource("StyleBoxFlat_c4t3t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xrcqf")
 fill_mode = 2
@@ -157,11 +158,11 @@ offset_right = 250.0
 offset_bottom = 352.38
 theme_override_styles/panel = SubResource("StyleBoxFlat_nm4f2")
 
-[node name="Rotate_Discard" type="Node2D" parent="Gameplay" unique_id=980317954]
-position = Vector2(-462, 312.38)
+[node name="Rotate_Discard" type="Node2D" parent="." unique_id=980317954]
+position = Vector2(88, 584)
 script = ExtResource("2_82mmq")
 
-[node name="Discard_Button" type="Button" parent="Gameplay/Rotate_Discard" unique_id=98210761]
+[node name="Discard_Button" type="Button" parent="Rotate_Discard" unique_id=98210761]
 offset_left = -64.0
 offset_top = -32.0
 offset_right = 64.0
@@ -172,7 +173,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_iaote")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7gmi0")
 text = "Reroll Sentence"
 
-[node name="Next_Button" type="Button" parent="Gameplay/Rotate_Discard" unique_id=1121693262]
+[node name="Next_Button" type="Button" parent="Rotate_Discard" unique_id=1121693262]
 offset_left = -64.0
 offset_top = -32.0
 offset_right = 64.0
@@ -185,5 +186,5 @@ text = "Next Sentence"
 
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="Gameplay/Rotate_Discard/Discard_Button" to="." method="_on_discard_button_pressed"]
-[connection signal="pressed" from="Gameplay/Rotate_Discard/Next_Button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Rotate_Discard/Discard_Button" to="." method="_on_discard_button_pressed"]
+[connection signal="pressed" from="Rotate_Discard/Next_Button" to="." method="_on_next_button_pressed"]
