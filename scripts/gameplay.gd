@@ -22,6 +22,7 @@ var double_speed_amount = 0
 var latest_letter = ""
 var reroll_amount
 var total_rerolls
+var can_tab_to_fill
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,9 +42,9 @@ func timer_increment() -> void:
 func _process(_delta: float) -> void:
 	if timer_active :
 		timer_increment()
-	if timer_active and double_speed_amount > 0:
-		double_speed_amount -= 1
-		timer_increment()
+		if double_speed_amount > 0:
+			double_speed_amount -= 1
+			timer_increment()
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
@@ -117,7 +118,15 @@ score: " + str(score_this_sentence)
 
 
 func sentence_start():
-	discard_sentence()
+	
+	Sentences.correct_sentence = Sentences.create_sentence()
+	sentence_left = Sentences.correct_sentence
+	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
+	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
+	max_timer_value = int(Sentences.correct_sentence.length() * 23)
+	$"../Panels/Timer_bar".max_value = max_timer_value
+	$Gameplay.rotation_degrees = randi_range(-25, 25)
+	
 	time_passed = 0
 	$"../Panels/Timer_bar".value = time_passed
 	$Gameplay/TypingProgress.value = 0
@@ -125,6 +134,7 @@ func sentence_start():
 	mult = 0
 	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
+	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(1.25)
 	$Rotate_Discard/Next_Button.hide()
 	$Rotate_Discard/Discard_Button.hide()
 	if reroll_amount > 0:
@@ -191,17 +201,7 @@ func _on_discard_button_pressed() -> void:
 			$Rotate_Discard/Discard_Button.hide()
 		$Rotate_Discard.agitate()
 		$Gameplay.agitate()
-		discard_sentence()
-
-
-func discard_sentence() -> void:
-	Sentences.correct_sentence = Sentences.create_sentence()
-	sentence_left = Sentences.correct_sentence
-	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
-	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
-	max_timer_value = int(Sentences.correct_sentence.length() * 23 * PlayerStats.round_time_mult)
-	$"../Panels/Timer_bar".max_value = max_timer_value
-	$Gameplay.rotation_degrees = randi_range(-25, 25)
+		sentence_start()
 
 
 func get_word_start_index(text: String, char_index: int) -> int:
@@ -214,9 +214,8 @@ func get_word_start_index(text: String, char_index: int) -> int:
 
 
 func tab_autofill() -> void:
-	if PlayerStats.amount_tab_fill > 0 and !used_predictive:
-		used_predictive = true
-		PlayerStats.amount_tab_fill -= 1
+	if can_tab_to_fill:
+		can_tab_to_fill = false
 		var index_currently_typed = typed_already.length() - 1
 		var index_of_word = get_word_start_index(Sentences.correct_sentence, index_currently_typed)
 		var length_of_containing_word = 0
@@ -256,9 +255,11 @@ func upgrade_apply(upgrade):
 			base += 2
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 			return true
+	
 	elif upgrade.id == "flat_coin_increase":
 		PlayerStats.coins += 2
 		return true
+	
 	elif upgrade.id == "double_letters_bypass":
 		if sentence_left == "": #prevents overstepping index
 			pass
@@ -268,20 +269,30 @@ func upgrade_apply(upgrade):
 			$Gameplay/TypingProgress.value += 1
 			check_upgrades("on_type", upgrade.id)
 			return true
+	
 	elif upgrade.id == "s_upgrade":
 		if latest_letter.to_lower() == "s":
 			mult = snapped((mult  * 1.25), 1)
 			print("snapped to " + str(mult))
 			return true
+	
 	elif upgrade.id == "mistake_penalty":
 		double_speed_amount *= 0.75
 		return true
+	
 	elif upgrade.id == "round_time_increase":
-		$Gameplay/TypingProgress.max_value = snapped((Sentences.correct_sentence.length() * 1.25), 1)
+		max_timer_value = snapped((max_timer_value * 1.25), 1)
+		$"../Panels/Timer_bar".max_value = max_timer_value
 		return true
+	
 	elif upgrade.id == "reroll_sentence":
 		reroll_amount += 2
 		return true
+	
+	elif upgrade.id == "tab_to_fill":
+		can_tab_to_fill = true
+		return true
+	
 	else:
 		return false
 

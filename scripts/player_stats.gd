@@ -4,9 +4,6 @@ extends Node
 var coins = 9999
 var flat_coin = 0
 var round_time_mult = 1
-var mistake_mult_num = 1
-var double_bypass = false
-var amount_tab_fill = 0
 var completed_rounds = 0
 var target_this_round : int
 var sentences_allowed = 4

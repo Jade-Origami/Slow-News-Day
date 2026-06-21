@@ -39,10 +39,10 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Predictive text",
-		"explanation": "Press Tab to automatically fill in the current word",
+		"explanation": "Press Tab to automatically fill in the current word once per round",
 		"id": "tab_to_fill",
-		"price": 15,
-		"trigger_time": "start"
+		"price": 11,
+		"trigger_time": "round_start"
 	},
 	{
 		"pretty_text": "Ace writer",
