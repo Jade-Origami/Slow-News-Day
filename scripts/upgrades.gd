@@ -11,28 +11,28 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Higher wages",
-		"explanation": "Increase the amount of money given after round by 1",
+		"explanation": "+2 coins at end of round",
 		"id": "flat_coin_increase",
 		"price": 4,
 		"trigger_time": "end"
 	},
 	{
 		"pretty_text": "Longer deadlines",
-		"explanation": "Increase the amount of time allowed for a story to by completed by x1.25",
+		"explanation": "Increase timer max by 1/4",
 		"id": "round_time_increase",
 		"price": 7,
-		"trigger_time": "start"
+		"trigger_time": "sentence_start"
 	},
 	{
 		"pretty_text": "Autocorrect",
-		"explanation": "3/4 the time that the timer is sped up when making a mistake",
+		"explanation": "decrease the time that the timer is sped up by after a mistake by 1/4",
 		"id": "mistake_penalty",
 		"price": 8,
-		"trigger_time": "start"
+		"trigger_time": "mistake_made"
 	},
 	{
 		"pretty_text": "Editor's note",
-		"explanation": "Tell your editor you want a different story!",
+		"explanation": "+1 discard every round",
 		"id": "reroll_sentence",
 		"price": 3,
 		"trigger_time": "start"
@@ -42,13 +42,20 @@ var upgrades = [
 		"explanation": "Press Tab to automatically fill in the current word",
 		"id": "tab_to_fill",
 		"price": 15,
-		"trigger_time": "during"
+		"trigger_time": "start"
 	},
 	{
 		"pretty_text": "Ace writer",
-		"explanation": "Every typed \"A\" gives +2 mult and +2 base \n[can only be brought once]",
+		"explanation": "Every typed \"A\" gives +2 mult and +2 base",
 		"id": "a_upgrade",
 		"price": 6,
+		"trigger_time": "on_type"
+	},
+	{
+		"pretty_text": "Sublime text",
+		"explanation": "Every typed \"S\" gives x1.25 mult \n(not sponsored)",
+		"id": "s_upgrade",
+		"price": 7,
 		"trigger_time": "on_type"
 	},
 ]

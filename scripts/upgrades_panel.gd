@@ -16,25 +16,25 @@ func _on_item_1_pressed() -> void:
 	$Rotate_Item_1/Item/Sell_Button.visible = !$Rotate_Item_1/Item/Sell_Button.visible
 	$Rotate_Item_2/Item/Sell_Button.visible = false
 	$Rotate_Item_3/Item/Sell_Button.visible = false
-	$Rotate_Item_4/Item/Sell_button.visible = false
+	$Rotate_Item_4/Item/Sell_Button.visible = false
 	$Rotate_Item_1/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[0].price/2, 1))
 
 func _on_item_2_pressed() -> void:
 	$Rotate_Item_2/Item/Sell_Button.visible = !$Rotate_Item_2/Item/Sell_Button.visible
 	$Rotate_Item_1/Item/Sell_Button.visible = false
 	$Rotate_Item_3/Item/Sell_Button.visible = false
-	$Rotate_Item_4/Item/Sell_button.visible = false
+	$Rotate_Item_4/Item/Sell_Button.visible = false
 	$Rotate_Item_2/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[1].price/2, 1))
 
 func _on_item_3_pressed() -> void:
 	$Rotate_Item_3/Item/Sell_Button.visible = !$Rotate_Item_3/Item/Sell_Button.visible
 	$Rotate_Item_1/Item/Sell_Button.visible = false
 	$Rotate_Item_2/Item/Sell_Button.visible = false
-	$Rotate_Item_4/Item/Sell_button.visible = false
+	$Rotate_Item_4/Item/Sell_Button.visible = false
 	$Rotate_Item_3/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[2].price/2, 1))
 
 func _on_item_4_pressed() -> void:
-	$Rotate_Item_4/Item/Sell_button.visible = !$Rotate_Item_4/Item/Sell_button.visible
+	$Rotate_Item_4/Item/Sell_Button.visible = !$Rotate_Item_4/Item/Sell_Button.visible
 	$Rotate_Item_1/Item/Sell_Button.visible = false
 	$Rotate_Item_2/Item/Sell_Button.visible = false
 	$Rotate_Item_3/Item/Sell_Button.visible = false
@@ -99,6 +99,6 @@ func _on_sell_button_3_pressed() -> void:
 
 func _on_sell_button_4_pressed() -> void:
 	$Rotate_Item_4/Item.hide()
-	$Rotate_Item_4/Item/Sell_button.hide()
+	$Rotate_Item_4/Item/Sell_Button.hide()
 	active_upgrades[3] = null
 	

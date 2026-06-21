@@ -150,7 +150,7 @@ theme_override_styles/hover = ExtResource("2_0s7kc")
 theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 4"
 
-[node name="Sell_button" type="Button" parent="Rotate_Item_4/Item" unique_id=1367531224]
+[node name="Sell_Button" type="Button" parent="Rotate_Item_4/Item" unique_id=1367531224]
 visible = false
 layout_mode = 0
 offset_left = -40.0
@@ -171,4 +171,4 @@ text = "£10"
 [connection signal="pressed" from="Rotate_Item_3/Item" to="." method="_on_item_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_3/Item/Sell_Button" to="." method="_on_sell_button_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_4/Item" to="." method="_on_item_4_pressed"]
-[connection signal="pressed" from="Rotate_Item_4/Item/Sell_button" to="." method="_on_sell_button_4_pressed"]
+[connection signal="pressed" from="Rotate_Item_4/Item/Sell_Button" to="." method="_on_sell_button_4_pressed"]

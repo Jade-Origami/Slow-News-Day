@@ -69,9 +69,10 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/TypingProgress.value += 1
-	else:
+	else: #Mistake has been made
 		mistakes_made += 1
-		double_speed_amount += 30 * PlayerStats.mistake_mult_num
+		double_speed_amount += 60
+		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 	if sentence_left.is_empty(): #Sentence has been typed correctly
 		sentence_finished()
@@ -130,6 +131,7 @@ func sentence_start():
 	sentences_used = 0
 	is_first_letter = true
 	update_stats()
+	check_upgrades("sentence_start")
 
 
 func round_finished() -> void:
@@ -246,9 +248,11 @@ func upgrade_apply(upgrade):
 			mult += 2
 			base += 2
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
-	if upgrade.id == "flat_coin_increase":
-		PlayerStats.coins += 1
-	if upgrade.id == "double_letters_bypass":
+			return true
+	elif upgrade.id == "flat_coin_increase":
+		PlayerStats.coins += 2
+		return true
+	elif upgrade.id == "double_letters_bypass":
 		if sentence_left == "": #prevents overstepping index
 			pass
 		elif latest_letter == sentence_left[0].to_lower(): #if current letter is also next letter
@@ -256,6 +260,20 @@ func upgrade_apply(upgrade):
 			sentence_left = sentence_left.substr(1,-1)
 			$Gameplay/TypingProgress.value += 1
 			check_upgrades("on_type", upgrade.id)
+			return true
+	elif upgrade.id == "s_upgrade":
+		if latest_letter.to_lower() == "s":
+			mult = snapped((mult  * 1.25), 1)
+			print("snapped to " + str(mult))
+			return true
+	elif upgrade.id == "mistake_penalty":
+		double_speed_amount *= 0.75
+		return true
+	elif upgrade.id == "":
+		$Gameplay/TypingProgress.max_value = snapped((Sentences.correct_sentence.length() * 1.25), 1)
+		return true
+	else:
+		return false
 
 
 func check_upgrades(time, bypass = null):
@@ -267,6 +285,12 @@ func check_upgrades(time, bypass = null):
 		elif upgrade.id == bypass:
 			pass
 		elif upgrade.trigger_time == time:
-			upgrade_apply(upgrade)
-			if i == 0:
-				pass
+			if upgrade_apply(upgrade): #upgrade applies
+				if i == 0:
+					$"../Panels/Upgrades_Panel/Rotate_Item_1".agitate()
+				elif i == 1:
+					$"../Panels/Upgrades_Panel/Rotate_Item_2".agitate()
+				elif i == 2:
+					$"../Panels/Upgrades_Panel/Rotate_Item_3".agitate()
+				elif i == 3:
+					$"../Panels/Upgrades_Panel/Rotate_Item_4".agitate()
