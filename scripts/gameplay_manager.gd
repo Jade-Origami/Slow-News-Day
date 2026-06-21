@@ -25,3 +25,8 @@ func initiate_level_select():
 	level_select.emit()
 	$ShopScene.hide()
 	$Level_selector.show()
+
+func add_money(amount):
+	PlayerStats.coins += amount
+	$Panels/Timer_bar/Coins_Rotate/Coins_Counter.text = "£" + str(PlayerStats.coins)
+	$Panels/Timer_bar/Coins_Rotate.agitate()

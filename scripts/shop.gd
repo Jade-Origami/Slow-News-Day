@@ -23,11 +23,10 @@ func _on_item_1_pressed() -> void:
 
 func _item_1_bought() -> void:
 	if (PlayerStats.coins >= item_1.price) and ($"../Panels/Upgrades_Panel".check_availability()):
-		PlayerStats.coins -= item_1.price
+		$"..".add_money(-item_1.price)
 		$"../Panels/Upgrades_Panel".item_added(item_1)
 		$Rotate_1/Item_1.hide()
 		$Rotate_1/Item_1/Buy_Button.hide()
-		update_stats_text()
 	else:
 		$Rotate_1.agitate()
 
@@ -46,11 +45,10 @@ func _on_item_2_pressed() -> void:
 
 func _item_2_bought() -> void:
 	if (PlayerStats.coins >= item_2.price) and ($"../Panels/Upgrades_Panel".check_availability()):
-		PlayerStats.coins -= item_2.price
+		$"..".add_money(-item_2.price)
 		$"../Panels/Upgrades_Panel".item_added(item_2)
 		$Rotate_2/Item_2.hide()
 		$Rotate_2/Item_2/Buy_Button.hide()
-		update_stats_text()
 	else:
 		$Rotate_2.agitate()
 
@@ -68,11 +66,10 @@ func _on_item_3_pressed() -> void:
 
 func _item_3_bought() -> void:
 	if (PlayerStats.coins >= item_3.price) and ($"../Panels/Upgrades_Panel".check_availability()):
-		PlayerStats.coins -= item_3.price
+		$"..".add_money(-item_3.price)
 		$"../Panels/Upgrades_Panel".item_added(item_3)
 		$Rotate_3/Item_3.hide()
 		$Rotate_3/Item_3/Buy_Button.hide()
-		update_stats_text()
 	else:
 		$Rotate_3.agitate()
 
@@ -103,21 +100,16 @@ func reroll() -> void:
 	$Rotate_1/Item_1.show()
 	$Rotate_2/Item_2.show()
 	$Rotate_3/Item_3.show()
-	update_stats_text()
 
 
 func _on_reroll_button_pressed() -> void:
 	if PlayerStats.coins >= reroll_cost:
-		PlayerStats.coins -= reroll_cost
+		$"..".add_money(-reroll_cost)
 		reroll()
 		$Rotate_1.agitate()
 		$Rotate_2.agitate()
 		$Rotate_3.agitate()
 	$Rotate_Reroll.agitate()
-
-
-func update_stats_text() -> void:
-	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
 
 
 func reset_item_views():

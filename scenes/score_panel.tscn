@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dluwejacfbrop"]
 
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="1_lwh8y"]
-[ext_resource type="Script" uid="uid://bj22o3p5wngvt" path="res://scripts/score_panel.gd" id="1_tfry6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otpj5"]
 bg_color = Color(0.25882354, 0.25882354, 0.25882354, 0.3764706)
@@ -78,7 +77,6 @@ theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r3crv")
 fill_mode = 2
 show_percentage = false
-script = ExtResource("1_tfry6")
 metadata/_edit_use_anchors_ = true
 
 [node name="RequiredScoreRead" type="Button" parent="." unique_id=1616469899]
@@ -174,13 +172,13 @@ text = "Hands"
 metadata/_edit_use_anchors_ = true
 
 [node name="Coins_Rotate" type="Node2D" parent="." unique_id=330715971]
-position = Vector2(184, 360)
+position = Vector2(64, 360)
 script = ExtResource("1_lwh8y")
 
 [node name="Coins_Counter" type="Button" parent="Coins_Rotate" unique_id=1344737547]
-offset_left = -168.0
+offset_left = -48.0
 offset_top = -32.0
-offset_right = -72.0
+offset_right = 48.0
 offset_bottom = 32.0
 theme_override_colors/font_disabled_color = Color(0.96035105, 0.96035105, 0.96035093, 1)
 theme_override_font_sizes/font_size = 25

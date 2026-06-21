@@ -184,6 +184,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qo4ur")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lnmny")
 text = "Next Story"
 
+[node name="Mistake_Overlay" type="ColorRect" parent="." unique_id=860634844]
+z_index = -2
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.8392157, 0, 0.09803922, 0.54509807)
+
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Rotate_Discard/Discard_Button" to="." method="_on_discard_button_pressed"]

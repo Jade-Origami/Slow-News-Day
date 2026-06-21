@@ -23,11 +23,14 @@ var latest_letter = ""
 var reroll_amount
 var total_rerolls
 var can_tab_to_fill
+var mistake_overlay_timer = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_on_gameplay_holder_new_round()
+	$Mistake_Overlay.hide()
+	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£0"
 
 
 func timer_increment() -> void:
@@ -45,6 +48,11 @@ func _process(_delta: float) -> void:
 		if double_speed_amount > 0:
 			double_speed_amount -= 1
 			timer_increment()
+	if mistake_overlay_timer > 0:
+		$Mistake_Overlay.show()
+		mistake_overlay_timer -= 1
+	else:
+		$Mistake_Overlay.hide()
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
@@ -77,19 +85,19 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		double_speed_amount += 60
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
+		mistake_overlay_timer = 15
 	if sentence_left.is_empty(): #Sentence has been typed correctly
 		sentence_finished()
 
 
 func update_stats():
-	$"../Panels/Timer_bar/Hands_Rotate".agitate()
 	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
 	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score".text = str(total_score)
-	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
 
 
 func sentence_finished() -> void:
 	sentences_used += 1
+	$"../Panels/Timer_bar/Hands_Rotate".agitate()
 	timer_active = false
 	is_first_letter = false
 	
@@ -140,9 +148,8 @@ func sentence_start():
 	if reroll_amount > 0:
 		$Rotate_Discard/Discard_Button.show()
 	mistakes_made = 0
-	sentences_used = 0
 	is_first_letter = true
-	update_stats()
+	#update_stats()
 	check_upgrades("sentence_start")
 
 
@@ -161,7 +168,7 @@ func give_rewards() -> void:
 		multiple_coin = "Coin"
 	else:
 		multiple_coin = "Coins"
-	PlayerStats.coins += coins_increase
+	$"..".add_money(coins_increase)
 	update_stats()
 
 
@@ -237,6 +244,7 @@ func _on_next_button_pressed() -> void:
 
 func _on_gameplay_holder_new_round() -> void:
 	total_score = 0
+	sentences_used = 0
 	apply_styling()
 	$ShopButton.hide()
 	update_stats()
@@ -257,7 +265,7 @@ func upgrade_apply(upgrade):
 			return true
 	
 	elif upgrade.id == "flat_coin_increase":
-		PlayerStats.coins += 2
+		$"..".add_money(2)
 		return true
 	
 	elif upgrade.id == "double_letters_bypass":
