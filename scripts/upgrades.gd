@@ -53,7 +53,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Sublime text",
-		"explanation": "Every typed \"S\" gives x1.25 mult \n(not sponsored)",
+		"explanation": "Every typed \"S\" gives x1.25 mult",
 		"id": "s_upgrade",
 		"price": 7,
 		"trigger_time": "on_type"

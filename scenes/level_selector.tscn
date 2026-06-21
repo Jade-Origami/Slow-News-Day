@@ -23,6 +23,69 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljvb0"]
+bg_color = Color(0.07058824, 0.2509804, 0.12941177, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqfkl"]
+bg_color = Color(0.20784314, 0.60784316, 0.3372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj03c"]
+bg_color = Color(0.16470589, 0.49019608, 0.27058825, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjtau"]
+bg_color = Color(0.19215687, 0.5647059, 0.3137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f20t4"]
+bg_color = Color(0.07058824, 0.2509804, 0.12941177, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56kad"]
+bg_color = Color(0.20784314, 0.60784316, 0.3372549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ec5i"]
+bg_color = Color(0.16470589, 0.49019608, 0.27058825, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lm0q"]
+bg_color = Color(0.19215687, 0.5647059, 0.3137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1k4p"]
+bg_color = Color(0.06953035, 0.24958012, 0.12767243, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Level_selector" type="Node2D" unique_id=938700675]
 script = ExtResource("1_aeu7d")
 
@@ -33,31 +96,51 @@ offset_bottom = 408.0
 [node name="Stage_1" type="Button" parent="Panel" unique_id=556212078]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 192.0
-offset_bottom = 144.0
-theme_override_colors/font_color = Color(0.13682607, 0.13682559, 0.13682577, 1)
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_hover_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_aeu7d")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gkmvm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tr5s6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ljvb0")
 text = "Stage 1: 
 {points} points"
 
 [node name="Stage_2" type="Button" parent="Panel" unique_id=754825441]
 layout_mode = 0
 offset_left = 232.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 400.0
-offset_bottom = 144.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_hover_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rqfkl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vj03c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hjtau")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_f20t4")
 text = "Stage 2: 
 {points} points"
 
 [node name="Stage_3" type="Button" parent="Panel" unique_id=1929257894]
 layout_mode = 0
 offset_left = 440.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 608.0
-offset_bottom = 144.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_pressed_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_hover_color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_56kad")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2ec5i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5lm0q")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_v1k4p")
 text = "Stage 3: 
 {points} points"
 
