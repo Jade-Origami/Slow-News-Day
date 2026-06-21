@@ -159,30 +159,30 @@ offset_bottom = 352.38
 theme_override_styles/panel = SubResource("StyleBoxFlat_nm4f2")
 
 [node name="Rotate_Discard" type="Node2D" parent="." unique_id=980317954]
-position = Vector2(88, 584)
+position = Vector2(80, 584)
 script = ExtResource("2_82mmq")
 
 [node name="Discard_Button" type="Button" parent="Rotate_Discard" unique_id=98210761]
-offset_left = -64.0
+offset_left = -56.0
 offset_top = -32.0
-offset_right = 64.0
+offset_right = 56.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.9035985, 0.9035982, 0.9035982, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ad3m1")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iaote")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7gmi0")
-text = "Reroll Sentence"
+text = "Reroll (0/0)"
 
 [node name="Next_Button" type="Button" parent="Rotate_Discard" unique_id=1121693262]
-offset_left = -64.0
+offset_left = -56.0
 offset_top = -32.0
-offset_right = 64.0
+offset_right = 56.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.9035985, 0.9035982, 0.9035982, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_nyrl5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qo4ur")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lnmny")
-text = "Next Sentence"
+text = "Next Story"
 
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

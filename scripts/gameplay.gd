@@ -20,6 +20,8 @@ var sentences_used = 0
 var percentage_of_time = 0
 var double_speed_amount = 0
 var latest_letter = ""
+var reroll_amount
+var total_rerolls
 
 
 # Called when the node enters the scene tree for the first time.
@@ -123,10 +125,10 @@ func sentence_start():
 	mult = 0
 	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
-	$Rotate_Discard/Discard_Button.hide()
-	if PlayerStats.reroll_sentence_amount > 0:
-		$Rotate_Discard/Discard_Button.show()
 	$Rotate_Discard/Next_Button.hide()
+	$Rotate_Discard/Discard_Button.hide()
+	if reroll_amount > 0:
+		$Rotate_Discard/Discard_Button.show()
 	mistakes_made = 0
 	sentences_used = 0
 	is_first_letter = true
@@ -182,9 +184,10 @@ func apply_styling() -> void:
 
 
 func _on_discard_button_pressed() -> void:
-	if PlayerStats.reroll_sentence_amount > 0:
-		PlayerStats.reroll_sentence_amount -= 1
-		if PlayerStats.reroll_sentence_amount <= 0:
+	if reroll_amount > 0:
+		reroll_amount -= 1
+		$Rotate_Discard/Discard_Button.text = "Reroll (" + str(reroll_amount) + "/" + str(total_rerolls) + ")"
+		if reroll_amount <= 0:
 			$Rotate_Discard/Discard_Button.hide()
 		$Rotate_Discard.agitate()
 		$Gameplay.agitate()
@@ -239,6 +242,10 @@ func _on_gameplay_holder_new_round() -> void:
 	$ShopButton.hide()
 	update_stats()
 	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
+	reroll_amount = 1
+	check_upgrades("round_start")
+	total_rerolls = reroll_amount
+	$Rotate_Discard/Discard_Button.text = "Reroll (" + str(reroll_amount) + "/" + str(total_rerolls) + ")"
 	sentence_start()
 
 
@@ -269,8 +276,11 @@ func upgrade_apply(upgrade):
 	elif upgrade.id == "mistake_penalty":
 		double_speed_amount *= 0.75
 		return true
-	elif upgrade.id == "":
+	elif upgrade.id == "round_time_increase":
 		$Gameplay/TypingProgress.max_value = snapped((Sentences.correct_sentence.length() * 1.25), 1)
+		return true
+	elif upgrade.id == "reroll_sentence":
+		reroll_amount += 2
 		return true
 	else:
 		return false

@@ -20,7 +20,7 @@ var upgrades = [
 		"pretty_text": "Longer deadlines",
 		"explanation": "Increase timer max by 1/4",
 		"id": "round_time_increase",
-		"price": 7,
+		"price": 5,
 		"trigger_time": "sentence_start"
 	},
 	{
@@ -32,10 +32,10 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Editor's note",
-		"explanation": "+1 discard every round",
+		"explanation": "+2 discard every round",
 		"id": "reroll_sentence",
 		"price": 3,
-		"trigger_time": "start"
+		"trigger_time": "round_start"
 	},
 	{
 		"pretty_text": "Predictive text",

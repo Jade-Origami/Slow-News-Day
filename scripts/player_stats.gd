@@ -1,12 +1,11 @@
 extends Node
 
 
-var coins = 0
+var coins = 9999
 var flat_coin = 0
 var round_time_mult = 1
 var mistake_mult_num = 1
 var double_bypass = false
-var reroll_sentence_amount = 1
 var amount_tab_fill = 0
 var completed_rounds = 0
 var target_this_round : int
