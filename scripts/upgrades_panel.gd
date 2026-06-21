@@ -65,7 +65,6 @@ func check_availability():
 func set_item(item, pos) -> void:
 	active_upgrades[pos] = item
 	print(active_upgrades)
-	Upgrades.apply_upgrade_by_id(item.id)
 	update_panel(item, pos)
 
 

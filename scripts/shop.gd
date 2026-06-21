@@ -51,7 +51,6 @@ func _item_1_bought() -> void:
 	if (PlayerStats.coins >= item_1.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_1.price
 		$"../Panels/Upgrades_Panel".item_added(item_1)
-		print(str(item_1) + " has been brought")
 		$Rotate_1/Item_1.hide()
 		$Rotate_1/Item_1/Buy_Button.hide()
 		update_stats_text()
@@ -75,7 +74,6 @@ func _item_2_bought() -> void:
 	if (PlayerStats.coins >= item_2.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_2.price
 		$"../Panels/Upgrades_Panel".item_added(item_2)
-		print(str(item_2) + " has been brought")
 		$Rotate_2/Item_2.hide()
 		$Rotate_2/Item_2/Buy_Button.hide()
 		update_stats_text()
@@ -98,7 +96,6 @@ func _item_3_bought() -> void:
 	if (PlayerStats.coins >= item_3.price) and ($"../Panels/Upgrades_Panel".check_availability()):
 		PlayerStats.coins -= item_3.price
 		$"../Panels/Upgrades_Panel".item_added(item_3)
-		print(str(item_3) + " has been brought")
 		$Rotate_3/Item_3.hide()
 		$Rotate_3/Item_3/Buy_Button.hide()
 		update_stats_text()
@@ -156,4 +153,5 @@ func reset_item_views():
 
 
 func _on_gameplay_holder_shop_start() -> void:
+	reroll_cost = 2
 	reroll()

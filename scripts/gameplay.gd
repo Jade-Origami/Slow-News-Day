@@ -158,6 +158,7 @@ func sentence_start():
 func round_finished() -> void:
 	PlayerStats.completed_rounds += 1
 	give_rewards()
+	check_upgrades("end")
 	$Gameplay/TypingProgress.hide()
 	$ShopButton.show()
 
@@ -169,7 +170,6 @@ func give_rewards() -> void:
 		multiple_coin = "Coin"
 	else:
 		multiple_coin = "Coins"
-	coins_increase += PlayerStats.flat_coin
 	PlayerStats.coins += coins_increase
 	update_stats()
 
