@@ -1,23 +1,12 @@
 extends Node
 
 
-#not stats, but usefull to be available everywhere
-var rotate_steps = [0.05,0.1,0.05,0,-0.05,-0.05,-0.1,-0.1,-0.1,0.05,-0.05,0,0.05,0.1,0.05]
-func agitate_object(which_object) -> bool:
-	which_object.rotate(rotate_steps[which_object.current_step])
-	which_object.current_step += 1
-	if which_object.current_step == rotate_steps.size():
-		which_object.current_step = 0
-		return true
-	else:
-		return false
-
 var coins = 9999
 var flat_coin = 0
 var round_time_mult = 1
 var mistake_mult_num = 1
 var double_bypass = false
-var reroll_sentence_amount = 0
+var reroll_sentence_amount = 1
 var amount_tab_fill = 0
 var completed_rounds = 0
 var target_this_round : int

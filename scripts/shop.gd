@@ -5,32 +5,6 @@ var item_2
 var item_3
 var reroll_cost = 2
 
-var rotate_reroll_button
-var rotate_item_1
-var rotate_item_2
-var rotate_item_3
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	reroll()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if rotate_reroll_button:
-		if PlayerStats.agitate_object($Rotate_Reroll):
-			rotate_reroll_button = false
-	if rotate_item_1:
-		if PlayerStats.agitate_object($Rotate_1):
-			rotate_item_1 = false
-	if rotate_item_2:
-		if PlayerStats.agitate_object($Rotate_2):
-			rotate_item_2 = false
-	if rotate_item_3:
-		if PlayerStats.agitate_object($Rotate_3):
-			rotate_item_3 = false
-
 
 func _on_new_round_pressed() -> void:
 	$"..".initiate_level_select()
@@ -55,7 +29,7 @@ func _item_1_bought() -> void:
 		$Rotate_1/Item_1/Buy_Button.hide()
 		update_stats_text()
 	else:
-		rotate_item_1 = true
+		$Rotate_1.agitate()
 
 
 func _on_item_2_pressed() -> void:
@@ -78,7 +52,7 @@ func _item_2_bought() -> void:
 		$Rotate_2/Item_2/Buy_Button.hide()
 		update_stats_text()
 	else:
-		rotate_item_2 = true
+		$Rotate_2.agitate()
 
 
 func _on_item_3_pressed() -> void:
@@ -100,7 +74,7 @@ func _item_3_bought() -> void:
 		$Rotate_3/Item_3/Buy_Button.hide()
 		update_stats_text()
 	else:
-		rotate_item_3 = true
+		$Rotate_3.agitate()
 
 
 func reroll() -> void:
@@ -136,10 +110,10 @@ func _on_reroll_button_pressed() -> void:
 	if PlayerStats.coins >= reroll_cost:
 		PlayerStats.coins -= reroll_cost
 		reroll()
-		rotate_item_1 = true
-		rotate_item_2 = true
-		rotate_item_3 = true
-	rotate_reroll_button = true
+		$Rotate_1.agitate()
+		$Rotate_2.agitate()
+		$Rotate_3.agitate()
+	$Rotate_Reroll.agitate()
 
 
 func update_stats_text() -> void:

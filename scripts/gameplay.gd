@@ -7,12 +7,6 @@ var time_passed = 0
 var timer_active = false
 var is_first_letter = true
 var max_timer_value : int
-var rotate_sentence = false
-var rotate_discards = false
-var rotate_base = false
-var rotate_mult = false
-var rotate_hands = false
-var can_discard = true
 var multiple_coin : String
 var palette
 var round_total : int
@@ -48,23 +42,6 @@ func _process(_delta: float) -> void:
 	if timer_active and double_speed_amount > 0:
 		double_speed_amount -= 1
 		timer_increment()
-	if rotate_sentence:
-		if PlayerStats.agitate_object($Gameplay):
-			rotate_sentence = false
-	if rotate_discards:
-		if PlayerStats.agitate_object($Rotate_Discard):
-			rotate_discards = false
-			can_discard = true
-	if rotate_base:
-		if PlayerStats.agitate_object($"../Panels/Timer_bar/Base_Rotate"):
-			rotate_base = false
-	if rotate_mult:
-		if PlayerStats.agitate_object($"../Panels/Timer_bar/Mult_Rotate"):
-			rotate_mult = false
-	if rotate_hands:
-		if PlayerStats.agitate_object($"../Panels/Timer_bar/Hands_Rotate"):
-			rotate_hands = false
-	
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
@@ -78,11 +55,11 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		sentence_left = sentence_left.substr(1,-1)
 		
 		base += 1
-		rotate_base = true
+		$"../Panels/Timer_bar/Base_Rotate".agitate()
 		
 		if latest_letter.to_lower() == " ": #When word finished
 			mult += 1
-			rotate_mult = true
+			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 		
 		check_upgrades("on_type")
 		
@@ -95,13 +72,13 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	else:
 		mistakes_made += 1
 		double_speed_amount += 30 * PlayerStats.mistake_mult_num
-		rotate_sentence = true
+		$Gameplay.agitate()
 	if sentence_left.is_empty(): #Sentence has been typed correctly
 		sentence_finished()
 
 
 func update_stats():
-	rotate_hands = true
+	$"../Panels/Timer_bar/Hands_Rotate".agitate()
 	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
 	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score".text = str(total_score)
 	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
@@ -203,13 +180,12 @@ func apply_styling() -> void:
 
 
 func _on_discard_button_pressed() -> void:
-	if can_discard and PlayerStats.reroll_sentence_amount > 0:
+	if PlayerStats.reroll_sentence_amount > 0:
 		PlayerStats.reroll_sentence_amount -= 1
-		if PlayerStats.reroll_sentence_amount >= 0:
+		if PlayerStats.reroll_sentence_amount <= 0:
 			$Rotate_Discard/Discard_Button.hide()
-		can_discard = false
-		rotate_discards = true
-		rotate_sentence = true
+		$Rotate_Discard.agitate()
+		$Gameplay.agitate()
 		discard_sentence()
 
 
@@ -269,7 +245,7 @@ func upgrade_apply(upgrade):
 		if latest_letter.to_lower() == "a":
 			mult += 2
 			base += 2
-			rotate_mult = true
+			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 	if upgrade.id == "flat_coin_increase":
 		PlayerStats.coins += 1
 	if upgrade.id == "double_letters_bypass":
@@ -292,3 +268,5 @@ func check_upgrades(time, bypass = null):
 			pass
 		elif upgrade.trigger_time == time:
 			upgrade_apply(upgrade)
+			if i == 0:
+				pass
