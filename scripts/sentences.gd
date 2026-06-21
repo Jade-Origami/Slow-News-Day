@@ -9,9 +9,10 @@ var nouns = [
 	"mountain climber ", "tire ", "guitar ", "mouse ", "rat ", "spray bottle ", "tintin ",
 	"slinky ", "vaseline ", "lanyard ", "trouser leg ", "skirt ", "shirt ", "vampire ", "sun ",
 	"daughter ", "son ", "follower ", "streamer ", "wire ", "USB stick ", "keychain ",
-	"lost keys ", "pyjamas ", "scissors ", "flashcard ", "lamp ", "timer ", "magnet ",
+	"lost key ", "pyjamas ", "scissors ", "flashcard ", "lamp ", "timer ", "magnet ",
 	"scarf ", "bag ", "music festival ", "examiner " ,"lunatic ", "chicken ", "egg ",
-	"tree ", "tie ", "dress ", "wii sports resort ", "pokemon ", "hair "
+	"tree ", "tie ", "dress ", "wii sports resort ", "pokemon ", "hair ", "locker ",
+	"plant ", "flower ", "clock ", "sand ", "mountain "
 ]
 
 var adjectives = [
