@@ -31,7 +31,7 @@ func _on_gameplay_holder_level_select() -> void:
 	@warning_ignore("integer_division")
 	var completed_levels = floor(PlayerStats.completed_rounds / 3)
 	level_mult = completed_levels + 0.5
-	round_1_required = 200 * level_mult
+	round_1_required = 250 * level_mult
 	round_2_required = 300 * level_mult
 	round_3_required = 400 * level_mult
 	$Panel/Stage_1.disabled = true

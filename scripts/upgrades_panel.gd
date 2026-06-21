@@ -77,6 +77,11 @@ func update_panel(item, pos):
 		$Rotate_Item_3/Item.text = item.pretty_text
 	elif pos == 3:
 		$Rotate_Item_4/Item.text = item.pretty_text
+	var amount_upgrades = 0
+	for i in range(active_upgrades.size()):
+		if active_upgrades[i] != null:
+			amount_upgrades += 1
+	$Upgrade_Counter.text = str(amount_upgrades) + "/" +  str(active_upgrades.size())
 
 
 func _on_sell_button_1_pressed() -> void:

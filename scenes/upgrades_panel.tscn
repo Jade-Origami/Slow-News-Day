@@ -164,6 +164,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
+[node name="Upgrade_Counter" type="RichTextLabel" parent="." unique_id=1243506443]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 502.0
+offset_right = 212.0
+offset_bottom = 542.0
+theme_override_font_sizes/normal_font_size = 22
+text = "0/4"
+horizontal_alignment = 2
+
 [connection signal="pressed" from="Rotate_Item_1/Item" to="." method="_on_item_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_1/Item/Sell_Button" to="." method="_on_sell_button_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_2/Item" to="." method="_on_item_2_pressed"]

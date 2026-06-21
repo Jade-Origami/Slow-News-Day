@@ -4,7 +4,7 @@ extends Node
 var upgrades = [
 	{
 		"pretty_text": "Ghost writer",
-		"explanation": "Automatically types the next letter in a double-letter group\nand gives +3 mult every time\n[can only be brought once]",
+		"explanation": "Automatically types the next letter in a double-letter group\nand +3 mult",
 		"id": "double_letters_bypass",
 		"price": 5,
 		"trigger_time": "on_type"
@@ -32,7 +32,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Editor's note",
-		"explanation": "+2 discard every round",
+		"explanation": "+2 discards every round",
 		"id": "reroll_sentence",
 		"price": 3,
 		"trigger_time": "round_start"
@@ -56,6 +56,13 @@ var upgrades = [
 		"explanation": "Every typed \"S\" gives x1.25 mult",
 		"id": "s_upgrade",
 		"price": 7,
+		"trigger_time": "on_type"
+	},
+	{
+		"pretty_text": "Zippy keys",
+		"explanation": "every typed \"Z\" gives x2 mult ",
+		"id": "z_upgrade",
+		"price": 10,
 		"trigger_time": "on_type"
 	},
 ]

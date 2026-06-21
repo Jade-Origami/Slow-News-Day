@@ -75,6 +75,12 @@ corner_radius_bottom_left = 6
 [node name="GameplayScreen" type="Node2D" unique_id=724252821]
 script = ExtResource("1_bp0ix")
 
+[node name="Mistake_Overlay" type="ColorRect" parent="." unique_id=860634844]
+z_index = -2
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.8392157, 0, 0.09803922, 0.54509807)
+
 [node name="SentenceTake" type="LineEdit" parent="." unique_id=1077539471]
 offset_left = 40.0
 offset_top = -64.0
@@ -110,7 +116,7 @@ position = Vector2(550, 271.62)
 script = ExtResource("2_82mmq")
 
 [node name="SentenceShow" type="RichTextLabel" parent="Gameplay" unique_id=1225372798]
-z_index = 1
+z_index = 2
 offset_left = -240.0
 offset_top = -192.0
 offset_right = 240.0
@@ -183,12 +189,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nyrl5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qo4ur")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lnmny")
 text = "Next Story"
-
-[node name="Mistake_Overlay" type="ColorRect" parent="." unique_id=860634844]
-z_index = -2
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.8392157, 0, 0.09803922, 0.54509807)
 
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

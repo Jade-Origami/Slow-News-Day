@@ -115,7 +115,6 @@ func sentence_finished() -> void:
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
 	update_stats()
-	print(PlayerStats.target_this_round)
 	if total_score >= PlayerStats.target_this_round:
 		round_finished()
 	elif sentences_used >= PlayerStats.sentences_allowed:
@@ -281,7 +280,6 @@ func upgrade_apply(upgrade):
 	elif upgrade.id == "s_upgrade":
 		if latest_letter.to_lower() == "s":
 			mult = snapped((mult  * 1.25), 1)
-			print("snapped to " + str(mult))
 			return true
 	
 	elif upgrade.id == "mistake_penalty":
@@ -300,6 +298,11 @@ func upgrade_apply(upgrade):
 	elif upgrade.id == "tab_to_fill":
 		can_tab_to_fill = true
 		return true
+	
+	elif upgrade.id == "z_upgrade":
+		if latest_letter.lower() == "z":
+			mult *= 2
+			return true
 	
 	else:
 		return false
