@@ -12,11 +12,6 @@ func _ready() -> void:
 	_on_gameplay_holder_level_select()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
 func _on_stage_1_pressed() -> void:
 	PlayerStats.target_this_round = round_1_required
 	$"..".initiate_round()

@@ -8,10 +8,6 @@ func _ready() -> void:
 	$Rotate_Item_3/Item.hide()
 	$Rotate_Item_4/Item.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
 
 var active_upgrades = [null, null, null, null]
 

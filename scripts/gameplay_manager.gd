@@ -11,11 +11,6 @@ func _ready() -> void:
 	$Level_selector.show()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
 func initiate_round():
 	new_round.emit()
 	$GameplayScreen.show()
