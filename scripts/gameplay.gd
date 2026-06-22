@@ -296,7 +296,7 @@ func upgrade_apply(upgrade):
 		return true
 	
 	elif upgrade.id == "z_upgrade":
-		if latest_letter.lower() == "z":
+		if latest_letter.to_lower() == "z":
 			mult *= 2
 			return true
 	
