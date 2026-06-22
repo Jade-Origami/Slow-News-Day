@@ -21,7 +21,7 @@ color = Color(1, 0.68125224, 0.9844572, 1)
 
 [node name="GameplayScreen" parent="." unique_id=724252821 instance=ExtResource("2_cpam5")]
 
-[node name="Mistake_Overlay" parent="GameplayScreen" index="4" unique_id=860634844]
+[node name="Mistake_Overlay" parent="GameplayScreen" index="0" unique_id=860634844]
 visible = false
 
 [node name="Panels" type="Panel" parent="." unique_id=893437777]

@@ -87,12 +87,8 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
 	if sentence_left.is_empty(): #Sentence has been typed correctly
+		check_upgrades("sentence_end")
 		sentence_finished()
-
-
-func update_stats():
-	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
-	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score".text = str(total_score)
 
 
 func sentence_finished() -> void:
@@ -114,7 +110,7 @@ func sentence_finished() -> void:
 	$Gameplay/SentenceShow.text = "Round clear!
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
-	update_stats()
+	refresh_Score_Panel()
 	if total_score >= PlayerStats.target_this_round:
 		round_finished()
 	elif sentences_used >= PlayerStats.sentences_allowed:
@@ -148,7 +144,7 @@ func sentence_start():
 		$Rotate_Discard/Discard_Button.show()
 	mistakes_made = 0
 	is_first_letter = true
-	#update_stats()
+	refresh_Score_Panel()
 	check_upgrades("sentence_start")
 
 
@@ -168,7 +164,7 @@ func give_rewards() -> void:
 	else:
 		multiple_coin = "Coins"
 	$"..".add_money(coins_increase)
-	update_stats()
+	refresh_Score_Panel()
 
 
 func _on_shop_button_pressed() -> void:
@@ -246,7 +242,7 @@ func _on_gameplay_holder_new_round() -> void:
 	sentences_used = 0
 	apply_styling()
 	$ShopButton.hide()
-	update_stats()
+	refresh_Score_Panel()
 	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
 	reroll_amount = 1
 	check_upgrades("round_start")
@@ -304,6 +300,12 @@ func upgrade_apply(upgrade):
 			mult *= 2
 			return true
 	
+	elif upgrade.id == "flat_mult":
+		mult += 4
+		$"../Panels/Timer_bar/Mult_Rotate".agitate()
+		refresh_Score_Panel()
+		return true
+	
 	else:
 		return false
 
@@ -326,3 +328,10 @@ func check_upgrades(time, bypass = null):
 					$"../Panels/Upgrades_Panel/Rotate_Item_3".agitate()
 				elif i == 3:
 					$"../Panels/Upgrades_Panel/Rotate_Item_4".agitate()
+
+
+func refresh_Score_Panel():
+	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score". text = str(total_score)
+	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
+	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
+	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)

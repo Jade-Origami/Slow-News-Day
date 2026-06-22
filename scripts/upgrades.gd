@@ -65,4 +65,11 @@ var upgrades = [
 		"price": 10,
 		"trigger_time": "on_type"
 	},
+	{
+		"pretty_text": "Trusted tabloid",
+		"explanation": "+4 mult every sentence",
+		"id": "flat_mult",
+		"price": 4,
+		"trigger_time": "sentence_end"
+	},
 ]

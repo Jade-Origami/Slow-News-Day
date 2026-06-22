@@ -31,6 +31,6 @@ offset_bottom = 648.0
 button_mask = 3
 text = "Github"
 underline = 1
-uri = "https://github.com/Jade-Origami/typing-roguelike"
+uri = "https://github.com/Jade-Origami/Slow-News-Day"
 
 [connection signal="pressed" from="Gamescreen" to="." method="_on_gamescreen_pressed"]
