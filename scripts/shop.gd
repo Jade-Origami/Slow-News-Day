@@ -76,19 +76,21 @@ func _item_3_bought() -> void:
 
 func reroll() -> void:
 	var shop_items = ["","",""]
-	item_1 = Upgrades.upgrades.pick_random()
+	item_1 = weighted_random(Upgrades.upgrades)
+	while item_1 in $"../Panels/Upgrades_Panel".active_upgrades:
+		item_1 = weighted_random(Upgrades.upgrades)
 	$Rotate_1/Item_1.text = item_1.pretty_text
 	$Rotate_1/Item_1/Buy_Button.text = str(item_1.price) + " Coins"
 	shop_items[0] = item_1.id
-	item_2 = Upgrades.upgrades.pick_random()
-	while item_2.id in shop_items:
-		item_2 = Upgrades.upgrades.pick_random()
+	item_2 = weighted_random(Upgrades.upgrades)
+	while item_2.id in shop_items or item_2 in $"../Panels/Upgrades_Panel".active_upgrades:
+		item_2 = weighted_random(Upgrades.upgrades)
 	$Rotate_2/Item_2.text = item_2.pretty_text
 	$Rotate_2/Item_2/Buy_Button.text = str(item_2.price) + " Coins"
 	shop_items[1] = item_2.id
-	item_3 = Upgrades.upgrades.pick_random()
-	while item_3.id in shop_items:
-		item_3 = Upgrades.upgrades.pick_random()
+	item_3 = weighted_random(Upgrades.upgrades)
+	while item_3.id in shop_items or item_3 in $"../Panels/Upgrades_Panel".active_upgrades:
+		item_3 = weighted_random(Upgrades.upgrades)
 	$Rotate_3/Item_3.text = item_3.pretty_text
 	$Rotate_3/Item_3/Buy_Button.text = str(item_3.price) + " Coins"
 	shop_items[2] = item_3.id
@@ -121,3 +123,16 @@ func reset_item_views():
 func _on_gameplay_holder_shop_start() -> void:
 	reroll_cost = 2
 	reroll()
+
+
+func weighted_random(list):
+	var total_weight = 0
+	for i in range(list.size()):
+		total_weight += list[i].weight
+	var random_weight = randi_range(1, total_weight)
+	var accumulative_total = 0
+	for i in range(list.size()):
+		accumulative_total += list[i].weight
+		if random_weight <= accumulative_total:
+			return list[i]
+	return 0

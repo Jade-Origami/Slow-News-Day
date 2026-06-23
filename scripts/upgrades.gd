@@ -8,7 +8,7 @@ var upgrades = [
 		"id": "double_letters_bypass",
 		"price": 5,
 		"trigger_time": "on_type",
-		"weight": 0
+		"weight": 10
 	},
 	{
 		"pretty_text": "Higher Wages",
@@ -16,7 +16,7 @@ var upgrades = [
 		"id": "flat_coin_increase",
 		"price": 4,
 		"trigger_time": "end",
-		"weight": 0
+		"weight": 20
 	},
 	{
 		"pretty_text": "Longer Deadlines",
@@ -24,7 +24,7 @@ var upgrades = [
 		"id": "round_time_increase",
 		"price": 5,
 		"trigger_time": "sentence_start",
-		"weight": 0
+		"weight": 20
 	},
 	{
 		"pretty_text": "Autocorrect",
@@ -32,7 +32,7 @@ var upgrades = [
 		"id": "mistake_penalty",
 		"price": 8,
 		"trigger_time": "mistake_made",
-		"weight": 0
+		"weight": 15
 	},
 	{
 		"pretty_text": "Editor's Note",
@@ -40,7 +40,7 @@ var upgrades = [
 		"id": "reroll_sentence",
 		"price": 3,
 		"trigger_time": "round_start",
-		"weight": 0
+		"weight": 20
 	},
 	{
 		"pretty_text": "Predictive Text",
@@ -48,7 +48,7 @@ var upgrades = [
 		"id": "tab_to_fill",
 		"price": 11,
 		"trigger_time": "round_start",
-		"weight": 0
+		"weight": 10
 	},
 	{
 		"pretty_text": "Ace Writer",
@@ -56,7 +56,7 @@ var upgrades = [
 		"id": "a_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
-		"weight": 0
+		"weight": 5
 	},
 	{
 		"pretty_text": "Sublime Text",
@@ -64,7 +64,7 @@ var upgrades = [
 		"id": "s_upgrade",
 		"price": 7,
 		"trigger_time": "on_type",
-		"weight": 0
+		"weight": 5
 	},
 	{
 		"pretty_text": "Zippy Keys",
@@ -72,7 +72,7 @@ var upgrades = [
 		"id": "z_upgrade",
 		"price": 10,
 		"trigger_time": "on_type",
-		"weight": 0
+		"weight": 10
 	},
 	{
 		"pretty_text": "Trusted Tabloid",
@@ -80,7 +80,7 @@ var upgrades = [
 		"id": "flat_mult",
 		"price": 4,
 		"trigger_time": "sentence_end",
-		"weight": 0
+		"weight": 20
 	},
 	{
 		"pretty_text": "Upgrade Stencil",
@@ -88,6 +88,6 @@ var upgrades = [
 		"id": "empty_slot",
 		"price": 7,
 		"trigger_time": "sentence_end",
-		"weight": 0
+		"weight": 5
 	},
 ]

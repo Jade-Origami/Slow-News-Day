@@ -24,11 +24,11 @@ var reroll_amount
 var total_rerolls
 var can_tab_to_fill
 var mistake_overlay_timer = 0
+var coin_round_reward : int
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_on_gameplay_holder_new_round()
 	$Mistake_Overlay.hide()
 	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£0"
 
@@ -133,8 +133,8 @@ func sentence_start():
 	time_passed = 0
 	$"../Panels/Timer_bar".value = time_passed
 	$Gameplay/TypingProgress.value = 0
-	base = 0
-	mult = 0
+	base = 1
+	mult = 1
 	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
 	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(1.25)
@@ -157,7 +157,7 @@ func round_finished() -> void:
 
 
 func give_rewards() -> void:
-	var coins_increase = ((4 - sentences_used) * 2)
+	var coins_increase = ((4 - sentences_used) * 1) + coin_round_reward
 	if coins_increase < 1:
 		coins_increase = 1
 		multiple_coin = "Coin"
@@ -237,7 +237,8 @@ func _on_next_button_pressed() -> void:
 	sentence_start()
 
 
-func _on_gameplay_holder_new_round() -> void:
+func _on_gameplay_holder_new_round(round_reward) -> void:
+	coin_round_reward = round_reward
 	total_score = 0
 	sentences_used = 0
 	apply_styling()

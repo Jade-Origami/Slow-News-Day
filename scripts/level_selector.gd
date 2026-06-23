@@ -2,9 +2,11 @@ extends Node2D
 
 
 var level_mult
+var level_requirements = [100, 300, 800, 2000, 5000, 11000, 20000, 35000, 50000]
 var round_1_required : int
 var round_2_required : int
 var round_3_required : int
+var round_reward : int
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,26 +16,28 @@ func _ready() -> void:
 
 func _on_stage_1_pressed() -> void:
 	PlayerStats.target_this_round = round_1_required
-	$"..".initiate_round()
+	round_reward = 3
+	$"..".initiate_round(round_reward)
 
 
 func _on_stage_2_pressed() -> void:
 	PlayerStats.target_this_round = round_2_required
-	$"..".initiate_round()
+	round_reward = 4
+	$"..".initiate_round(round_reward)
 
 
 func _on_stage_3_pressed() -> void:
 	PlayerStats.target_this_round = round_3_required
-	$"..".initiate_round()
+	round_reward = 5
+	$"..".initiate_round(round_reward)
 
 
 func _on_gameplay_holder_level_select() -> void:
 	@warning_ignore("integer_division")
-	var completed_levels = floor(PlayerStats.completed_rounds / 3)
-	level_mult = completed_levels + 0.5
-	round_1_required = 250 * level_mult
-	round_2_required = 300 * level_mult
-	round_3_required = 400 * level_mult
+	var level_num = floor(PlayerStats.completed_rounds / 3) + 1
+	round_1_required = level_requirements[level_num]
+	round_2_required = level_requirements[level_num] * 1.5
+	round_3_required = level_requirements[level_num] * 2
 	$Panel/Stage_1.disabled = true
 	$Panel/Stage_2.disabled = true
 	$Panel/Stage_3.disabled = true
