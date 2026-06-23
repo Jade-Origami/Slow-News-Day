@@ -12,32 +12,34 @@ func _ready() -> void:
 var active_upgrades = [null, null, null, null]
 
 
-func _on_item_1_pressed() -> void:
-	$Rotate_Item_1/Item/Sell_Button.visible = !$Rotate_Item_1/Item/Sell_Button.visible
+func hide_every_sell_button():
+	$Rotate_Item_1/Item/Sell_Button.visible = false
 	$Rotate_Item_2/Item/Sell_Button.visible = false
 	$Rotate_Item_3/Item/Sell_Button.visible = false
 	$Rotate_Item_4/Item/Sell_Button.visible = false
+
+func _on_item_1_pressed() -> void:
+	var before = $Rotate_Item_1/Item/Sell_Button.visible
+	hide_every_sell_button()
+	$Rotate_Item_1/Item/Sell_Button.visible = !before
 	$Rotate_Item_1/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[0].price/2, 1))
 
 func _on_item_2_pressed() -> void:
-	$Rotate_Item_2/Item/Sell_Button.visible = !$Rotate_Item_2/Item/Sell_Button.visible
-	$Rotate_Item_1/Item/Sell_Button.visible = false
-	$Rotate_Item_3/Item/Sell_Button.visible = false
-	$Rotate_Item_4/Item/Sell_Button.visible = false
+	var before = $Rotate_Item_2/Item/Sell_Button.visible
+	hide_every_sell_button()
+	$Rotate_Item_2/Item/Sell_Button.visible = !before
 	$Rotate_Item_2/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[1].price/2, 1))
 
 func _on_item_3_pressed() -> void:
-	$Rotate_Item_3/Item/Sell_Button.visible = !$Rotate_Item_3/Item/Sell_Button.visible
-	$Rotate_Item_1/Item/Sell_Button.visible = false
-	$Rotate_Item_2/Item/Sell_Button.visible = false
-	$Rotate_Item_4/Item/Sell_Button.visible = false
+	var before = $Rotate_Item_3/Item/Sell_Button.visible
+	hide_every_sell_button()
+	$Rotate_Item_3/Item/Sell_Button.visible = !before
 	$Rotate_Item_3/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[2].price/2, 1))
 
 func _on_item_4_pressed() -> void:
-	$Rotate_Item_4/Item/Sell_Button.visible = !$Rotate_Item_4/Item/Sell_Button.visible
-	$Rotate_Item_1/Item/Sell_Button.visible = false
-	$Rotate_Item_2/Item/Sell_Button.visible = false
-	$Rotate_Item_3/Item/Sell_Button.visible = false
+	var before = $Rotate_Item_4/Item/Sell_Button.visible
+	hide_every_sell_button()
+	$Rotate_Item_4/Item/Sell_Button.visible = !before
 	$Rotate_Item_4/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[3].price/2, 1))
 
 

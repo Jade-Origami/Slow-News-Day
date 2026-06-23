@@ -306,6 +306,19 @@ func upgrade_apply(upgrade):
 		refresh_Score_Panel()
 		return true
 	
+	
+	elif upgrade.id == "empty_slot":
+		var amount_empty = 0
+		var active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
+		for i in range(active_upgrades.size()):
+			if active_upgrades[i] == null:
+				amount_empty += 1
+			elif active_upgrades[i].id == "empty_slot":
+				amount_empty += 1
+		var mult_mult = 1.5 * amount_empty
+		mult = snapped((mult * mult_mult), 1)
+		refresh_Score_Panel()
+	
 	else:
 		return false
 
