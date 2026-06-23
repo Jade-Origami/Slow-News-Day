@@ -18,29 +18,44 @@ func hide_every_sell_button():
 	$Rotate_Item_3/Item/Sell_Button.visible = false
 	$Rotate_Item_4/Item/Sell_Button.visible = false
 
+func hide_every_move_button():
+	$Rotate_Item_1/Item/Down_Button.hide()
+	$Rotate_Item_2/Item/Up_Button.hide()
+	$Rotate_Item_2/Item/Down_Button.hide()
+	$Rotate_Item_3/Item/Up_Button.hide()
+	$Rotate_Item_3/Item/Down_Button.hide()
+	$Rotate_Item_4/Item/Up_Button.hide()
+
+
 func _on_item_1_pressed() -> void:
 	var before = $Rotate_Item_1/Item/Sell_Button.visible
 	hide_every_sell_button()
+	hide_every_move_button()
 	$Rotate_Item_1/Item/Sell_Button.visible = !before
-	$Rotate_Item_1/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[0].price/2, 1))
+	$Rotate_Item_1/Item/Down_Button.visible = !before
 
 func _on_item_2_pressed() -> void:
 	var before = $Rotate_Item_2/Item/Sell_Button.visible
 	hide_every_sell_button()
+	hide_every_move_button()
 	$Rotate_Item_2/Item/Sell_Button.visible = !before
-	$Rotate_Item_2/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[1].price/2, 1))
+	$Rotate_Item_2/Item/Up_Button.visible = !before
+	$Rotate_Item_2/Item/Down_Button.visible = !before
 
 func _on_item_3_pressed() -> void:
 	var before = $Rotate_Item_3/Item/Sell_Button.visible
 	hide_every_sell_button()
+	hide_every_move_button()
 	$Rotate_Item_3/Item/Sell_Button.visible = !before
-	$Rotate_Item_3/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[2].price/2, 1))
+	$Rotate_Item_3/Item/Up_Button.visible = !before
+	$Rotate_Item_3/Item/Down_Button.visible = !before
 
 func _on_item_4_pressed() -> void:
 	var before = $Rotate_Item_4/Item/Sell_Button.visible
 	hide_every_sell_button()
+	hide_every_move_button()
 	$Rotate_Item_4/Item/Sell_Button.visible = !before
-	$Rotate_Item_4/Item/Sell_Button.text = "£" + str(snapped(active_upgrades[3].price/2, 1))
+	$Rotate_Item_4/Item/Up_Button.visible = !before
 
 
 func item_added(item):
@@ -71,19 +86,30 @@ func set_item(item, pos) -> void:
 
 
 func update_panel(item, pos):
+	if active_upgrades[pos] == null:
+		return
 	if pos == 0:
 		$Rotate_Item_1/Item.text = item.pretty_text
+		$Rotate_Item_1/Item/Sell_Button.text = "£" + str(snapped(item.price/2, 1))
 	elif pos == 1:
 		$Rotate_Item_2/Item.text = item.pretty_text
+		$Rotate_Item_2/Item/Sell_Button.text = "£" + str(snapped(item.price/2, 1))
 	elif pos == 2:
 		$Rotate_Item_3/Item.text = item.pretty_text
+		$Rotate_Item_3/Item/Sell_Button.text = "£" + str(snapped(item.price/2, 1))
 	elif pos == 3:
 		$Rotate_Item_4/Item.text = item.pretty_text
+		$Rotate_Item_4/Item/Sell_Button.text = "£" + str(snapped(item.price/2, 1))
 	var amount_upgrades = 0
 	for i in range(active_upgrades.size()):
 		if active_upgrades[i] != null:
 			amount_upgrades += 1
 	$Upgrade_Counter.text = str(amount_upgrades) + "/" +  str(active_upgrades.size())
+
+
+func whole_panel_update():
+	for i in range(active_upgrades.size()):
+		update_panel(active_upgrades[i], i)
 
 
 func _on_sell_button_1_pressed() -> void:
@@ -110,3 +136,52 @@ func _on_sell_button_4_pressed() -> void:
 	$"../..".add_money(snapped(active_upgrades[3].price/2, 1))
 	active_upgrades[3] = null
 	
+
+
+func Item_1_Down() -> void:
+	var temp = active_upgrades[0]
+	active_upgrades[0] = active_upgrades[1]
+	active_upgrades[1] = temp
+	whole_panel_update()
+	_on_item_2_pressed()
+	
+
+
+func Item_2_Up() -> void:
+	var temp = active_upgrades[1]
+	active_upgrades[1] = active_upgrades[0]
+	active_upgrades[0] = temp
+	whole_panel_update()
+	_on_item_1_pressed()
+
+
+func Item_2_Down() -> void:
+	var temp = active_upgrades[1]
+	active_upgrades[1] = active_upgrades[2]
+	active_upgrades[2] = temp
+	whole_panel_update()
+	_on_item_3_pressed()
+
+
+func Item_3_Up() -> void:
+	var temp = active_upgrades[2]
+	active_upgrades[2] = active_upgrades[1]
+	active_upgrades[1] = temp
+	whole_panel_update()
+	_on_item_2_pressed()
+
+
+func Item_3_Down() -> void:
+	var temp = active_upgrades[2]
+	active_upgrades[2] = active_upgrades[3]
+	active_upgrades[3] = temp
+	whole_panel_update()
+	_on_item_4_pressed()
+
+
+func Item_4_Up() -> void:
+	var temp = active_upgrades[3]
+	active_upgrades[3] = active_upgrades[2]
+	active_upgrades[2] = temp
+	whole_panel_update()
+	_on_item_3_pressed()

@@ -24,6 +24,36 @@ bg_color = Color(1, 0.814525, 0.68012947, 1)
 corner_radius_top_left = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpirq"]
+bg_color = Color(0.7716684, 0.2157591, 0.8259531, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgqyg"]
+bg_color = Color(0.60141885, 0.09865675, 0.65024465, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0t1c"]
+bg_color = Color(0.7176471, 0.16470589, 0.77254903, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_648e1"]
+bg_color = Color(0.7716684, 0.2157591, 0.8259531, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22vu8"]
+bg_color = Color(0.60141885, 0.09865675, 0.65024465, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8v41"]
+bg_color = Color(0.7176471, 0.16470589, 0.77254903, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
 [node name="Upgrades_Panel" type="Panel" unique_id=883776731]
 z_index = -1
 offset_right = 216.0
@@ -65,6 +95,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
+[node name="Down_Button" type="Button" parent="Rotate_Item_1/Item" unique_id=113443256]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 96.0
+offset_right = 152.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_jpirq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fgqyg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o0t1c")
+text = "↓"
+
 [node name="Rotate_Item_2" type="Node2D" parent="." unique_id=1940665034]
 position = Vector2(112, 192)
 script = ExtResource("2_648e1")
@@ -97,6 +144,39 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fo7xt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
+
+[node name="Up_Button" type="Button" parent="Rotate_Item_2/Item" unique_id=1673457197]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = -32.0
+offset_right = 152.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_648e1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_22vu8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q8v41")
+text = "↑"
+
+[node name="Down_Button" type="Button" parent="Rotate_Item_2/Item" unique_id=638224439]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 96.0
+offset_right = 152.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_jpirq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fgqyg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o0t1c")
+text = "↓"
 
 [node name="Rotate_Item_3" type="Node2D" parent="." unique_id=1938798463]
 position = Vector2(112, 312)
@@ -131,6 +211,39 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
+[node name="Up_Button" type="Button" parent="Rotate_Item_3/Item" unique_id=1015261198]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = -32.0
+offset_right = 152.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_648e1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_22vu8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q8v41")
+text = "↑"
+
+[node name="Down_Button" type="Button" parent="Rotate_Item_3/Item" unique_id=1546841225]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 96.0
+offset_right = 152.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_jpirq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fgqyg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o0t1c")
+text = "↓"
+
 [node name="Rotate_Item_4" type="Node2D" parent="." unique_id=1482027253]
 position = Vector2(112, 432)
 script = ExtResource("2_648e1")
@@ -164,6 +277,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lg1w1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0s7kc")
 text = "£10"
 
+[node name="Up_Button" type="Button" parent="Rotate_Item_4/Item" unique_id=1474057900]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = -32.0
+offset_right = 152.0
+theme_override_colors/font_color = Color(0.08469013, 0.08468985, 0.08468991, 1)
+theme_override_colors/font_pressed_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_colors/font_hover_color = Color(0.08627451, 0.08627451, 0.08627451, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_648e1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_22vu8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q8v41")
+text = "↑"
+
 [node name="Upgrade_Counter" type="RichTextLabel" parent="." unique_id=1243506443]
 layout_mode = 0
 offset_left = 108.0
@@ -176,9 +305,15 @@ horizontal_alignment = 2
 
 [connection signal="pressed" from="Rotate_Item_1/Item" to="." method="_on_item_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_1/Item/Sell_Button" to="." method="_on_sell_button_1_pressed"]
+[connection signal="pressed" from="Rotate_Item_1/Item/Down_Button" to="." method="Item_1_Down"]
 [connection signal="pressed" from="Rotate_Item_2/Item" to="." method="_on_item_2_pressed"]
 [connection signal="pressed" from="Rotate_Item_2/Item/Sell_Button" to="." method="_on_sell_button_2_pressed"]
+[connection signal="pressed" from="Rotate_Item_2/Item/Up_Button" to="." method="Item_2_Up"]
+[connection signal="pressed" from="Rotate_Item_2/Item/Down_Button" to="." method="Item_2_Down"]
 [connection signal="pressed" from="Rotate_Item_3/Item" to="." method="_on_item_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_3/Item/Sell_Button" to="." method="_on_sell_button_3_pressed"]
+[connection signal="pressed" from="Rotate_Item_3/Item/Up_Button" to="." method="Item_3_Up"]
+[connection signal="pressed" from="Rotate_Item_3/Item/Down_Button" to="." method="Item_3_Down"]
 [connection signal="pressed" from="Rotate_Item_4/Item" to="." method="_on_item_4_pressed"]
 [connection signal="pressed" from="Rotate_Item_4/Item/Sell_Button" to="." method="_on_sell_button_4_pressed"]
+[connection signal="pressed" from="Rotate_Item_4/Item/Up_Button" to="." method="Item_4_Up"]
