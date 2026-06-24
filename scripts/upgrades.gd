@@ -106,4 +106,20 @@ var upgrades = [
 		"trigger_time": "changes",
 		"weight": 5
 	},
+	{
+		"pretty_text": "Surplus Items",
+		"explanation": "+1 upgrade available in shop \n[cannot be copied]",
+		"id": "shop_surplus",
+		"price": 10,
+		"trigger_time": "shop",
+		"weight": 15
+	},
+	{
+		"pretty_text": "Constant Sale",
+		"explanation": "Rerolls start at 0",
+		"id": "low_reroll",
+		"price": 6,
+		"trigger_time": "shop",
+		"weight": 14
+	},
 ]

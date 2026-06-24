@@ -98,10 +98,13 @@ func reroll() -> void:
 	$Rotate_Reroll/Reroll_button.text = "Reroll: " + str(reroll_cost) + " Coins"
 	$Rotate_1/Item_1/Buy_Button.hide()
 	$Rotate_2/Item_2/Buy_Button.hide()
-	$Rotate_3/Item_3/Buy_Button.hide()
 	$Rotate_1/Item_1.show()
 	$Rotate_2/Item_2.show()
-	$Rotate_3/Item_3.show()
+	if $"../GameplayScreen".is_upgrade_present("shop_surplus"):
+		$Rotate_3/Item_3.show()
+	else:
+		$Rotate_3/Item_3.hide()
+	$Rotate_3/Item_3/Buy_Button.hide()
 
 
 func _on_reroll_button_pressed() -> void:
@@ -121,7 +124,10 @@ func reset_item_views():
 
 
 func _on_gameplay_holder_shop_start() -> void:
-	reroll_cost = 2
+	if $"../GameplayScreen".is_upgrade_present("low_reroll"):
+		reroll_cost = -1
+	else:
+		reroll_cost = 2
 	reroll()
 
 

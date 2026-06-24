@@ -51,7 +51,7 @@ position = Vector2(336, 56)
 [node name="newRound" parent="ShopScene" index="0" unique_id=1678798280]
 offset_left = 656.0
 offset_top = 488.0
-offset_right = 785.0
+offset_right = 784.0
 offset_bottom = 560.0
 
 [node name="Buy_Button" parent="ShopScene/Rotate_1/Item_1" parent_id_path=PackedInt32Array(1063027230, 2028086448) index="0" unique_id=395467926]

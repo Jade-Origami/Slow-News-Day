@@ -5,24 +5,24 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
 bg_color = Color(0.49803922, 0.6745098, 0.8392157, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c04yc"]
 bg_color = Color(0.21194497, 0.36187017, 0.49710256, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlo24"]
 bg_color = Color(0.34907207, 0.5403611, 0.7150643, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g438"]
 bg_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
@@ -134,24 +134,24 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwlf8"]
 bg_color = Color(0.64705884, 0.40392157, 0.5568628, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iv8jd"]
 bg_color = Color(0.41377726, 0.23493326, 0.3488486, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_av8qb"]
 bg_color = Color(0.5456968, 0.32470557, 0.46478522, 1)
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ShopScene" type="Node2D" unique_id=1063027230]
 script = ExtResource("1_hovpq")
@@ -235,6 +235,7 @@ position = Vector2(112, 280)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_3" type="Button" parent="Rotate_3" unique_id=1754266222]
+visible = false
 offset_left = -112.0
 offset_top = -72.0
 offset_right = 112.0

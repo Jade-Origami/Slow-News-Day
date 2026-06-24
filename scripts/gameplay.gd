@@ -173,28 +173,12 @@ func _on_shop_button_pressed() -> void:
 	$"..".initiate_shop()
 
 
-func make_stylebox(color: Color, corner_radius: int = 6) -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = color
-	sb.corner_radius_top_left = corner_radius
-	sb.corner_radius_top_right = corner_radius
-	sb.corner_radius_bottom_left = corner_radius
-	sb.corner_radius_bottom_right = corner_radius
-	return sb
-
-
 func apply_styling() -> void:
 	palette = PlayerStats.palettes.pick_random()
 	$"../Background".color = palette.background
 	var bar_fill := StyleBoxFlat.new()
 	bar_fill.bg_color = Color(palette.completed_text)
 	$Gameplay/TypingProgress.add_theme_stylebox_override("fill", bar_fill)
-	$ShopButton.add_theme_stylebox_override("normal", make_stylebox(palette.shop_colour_normal))
-	$ShopButton.add_theme_stylebox_override("hover", make_stylebox(palette.shop_colour_hover))
-	$ShopButton.add_theme_stylebox_override("pressed", make_stylebox(palette.shop_colour_pressed))
-	$ShopButton.add_theme_color_override("font_color", palette.shop_font)
-	$ShopButton.add_theme_color_override("font_hover_color", palette.shop_font)
-	$ShopButton.add_theme_color_override("font_pressed_color", palette.shop_font)
 
 
 func _on_discard_button_pressed() -> void:
@@ -322,6 +306,10 @@ func upgrade_apply(upgrade):
 		refresh_Score_Panel()
 		return true
 	
+	elif upgrade.id == "shop_surplus":
+		$"../ShopScene".extra_item = true
+		return true
+	
 	else:
 		return false
 
@@ -343,6 +331,15 @@ func check_upgrades(time, bypass = null):
 					$"../Panels/Upgrades_Panel/Rotate_Item_3".agitate()
 				elif i == 3:
 					$"../Panels/Upgrades_Panel/Rotate_Item_4".agitate()
+
+
+func is_upgrade_present(itemid):
+	for i in range($"../Panels/Upgrades_Panel".active_upgrades.size()):
+		if $"../Panels/Upgrades_Panel".active_upgrades[i] == null:
+			pass
+		elif $"../Panels/Upgrades_Panel".active_upgrades[i].id == itemid:
+			return true
+	return false
 
 
 func furthest_non_null_index(arr: Array) -> int:
