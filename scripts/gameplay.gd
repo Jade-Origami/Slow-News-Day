@@ -13,24 +13,25 @@ var round_total : int
 var player_total : int
 var typed_already
 var used_predictive = false
-var base : int
-var mult : int
+var base = 1
+var mult = 1
 var total_score = 0
 var sentences_used = 0
 var percentage_of_time = 0
 var double_speed_amount = 0
 var latest_letter = ""
-var reroll_amount
+var reroll_amount = 1
 var total_rerolls
-var can_tab_to_fill
+var can_tab_to_fill = false
 var mistake_overlay_timer = 0
 var coin_round_reward : int
+var set_before_round_active_upgrades = [null, null, null, null]
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Mistake_Overlay.hide()
-	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£0"
+	$"../Panels/Timer_bar/Coins_Rotate/Coins_Counter".text = "£" + str(PlayerStats.coins)
 
 
 func timer_increment() -> void:
@@ -60,6 +61,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	if !timer_active:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
+		change_upgrades_that_change()
 	var next_letter = sentence_left[0].to_lower()
 	latest_letter = new_text[-1].to_lower()
 	if latest_letter == next_letter:
@@ -310,24 +312,23 @@ func upgrade_apply(upgrade):
 	
 	elif upgrade.id == "empty_slot":
 		var amount_empty = 0
-		var active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
-		for i in range(active_upgrades.size()):
-			if active_upgrades[i] == null:
+		for i in range(set_before_round_active_upgrades.size()):
+			if set_before_round_active_upgrades[i] == null:
 				amount_empty += 1
-			elif active_upgrades[i].id == "empty_slot":
+			elif set_before_round_active_upgrades[i].id == "empty_slot":
 				amount_empty += 1
 		var mult_mult = 1.5 * amount_empty
 		mult = snapped((mult * mult_mult), 1)
 		refresh_Score_Panel()
+		return true
 	
 	else:
 		return false
 
 
 func check_upgrades(time, bypass = null):
-	var active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
-	for i in range(active_upgrades.size()):
-		var upgrade = active_upgrades[i]
+	for i in range(set_before_round_active_upgrades.size()):
+		var upgrade = set_before_round_active_upgrades[i]
 		if upgrade == null:
 			pass
 		elif upgrade.id == bypass:
@@ -344,7 +345,43 @@ func check_upgrades(time, bypass = null):
 					$"../Panels/Upgrades_Panel/Rotate_Item_4".agitate()
 
 
-func refresh_Score_Panel():
+func furthest_non_null_index(arr: Array) -> int:
+	for i in range(arr.size() - 1, -1, -1):
+		if arr[i] != null:
+			return i
+	return -1
+
+
+func change_upgrades_that_change():
+	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades.duplicate(true) #stop upgrades from being rearranged during round
+	for i in range(set_before_round_active_upgrades.size()):
+		change_specific_upgrade(i)
+
+
+func change_specific_upgrade(pos):
+	var upgrade = set_before_round_active_upgrades[pos]
+	if upgrade == null:
+		pass
+	elif upgrade.id == "copy_above":
+		if pos == 0:
+			pass
+		else:
+			var one_above = pos-1
+			if set_before_round_active_upgrades[one_above].trigger_time == "changes":
+				change_specific_upgrade(one_above)
+			upgrade.id = set_before_round_active_upgrades[one_above].id
+			upgrade.trigger_time = set_before_round_active_upgrades[one_above].trigger_time
+		
+	elif upgrade.id == "copy_bottom":
+		var furthest_non_null = 0
+		furthest_non_null = furthest_non_null_index(set_before_round_active_upgrades)
+		if set_before_round_active_upgrades[furthest_non_null].trigger_time == "changes":
+				change_specific_upgrade(furthest_non_null)
+		upgrade.id = set_before_round_active_upgrades[furthest_non_null].id
+		upgrade.trigger_time = set_before_round_active_upgrades[furthest_non_null].trigger_time
+
+
+func refresh_Score_Panel(): 
 	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score". text = str(total_score)
 	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)

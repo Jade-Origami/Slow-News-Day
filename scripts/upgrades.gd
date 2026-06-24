@@ -88,6 +88,22 @@ var upgrades = [
 		"id": "empty_slot",
 		"price": 7,
 		"trigger_time": "sentence_end",
+		"weight": 8
+	},
+	{
+		"pretty_text": "Blueprint",
+		"explanation": "Copy the ability of the upgrade above this one",
+		"id": "copy_above",
+		"price": 10,
+		"trigger_time": "changes",
+		"weight": 5
+	},
+	{
+		"pretty_text": "Brainstorm",
+		"explanation": "Copy the ability of the lowest upgrade",
+		"id": "copy_bottom",
+		"price": 10,
+		"trigger_time": "changes",
 		"weight": 5
 	},
 ]

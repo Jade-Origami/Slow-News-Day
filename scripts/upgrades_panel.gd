@@ -28,6 +28,7 @@ func hide_every_move_button():
 
 
 func _on_item_1_pressed() -> void:
+	$Rotate_Item_1/Item.show()
 	var before = $Rotate_Item_1/Item/Sell_Button.visible
 	hide_every_sell_button()
 	hide_every_move_button()
@@ -35,6 +36,7 @@ func _on_item_1_pressed() -> void:
 	$Rotate_Item_1/Item/Down_Button.visible = !before
 
 func _on_item_2_pressed() -> void:
+	$Rotate_Item_2/Item.show()
 	var before = $Rotate_Item_2/Item/Sell_Button.visible
 	hide_every_sell_button()
 	hide_every_move_button()
@@ -43,6 +45,7 @@ func _on_item_2_pressed() -> void:
 	$Rotate_Item_2/Item/Down_Button.visible = !before
 
 func _on_item_3_pressed() -> void:
+	$Rotate_Item_3/Item.show()
 	var before = $Rotate_Item_3/Item/Sell_Button.visible
 	hide_every_sell_button()
 	hide_every_move_button()
@@ -51,6 +54,7 @@ func _on_item_3_pressed() -> void:
 	$Rotate_Item_3/Item/Down_Button.visible = !before
 
 func _on_item_4_pressed() -> void:
+	$Rotate_Item_4/Item.show()
 	var before = $Rotate_Item_4/Item/Sell_Button.visible
 	hide_every_sell_button()
 	hide_every_move_button()
@@ -81,12 +85,19 @@ func check_availability():
 
 func set_item(item, pos) -> void:
 	active_upgrades[pos] = item
-	print(active_upgrades)
 	update_panel(item, pos)
 
 
 func update_panel(item, pos):
 	if active_upgrades[pos] == null:
+		if pos == 0:
+			$Rotate_Item_1/Item.hide()
+		elif pos == 1:
+			$Rotate_Item_2/Item.hide()
+		elif pos == 2:
+			$Rotate_Item_3/Item.hide()
+		else:
+			$Rotate_Item_4/Item.hide()
 		return
 	if pos == 0:
 		$Rotate_Item_1/Item.text = item.pretty_text
@@ -113,24 +124,28 @@ func whole_panel_update():
 
 
 func _on_sell_button_1_pressed() -> void:
+	hide_every_move_button()
 	$Rotate_Item_1/Item.hide()
 	$Rotate_Item_1/Item/Sell_Button.hide()
 	$"../..".add_money(snapped(active_upgrades[0].price/2, 1))
 	active_upgrades[0] = null
 
 func _on_sell_button_2_pressed() -> void:
+	hide_every_move_button()
 	$Rotate_Item_2/Item.hide()
 	$Rotate_Item_2/Item/Sell_Button.hide()
 	$"../..".add_money(snapped(active_upgrades[1].price/2, 1))
 	active_upgrades[1] = null
 
 func _on_sell_button_3_pressed() -> void:
+	hide_every_move_button()
 	$Rotate_Item_3/Item.hide()
 	$Rotate_Item_3/Item/Sell_Button.hide()
 	$"../..".add_money(snapped(active_upgrades[2].price/2, 1))
 	active_upgrades[2] = null
 
 func _on_sell_button_4_pressed() -> void:
+	hide_every_move_button()
 	$Rotate_Item_4/Item.hide()
 	$Rotate_Item_4/Item/Sell_Button.hide()
 	$"../..".add_money(snapped(active_upgrades[3].price/2, 1))
