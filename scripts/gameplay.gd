@@ -154,7 +154,7 @@ func round_finished() -> void:
 	PlayerStats.completed_rounds += 1
 	give_rewards()
 	check_upgrades("end")
-	$Gameplay/TypingProgress.hide()
+	$Gameplay/TypingProgress.value = 0
 	$ShopButton.show()
 
 
