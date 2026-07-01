@@ -84,7 +84,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
 		mistakes_made += 1
-		double_speed_amount += 60
+		double_speed_amount += 45
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
