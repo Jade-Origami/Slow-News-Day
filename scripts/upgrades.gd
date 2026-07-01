@@ -115,7 +115,7 @@ var upgrades = [
 		"weight": 15
 	},
 	{
-		"pretty_text": "Constant Sale",
+		"pretty_text": "Valued Customer",
 		"explanation": "Rerolls start at 0",
 		"id": "low_reroll",
 		"price": 6,
