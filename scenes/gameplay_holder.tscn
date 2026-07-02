@@ -33,10 +33,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
 
 [node name="Timer_bar" parent="Panels" unique_id=908773948 instance=ExtResource("2_6i4yd")]
 layout_mode = 1
-anchor_right = -1.0
-anchor_bottom = 0.9753094
-offset_top = 16.0
-offset_bottom = 408.39505
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_right = 272.0
 
 [node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
 layout_mode = 0
