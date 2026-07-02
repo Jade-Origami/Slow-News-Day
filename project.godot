@@ -23,6 +23,7 @@ Sentences="*uid://dhtaqa2r4sc0x"
 
 [display]
 
+window/size/mode=4
 window/stretch/mode="canvas_items"
 
 [physics]

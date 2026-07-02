@@ -5,27 +5,6 @@
 [ext_resource type="Script" uid="uid://dhtaqa2r4sc0x" path="res://scripts/sentences.gd" id="3_31tqg"]
 [ext_resource type="Script" uid="uid://xd2biytgk0mm" path="res://scripts/inputevents.gd" id="4_6v8b5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr3ex"]
-bg_color = Color(0.91764706, 0.70980394, 0.58431375, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vh2s"]
-bg_color = Color(0.7616657, 0.4917056, 0.31977507, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdn3h"]
-bg_color = Color(0.8829383, 0.6311195, 0.4802696, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4t3t"]
 bg_color = Color(0.16862746, 0.16862746, 0.16862746, 0)
 
@@ -108,21 +87,6 @@ virtual_keyboard_enabled = false
 virtual_keyboard_show_on_focus = false
 script = ExtResource("4_6v8b5")
 
-[node name="ShopButton" type="Button" parent="." unique_id=428270089]
-z_index = 1
-offset_left = 992.0
-offset_top = 544.0
-offset_right = 1120.0
-offset_bottom = 619.0
-theme_override_colors/font_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
-theme_override_colors/font_focus_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
-theme_override_colors/font_pressed_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
-theme_override_colors/font_hover_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_qr3ex")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0vh2s")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sdn3h")
-text = "Shop"
-
 [node name="Gameplay" type="Node2D" parent="." unique_id=1801247505]
 position = Vector2(550, 271.62)
 script = ExtResource("2_82mmq")
@@ -203,6 +167,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_lnmny")
 text = "Next Story"
 
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
-[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Rotate_Discard/Discard_Button" to="." method="_on_discard_button_pressed"]
 [connection signal="pressed" from="Rotate_Discard/Next_Button" to="." method="_on_next_button_pressed"]

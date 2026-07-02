@@ -11,38 +11,53 @@ corner_radius_bottom_right = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euf5d"]
-bg_color = Color(0.18717611, 0.18717617, 0.18717602, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.8317985, 0.3043133, 0.4500401, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfry6"]
+bg_color = Color(0.6457565, 0.19677028, 0.3292991, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi3u4"]
-bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27tpy"]
+bg_color = Color(0.21556842, 0.16191894, 0.19219926, 0.70980394)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0.85885644, 0.3314155, 0.47289437, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl20n"]
-bg_color = Color(0.19337255, 0.5412684, 0.806771, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfakj"]
+bg_color = Color(0.13602361, 0.20046544, 0.56334186, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qok14"]
+bg_color = Color(0.13573486, 0.16862059, 0.30555838, 0.70980394)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2581935, 0.36033055, 0.8464272, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amt3t"]
+bg_color = Color(0.19215687, 0.5411765, 0.80784315, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhcie"]
-bg_color = Color(0.91633177, 0.2106561, 0.17792833, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx78e"]
+bg_color = Color(0.91764706, 0.21176471, 0.1764706, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -71,7 +86,8 @@ corner_radius_bottom_left = 4
 
 [node name="Timer_bar" type="ProgressBar" unique_id=908773948]
 anchors_preset = -1
-offset_right = 248.0
+anchor_right = -0.013888889
+offset_right = 288.0
 offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r3crv")
@@ -79,76 +95,131 @@ fill_mode = 2
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="RequiredScoreRead" type="Button" parent="." unique_id=1616469899]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = -0.056603774
-anchor_right = 1.0
-anchor_bottom = -0.056603774
-offset_left = -232.0
-offset_top = 40.0
-offset_right = -16.0
-offset_bottom = 104.0
-theme_override_colors/font_disabled_color = Color(0.8862618, 0.88626146, 0.8862615, 1)
-theme_override_font_sizes/font_size = 20
-theme_override_styles/disabled = SubResource("StyleBoxFlat_euf5d")
-disabled = true
-text = "Required"
-metadata/_edit_use_anchors_ = true
+[node name="RequiredScore" type="Panel" parent="." unique_id=333713621]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfry6")
 
-[node name="Total_Score_Rotate" type="Node2D" parent="." unique_id=1604122338]
-position = Vector2(120, 128)
+[node name="Rotate" type="Node2D" parent="RequiredScore" unique_id=1802186373]
+position = Vector2(176, 32)
 
-[node name="Total_Score" type="Button" parent="Total_Score_Rotate" unique_id=895069753]
-offset_left = -104.0
-offset_top = -32.0
-offset_right = 112.0
-offset_bottom = 32.0
-theme_override_colors/font_disabled_color = Color(0.9297146, 0.9297147, 0.9297146, 1)
-theme_override_font_sizes/font_size = 20
-theme_override_styles/disabled = SubResource("StyleBoxFlat_qi3u4")
-disabled = true
-text = "Total "
-metadata/_edit_use_anchors_ = true
+[node name="ScoreArea" type="Panel" parent="RequiredScore/Rotate" unique_id=924925802]
+offset_left = -88.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_27tpy")
+
+[node name="ScoreRead" type="RichTextLabel" parent="RequiredScore/Rotate/ScoreArea" unique_id=1036335532]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 26
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="RequiredScore" unique_id=678555130]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 56.0
+theme_override_font_sizes/normal_font_size = 17
+text = "Required
+Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalScore" type="Panel" parent="." unique_id=1157663363]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 256.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jfakj")
+
+[node name="Rotate" type="Node2D" parent="TotalScore" unique_id=868934519]
+position = Vector2(176, 32)
+
+[node name="ScoreArea" type="Panel" parent="TotalScore/Rotate" unique_id=1908738370]
+offset_left = -88.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qok14")
+
+[node name="ScoreRead" type="RichTextLabel" parent="TotalScore/Rotate/ScoreArea" unique_id=737704537]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 26
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="TotalScore" unique_id=1200146179]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 56.0
+theme_override_font_sizes/normal_font_size = 17
+text = "Total
+Score"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Base_Rotate" type="Node2D" parent="." unique_id=1777456104]
 position = Vector2(56, 208)
 script = ExtResource("1_lwh8y")
 
-[node name="Base_Text" type="Button" parent="Base_Rotate" unique_id=1436366666]
+[node name="Base" type="Panel" parent="Base_Rotate" unique_id=779002401]
 offset_left = -40.0
 offset_top = -32.0
 offset_right = 40.0
 offset_bottom = 32.0
-theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_wl20n")
-disabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_amt3t")
+
+[node name="Text" type="RichTextLabel" parent="Base_Rotate/Base" unique_id=1503328310]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
 text = "Base"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Mult_Rotate" type="Node2D" parent="." unique_id=898455618]
-position = Vector2(192, 208)
+position = Vector2(208, 208)
 script = ExtResource("1_lwh8y")
 
-[node name="Mult_Text" type="Button" parent="Mult_Rotate" unique_id=187965351]
+[node name="Mult" type="Panel" parent="Mult_Rotate" unique_id=472700183]
+physics_interpolation_mode = 1
 offset_left = -40.0
 offset_top = -32.0
 offset_right = 40.0
 offset_bottom = 32.0
-theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_bhcie")
-disabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_tx78e")
+
+[node name="Text" type="RichTextLabel" parent="Mult_Rotate/Mult" unique_id=1736750213]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
 text = "Mult"
-metadata/_edit_use_anchors_ = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Timer_Rotate" type="Node2D" parent="." unique_id=1726083451]
 position = Vector2(120, 280)
 script = ExtResource("1_lwh8y")
 
 [node name="Timer_Percentage" type="Button" parent="Timer_Rotate" unique_id=1432556715]
-offset_left = -32.0
+offset_left = -24.0
 offset_top = -32.0
-offset_right = 40.0
+offset_right = 48.0
 offset_bottom = 32.0
 theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
 theme_override_styles/disabled = SubResource("StyleBoxFlat_31tqg")
@@ -189,9 +260,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="X" type="RichTextLabel" parent="." unique_id=1149398001]
 layout_mode = 0
-offset_left = 96.0
+offset_left = 104.0
 offset_top = 176.0
-offset_right = 152.0
+offset_right = 160.0
 offset_bottom = 240.0
 theme_override_font_sizes/normal_font_size = 29
 text = "X"

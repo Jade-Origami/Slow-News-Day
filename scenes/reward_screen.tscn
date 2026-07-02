@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://t2xkd6wby2r6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlji"]
+bg_color = Color(0.15847227, 0.15847233, 0.15847221, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy5r4"]
+bg_color = Color(0.91764706, 0.70980394, 0.58431375, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14dtq"]
+bg_color = Color(0.7616657, 0.4917056, 0.31977507, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdh72"]
+bg_color = Color(0.8829383, 0.6311195, 0.4802696, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Panel" type="Panel" unique_id=138760240]
+offset_right = 608.0
+offset_bottom = 536.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dlji")
+
+[node name="ShopButton" type="Button" parent="." unique_id=992287195]
+z_index = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 568.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
+theme_override_colors/font_focus_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
+theme_override_colors/font_pressed_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
+theme_override_colors/font_hover_color = Color(0.043137256, 0.043137256, 0.043137256, 1)
+theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxFlat_jy5r4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_14dtq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tdh72")
+text = "Cash Out: £00"
