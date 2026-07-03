@@ -38,7 +38,7 @@ func timer_increment() -> void:
 	time_passed += 1
 	$"../Panels/Timer_bar".value = time_passed
 	percentage_of_time = 1.25 - snapped((float(time_passed) / max_timer_value), 0.01)
-	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(percentage_of_time)
+	$"../Panels/Timer_bar/Timer/Text".text = str(percentage_of_time)
 	if time_passed >= max_timer_value:
 		timer_active = false
 
@@ -76,8 +76,8 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		
 		check_upgrades("on_type")
 		
-		$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
-		$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
+		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
+		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 		
 		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
@@ -112,6 +112,7 @@ func sentence_finished() -> void:
 	$Gameplay/SentenceShow.text = "Round clear!
 You made " + str(mistakes_made) + " " + multiple_mistakes +"
 score: " + str(score_this_sentence)
+	$"../Panels/Timer_bar/TotalScore/Rotate".agitate()
 	refresh_Score_Panel()
 	if total_score >= PlayerStats.target_this_round:
 		round_finished()
@@ -137,9 +138,9 @@ func sentence_start():
 	$Gameplay/TypingProgress.value = 0
 	base = 1
 	mult = 1
-	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
-	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
-	$"../Panels/Timer_bar/Timer_Rotate/Timer_Percentage".text = str(1.25)
+	$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
+	$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
+	$"../Panels/Timer_bar/Timer/Text".text = str(1.25)
 	$Rotate_Discard/Next_Button.hide()
 	$Rotate_Discard/Discard_Button.hide()
 	if reroll_amount > 0:
@@ -155,7 +156,7 @@ func round_finished() -> void:
 	give_rewards()
 	check_upgrades("end")
 	$Gameplay/TypingProgress.value = 0
-	$ShopButton.show()
+	$"../Panel/ShopButton".show()
 
 
 func give_rewards() -> void:
@@ -228,9 +229,10 @@ func _on_gameplay_holder_new_round(round_reward) -> void:
 	total_score = 0
 	sentences_used = 0
 	apply_styling()
-	$ShopButton.hide()
+	$"../Panel/ShopButton".hide()
+	$"../Panels/Timer_bar/TotalScore/Rotate".agitate()
 	refresh_Score_Panel()
-	$"../Panels/Timer_bar/RequiredScoreRead".text = str(PlayerStats.target_this_round)
+	$"../Panels/Timer_bar/RequiredScore/Rotate/ScoreArea/ScoreRead".text = str(PlayerStats.target_this_round)
 	reroll_amount = 1
 	check_upgrades("round_start")
 	total_rerolls = reroll_amount
@@ -379,7 +381,7 @@ func change_specific_upgrade(pos):
 
 
 func refresh_Score_Panel(): 
-	$"../Panels/Timer_bar/Total_Score_Rotate/Total_Score". text = str(total_score)
-	$"../Panels/Timer_bar/Base_Rotate/Base_Text".text = str(base)
-	$"../Panels/Timer_bar/Mult_Rotate/Mult_Text".text = str(mult)
+	$"../Panels/Timer_bar/TotalScore/Rotate/ScoreArea/ScoreRead".text = str(total_score)
+	$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
+	$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)

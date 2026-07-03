@@ -63,8 +63,8 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31tqg"]
-bg_color = Color(0.7080092, 0.11673295, 0.8369716, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xl2o"]
+bg_color = Color(0.8051863, 0.0012642986, 0.9085136, 1)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -87,6 +87,7 @@ corner_radius_bottom_left = 4
 [node name="Timer_bar" type="ProgressBar" unique_id=908773948]
 anchors_preset = -1
 anchor_right = -0.013888889
+anchor_bottom = -0.012345679
 offset_right = 288.0
 offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
@@ -104,12 +105,12 @@ offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tfry6")
 
 [node name="Rotate" type="Node2D" parent="RequiredScore" unique_id=1802186373]
-position = Vector2(176, 32)
+position = Vector2(160, 32)
 
 [node name="ScoreArea" type="Panel" parent="RequiredScore/Rotate" unique_id=924925802]
-offset_left = -88.0
+offset_left = -72.0
 offset_top = -24.0
-offset_right = 56.0
+offset_right = 72.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_27tpy")
 
@@ -142,12 +143,12 @@ offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jfakj")
 
 [node name="Rotate" type="Node2D" parent="TotalScore" unique_id=868934519]
-position = Vector2(176, 32)
+position = Vector2(160, 32)
 
 [node name="ScoreArea" type="Panel" parent="TotalScore/Rotate" unique_id=1908738370]
-offset_left = -88.0
+offset_left = -72.0
 offset_top = -24.0
-offset_right = 56.0
+offset_right = 72.0
 offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_qok14")
 
@@ -172,7 +173,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Base_Rotate" type="Node2D" parent="." unique_id=1777456104]
-position = Vector2(56, 208)
+position = Vector2(64, 208)
 script = ExtResource("1_lwh8y")
 
 [node name="Base" type="Panel" parent="Base_Rotate" unique_id=779002401]
@@ -212,22 +213,25 @@ text = "Mult"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer_Rotate" type="Node2D" parent="." unique_id=1726083451]
-position = Vector2(120, 280)
-script = ExtResource("1_lwh8y")
+[node name="Timer" type="Panel" parent="." unique_id=1740147097]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 240.0
+offset_right = 176.0
+offset_bottom = 304.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xl2o")
 
-[node name="Timer_Percentage" type="Button" parent="Timer_Rotate" unique_id=1432556715]
-offset_left = -24.0
-offset_top = -32.0
-offset_right = 48.0
-offset_bottom = 32.0
-theme_override_colors/font_disabled_color = Color(0.95596343, 0.9559633, 0.95596343, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_31tqg")
-disabled = true
+[node name="Text" type="RichTextLabel" parent="Timer" unique_id=803345130]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
 text = "Timer"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Hands_Rotate" type="Node2D" parent="." unique_id=1976796842]
-position = Vector2(184, 360)
+position = Vector2(200, 352)
 script = ExtResource("1_lwh8y")
 
 [node name="Hands_Counter" type="Button" parent="Hands_Rotate" unique_id=1660878830]
@@ -243,7 +247,7 @@ text = "Hands"
 metadata/_edit_use_anchors_ = true
 
 [node name="Coins_Rotate" type="Node2D" parent="." unique_id=330715971]
-position = Vector2(64, 360)
+position = Vector2(72, 352)
 script = ExtResource("1_lwh8y")
 
 [node name="Coins_Counter" type="Button" parent="Coins_Rotate" unique_id=1344737547]
@@ -262,7 +266,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 0
 offset_left = 104.0
 offset_top = 176.0
-offset_right = 160.0
+offset_right = 168.0
 offset_bottom = 240.0
 theme_override_font_sizes/normal_font_size = 29
 text = "X"

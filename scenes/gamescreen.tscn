@@ -93,15 +93,13 @@ script = ExtResource("2_82mmq")
 
 [node name="SentenceShow" type="RichTextLabel" parent="Gameplay" unique_id=1225372798]
 z_index = 2
-offset_left = -240.0
-offset_top = -192.0
-offset_right = 240.0
-offset_bottom = -88.0
+offset_left = -238.0
+offset_top = -191.62
+offset_right = 242.0
+offset_bottom = -87.619995
 theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
-text = "_ Headline goes here _
-_
-_"
+text = "Headline goes here"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
@@ -116,6 +114,7 @@ offset_right = 250.0
 offset_bottom = 352.38
 theme_override_styles/background = SubResource("StyleBoxFlat_c4t3t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xrcqf")
+value = 100.0
 fill_mode = 2
 show_percentage = false
 
