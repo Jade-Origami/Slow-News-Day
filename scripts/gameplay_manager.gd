@@ -19,7 +19,7 @@ func initiate_round(round_reward):
 
 func initiate_shop():
 	shop_start.emit()
-	$GameplayScreen.hide()
+	$Reward_Panel.hide()
 	$ShopScene.show()
 
 func initiate_level_select():
@@ -27,8 +27,8 @@ func initiate_level_select():
 	$ShopScene.hide()
 	$Level_Selector_Panel.show()
 
-func initiate_reward_screen():
-	open_reward_screen.emit()
+func initiate_reward_screen(amount):
+	open_reward_screen.emit(amount)
 	$GameplayScreen.hide()
 	$Reward_Panel.show()
 	

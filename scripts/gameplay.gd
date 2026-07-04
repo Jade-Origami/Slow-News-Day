@@ -153,21 +153,21 @@ func sentence_start():
 
 func round_finished() -> void:
 	PlayerStats.completed_rounds += 1
-	give_rewards()
-	check_upgrades("end")
 	$Gameplay/TypingProgress.value = 0
-	$"../Panel/ShopButton".show()
+	reward_screen()
 
 
-func give_rewards() -> void:
+func reward_screen():
+	$"..".initiate_reward_screen(calculate_rewards())
+	refresh_Score_Panel()
+	check_upgrades("reward")
+
+
+func calculate_rewards():
 	var coins_increase = ((4 - sentences_used) * 1) + coin_round_reward
 	if coins_increase < 1:
 		coins_increase = 1
-		multiple_coin = "Coin"
-	else:
-		multiple_coin = "Coins"
-	$"..".add_money(coins_increase)
-	refresh_Score_Panel()
+	return coins_increase
 
 
 func _on_shop_button_pressed() -> void:
@@ -229,7 +229,7 @@ func _on_gameplay_holder_new_round(round_reward) -> void:
 	total_score = 0
 	sentences_used = 0
 	apply_styling()
-	$"../Panel/ShopButton".hide()
+	#$"../Panel/ShopButton".hide()
 	$"../Panels/Timer_bar/TotalScore/Rotate".agitate()
 	refresh_Score_Panel()
 	$"../Panels/Timer_bar/RequiredScore/Rotate/ScoreArea/ScoreRead".text = str(PlayerStats.target_this_round)

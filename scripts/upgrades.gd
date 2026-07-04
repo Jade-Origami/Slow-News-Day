@@ -15,7 +15,7 @@ var upgrades = [
 		"explanation": "+2 coins at end of round",
 		"id": "flat_coin_increase",
 		"price": 4,
-		"trigger_time": "end",
+		"trigger_time": "reward",
 		"weight": 20
 	},
 	{

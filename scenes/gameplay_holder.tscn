@@ -96,6 +96,7 @@ offset_bottom = 656.0
 [connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
 [connection signal="open_reward_screen" from="." to="Reward_Panel" method="_on_gameplay_holder_open_reward_screen"]
 [connection signal="shop_start" from="." to="ShopScene" method="_on_gameplay_holder_shop_start"]
+[connection signal="pressed" from="Reward_Panel/ShopButton" to="Reward_Panel" method="_on_shop_button_pressed"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]
