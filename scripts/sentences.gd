@@ -1,5 +1,7 @@
 extends Node
 
+var correct_sentence
+
 var nouns = [
 	"table ", "chair ", "tea ", "mug ", "computer ", "laptop ", "hedgehog ", "phone ",
 	"shoe ", "slipper ", "leaf ", "glass ", "booklet ", "pottery ", "hand cream ",
@@ -47,13 +49,24 @@ var connectives = [
 	"and ", "but ", "so ", "therefore "
 ]
 
-var correct_sentence
+var sentence_structures = [
+	["adj", "noun", "adv", "verb", "adj", "noun"],
+	["adj", "and ", "adj", "noun", "verb", "noun"],
+]
 
 func create_sentence() -> String:
-	var created_sentence_list = [adjectives.pick_random() + nouns.pick_random() + 
-	adverbs.pick_random() + verbs.pick_random() + adjectives.pick_random() + nouns.pick_random()]
-	var created_sentence = ""
-	for i in range(created_sentence_list.size()):
-		created_sentence += created_sentence_list[i]
-	created_sentence = created_sentence.strip_edges()
-	return created_sentence
+	var sentence_structure = sentence_structures.pick_random()
+	var sentence = ""
+	for word in sentence_structure:
+		match word:
+			"adj":
+				sentence += adjectives.pick_random()
+			"noun":
+				sentence += nouns.pick_random()
+			"adv":
+				sentence += adverbs.pick_random()
+			"verb":
+				sentence += verbs.pick_random()
+			_:
+				sentence += word
+	return sentence.strip_edges()
