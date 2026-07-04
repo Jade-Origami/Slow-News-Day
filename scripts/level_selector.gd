@@ -1,4 +1,4 @@
-extends Node2D
+extends Panel
 
 
 var level_mult
@@ -38,15 +38,15 @@ func _on_gameplay_holder_level_select() -> void:
 	round_1_required = level_requirements[level_num]
 	round_2_required = level_requirements[level_num] * 1.5
 	round_3_required = level_requirements[level_num] * 2
-	$Panel/Stage_1.disabled = true
-	$Panel/Stage_2.disabled = true
-	$Panel/Stage_3.disabled = true
+	$Stage_1.disabled = true
+	$Stage_2.disabled = true
+	$Stage_3.disabled = true
 	if PlayerStats.completed_rounds % 3 == 0:
-		$Panel/Stage_1.disabled = false
+		$Stage_1.disabled = false
 	elif PlayerStats.completed_rounds % 3 == 1:
-		$Panel/Stage_2.disabled = false
+		$Stage_2.disabled = false
 	else:
-		$Panel/Stage_3.disabled = false
-	$Panel/Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
-	$Panel/Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
-	$Panel/Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"
+		$Stage_3.disabled = false
+	$Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
+	$Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
+	$Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"

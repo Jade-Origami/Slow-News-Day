@@ -27,6 +27,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Mistake_Overlay" parent="GameplayScreen" index="0" unique_id=860634844]
 visible = false
 
+[node name="Gameplay" parent="GameplayScreen" index="2" unique_id=1801247505]
+position = Vector2(608, 272)
+
 [node name="Panels" type="Panel" parent="." unique_id=893437777]
 offset_right = 16.0
 offset_bottom = 16.0
@@ -35,8 +38,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
 [node name="Timer_bar" parent="Panels" unique_id=908773948 instance=ExtResource("2_6i4yd")]
 layout_mode = 1
 anchor_left = -0.013888889
-anchor_top = 1.0
-anchor_right = 0.0
+anchor_top = 0.5
 anchor_bottom = 0.5
 offset_right = 272.0
 
@@ -52,10 +54,6 @@ offset_left = 936.0
 offset_top = 16.0
 offset_right = 1152.0
 offset_bottom = 520.0
-
-[node name="Level_selector" parent="." unique_id=938700675 instance=ExtResource("3_frtkl")]
-z_index = 2
-position = Vector2(272, 240)
 
 [node name="ShopScene" parent="." unique_id=1063027230 instance=ExtResource("6_gkdmu")]
 z_index = 1
@@ -86,13 +84,18 @@ offset_top = 40.0
 offset_right = 896.0
 offset_bottom = 648.0
 
-[connection signal="level_select" from="." to="Level_selector" method="_on_gameplay_holder_level_select"]
+[node name="Level_Selector_Panel" parent="." unique_id=438823998 instance=ExtResource("3_frtkl")]
+offset_left = 288.0
+offset_top = 240.0
+offset_right = 920.0
+offset_bottom = 648.0
+
 [connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
 [connection signal="shop_start" from="." to="ShopScene" method="_on_gameplay_holder_shop_start"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]
 [editable path="Panels/Upgrades_Panel"]
-[editable path="Level_selector"]
 [editable path="ShopScene"]
 [editable path="Panel"]
+[editable path="Level_Selector_Panel"]

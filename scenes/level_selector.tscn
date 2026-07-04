@@ -86,14 +86,12 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Level_selector" type="Node2D" unique_id=938700675]
-script = ExtResource("1_aeu7d")
-
-[node name="Panel" type="Panel" parent="." unique_id=438823998]
+[node name="Level_Selector_Panel" type="Panel" unique_id=438823998]
 offset_right = 632.0
 offset_bottom = 408.0
+script = ExtResource("1_aeu7d")
 
-[node name="Stage_1" type="Button" parent="Panel" unique_id=556212078]
+[node name="Stage_1" type="Button" parent="." unique_id=556212078]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
@@ -110,7 +108,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ljvb0")
 text = "Stage 1: 
 {points} points"
 
-[node name="Stage_2" type="Button" parent="Panel" unique_id=754825441]
+[node name="Stage_2" type="Button" parent="." unique_id=754825441]
 layout_mode = 0
 offset_left = 232.0
 offset_top = 24.0
@@ -127,7 +125,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_f20t4")
 text = "Stage 2: 
 {points} points"
 
-[node name="Stage_3" type="Button" parent="Panel" unique_id=1929257894]
+[node name="Stage_3" type="Button" parent="." unique_id=1929257894]
 layout_mode = 0
 offset_left = 440.0
 offset_top = 24.0
@@ -144,6 +142,6 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_v1k4p")
 text = "Stage 3: 
 {points} points"
 
-[connection signal="pressed" from="Panel/Stage_1" to="." method="_on_stage_1_pressed"]
-[connection signal="pressed" from="Panel/Stage_2" to="." method="_on_stage_2_pressed"]
-[connection signal="pressed" from="Panel/Stage_3" to="." method="_on_stage_3_pressed"]
+[connection signal="pressed" from="Stage_1" to="." method="_on_stage_1_pressed"]
+[connection signal="pressed" from="Stage_2" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="Stage_3" to="." method="_on_stage_3_pressed"]

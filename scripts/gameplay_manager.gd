@@ -8,13 +8,13 @@ func _ready() -> void:
 	$GameplayScreen.hide()
 	$ShopScene.hide()
 	$Panels.show()
-	$Level_selector.show()
+	$Level_Selector_Panel.show()
 
 
 func initiate_round(round_reward):
 	new_round.emit(round_reward)
 	$GameplayScreen.show()
-	$Level_selector.hide()
+	$Level_Selector_Panel.hide()
 
 func initiate_shop():
 	shop_start.emit()
@@ -24,7 +24,7 @@ func initiate_shop():
 func initiate_level_select():
 	level_select.emit()
 	$ShopScene.hide()
-	$Level_selector.show()
+	$Level_Selector_Panel.show()
 
 func add_money(amount):
 	PlayerStats.coins += amount
