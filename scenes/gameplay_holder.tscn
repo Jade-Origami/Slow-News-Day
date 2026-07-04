@@ -56,6 +56,7 @@ offset_right = 1152.0
 offset_bottom = 520.0
 
 [node name="ShopScene" parent="." unique_id=1063027230 instance=ExtResource("6_gkdmu")]
+visible = false
 z_index = 1
 position = Vector2(336, 56)
 
@@ -77,25 +78,28 @@ visible = false
 [node name="Rotate_Reroll" parent="ShopScene" index="4" unique_id=1635466870]
 position = Vector2(568, 528)
 
-[node name="Panel" parent="." unique_id=138760240 instance=ExtResource("7_7mjts")]
-visible = false
-offset_left = 288.0
-offset_top = 40.0
-offset_right = 896.0
-offset_bottom = 648.0
-
 [node name="Level_Selector_Panel" parent="." unique_id=438823998 instance=ExtResource("3_frtkl")]
+visible = false
 offset_left = 288.0
 offset_top = 240.0
 offset_right = 920.0
 offset_bottom = 648.0
 
+[node name="Reward_Panel" parent="." unique_id=138760240 instance=ExtResource("7_7mjts")]
+visible = false
+offset_left = 296.0
+offset_top = 120.0
+offset_right = 912.0
+offset_bottom = 656.0
+
+[connection signal="level_select" from="." to="Level_Selector_Panel" method="_on_gameplay_holder_level_select"]
 [connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
+[connection signal="open_reward_screen" from="." to="Reward_Panel" method="_on_gameplay_holder_open_reward_screen"]
 [connection signal="shop_start" from="." to="ShopScene" method="_on_gameplay_holder_shop_start"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]
 [editable path="Panels/Upgrades_Panel"]
 [editable path="ShopScene"]
-[editable path="Panel"]
 [editable path="Level_Selector_Panel"]
+[editable path="Reward_Panel"]
