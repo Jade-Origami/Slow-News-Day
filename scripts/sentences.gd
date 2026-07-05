@@ -60,7 +60,10 @@ func create_sentence() -> String:
 	for word in sentence_structure:
 		match word:
 			"adj":
-				sentence += adjectives.pick_random()
+				var candidate = ""
+				while candidate == "":
+					candidate = adjectives.pick_random()
+					sentence += candidate
 			"noun":
 				sentence += nouns.pick_random()
 			"adv":

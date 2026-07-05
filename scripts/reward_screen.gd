@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func _on_gameplay_holder_open_reward_screen(money_from_round) -> void:
 	money_from_round_to_give = money_from_round
-	$ShopButton.text = "£" + str(money_from_round_to_give)
+	$ShopButton.text = "Cash out: £" + str(money_from_round_to_give)
 
 
 func _on_shop_button_pressed() -> void:
