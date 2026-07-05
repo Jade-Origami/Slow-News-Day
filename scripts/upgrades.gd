@@ -124,10 +124,10 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Mistake Fanatic",
-		"explanation": "Mistakes are ignored",
+		"explanation": "Typed mistakes still advance the sentence, but are not counted as typed",
 		"id": "ignore_mistakes",
-		"price": 9,
+		"price": 7,
 		"trigger_time": "mistake_made",
-		"weight": 5
+		"weight": 10
 	},
 ]

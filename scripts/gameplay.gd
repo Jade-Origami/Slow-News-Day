@@ -45,7 +45,7 @@ func timer_increment() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if timer_active :
+	if timer_active:
 		timer_increment()
 		if double_speed_amount > 0:
 			double_speed_amount -= 1
@@ -78,7 +78,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		base += 1
 		$"../Panels/Timer_bar/Base_Rotate".agitate()
 		
-		if typed_letter.to_lower() == space_char: #When word finished
+		if typed_letter.to_lower() == " ": #When word finished
 			mult += 1
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 		
@@ -95,7 +95,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
 		mistakes_made += 1
-		double_speed_amount += 30
+		double_speed_amount = 40
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
@@ -329,6 +329,7 @@ func upgrade_apply(upgrade):
 		sentence_already_filled += "[color=red]" + mistake_print + ("[/color][color=%s]" % palette.other_text)
 		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
 		$Gameplay/TypingProgress.value += 1
+		double_speed_amount -= 10
 		return true
 	
 	else:

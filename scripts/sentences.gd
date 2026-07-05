@@ -73,6 +73,6 @@ func create_sentence(different_space_char) -> String:
 				word_to_add = verbs.pick_random()
 			_:
 				word_to_add = word
-		word_to_add.replacen(" ", space_char)
-		sentence += word_to_add + space_char
+		
+		sentence += word_to_add.replacen(" ", space_char) + space_char
 	return sentence
