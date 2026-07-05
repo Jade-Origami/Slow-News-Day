@@ -26,6 +26,7 @@ var can_tab_to_fill = false
 var mistake_overlay_timer = 0
 var coin_round_reward : int
 var set_before_round_active_upgrades = [null, null, null, null]
+var incorrectly_typed_amount = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,7 +58,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
-	sentence_already_filled = new_text
 	if !timer_active:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
@@ -79,8 +79,8 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 		
-		sentence_already_filled = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
-		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + sentence_already_filled + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		sentence_already_filled += ("[color=%s]" % palette.completed_text) + letter_to_be_typed + ("[/color][color=%s]" % palette.other_text)
+		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
 		mistakes_made += 1
@@ -88,7 +88,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
-	if sentence_left.is_empty(): #Sentence has been typed correctly
+	if sentence_left.is_empty(): #Sentence has been finished
 		check_upgrades("sentence_end")
 		sentence_finished()
 
@@ -133,6 +133,7 @@ func sentence_start():
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
 	
+	sentence_already_filled = ""
 	time_passed = 0
 	$"../Panels/Timer_bar".value = time_passed
 	$Gameplay/TypingProgress.value = 0
