@@ -26,7 +26,7 @@ var can_tab_to_fill = false
 var mistake_overlay_timer = 0
 var coin_round_reward : int
 var set_before_round_active_upgrades = [null, null, null, null]
-var incorrectly_typed_amount = 0
+var letter_to_be_typed
 
 
 # Called when the node enters the scene tree for the first time.
@@ -62,15 +62,23 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
 		change_upgrades_that_change()
-	var letter_to_be_typed = sentence_left[0].to_lower()
+	
+	letter_to_be_typed = sentence_left[0].to_lower()
 	typed_letter = new_text[-1].to_lower()
+	
+	var space_char = " "
+	if is_upgrade_present("ignore_mistakes"):
+		space_char = "_"
+		if letter_to_be_typed == "_":
+			letter_to_be_typed = " "
+	
 	if typed_letter == letter_to_be_typed:
 		sentence_left = sentence_left.substr(1,-1)
 		
 		base += 1
 		$"../Panels/Timer_bar/Base_Rotate".agitate()
 		
-		if typed_letter.to_lower() == " ": #When word finished
+		if typed_letter.to_lower() == space_char: #When word finished
 			mult += 1
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 		
@@ -79,7 +87,10 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 		
-		sentence_already_filled += ("[color=%s]" % palette.completed_text) + letter_to_be_typed + ("[/color][color=%s]" % palette.other_text)
+		if space_char ==  "_" and typed_letter == " ":
+			typed_letter = "_"
+		
+		sentence_already_filled += ("[color=%s]" % palette.completed_text) + typed_letter + ("[/color][color=%s]" % palette.other_text)
 		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
@@ -88,6 +99,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
+	
 	if sentence_left.is_empty(): #Sentence has been finished
 		check_upgrades("sentence_end")
 		sentence_finished()
@@ -124,8 +136,8 @@ score: " + str(score_this_sentence)
 
 
 func sentence_start():
-	
-	Sentences.correct_sentence = Sentences.create_sentence()
+	Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
 	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
@@ -169,10 +181,6 @@ func calculate_rewards():
 	if coins_increase < 1:
 		coins_increase = 1
 	return coins_increase
-
-
-func _on_shop_button_pressed() -> void:
-	$"..".initiate_shop()
 
 
 func apply_styling() -> void:
@@ -311,6 +319,16 @@ func upgrade_apply(upgrade):
 	
 	elif upgrade.id == "shop_surplus":
 		$"../ShopScene".extra_item = true
+		return true
+	
+	elif upgrade.id == "ignore_mistakes":
+		sentence_left = sentence_left.substr(1,-1)
+		var mistake_print = letter_to_be_typed
+		if mistake_print == " ":
+			mistake_print = "_"
+		sentence_already_filled += "[color=red]" + mistake_print + ("[/color][color=%s]" % palette.other_text)
+		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
+		$Gameplay/TypingProgress.value += 1
 		return true
 	
 	else:

@@ -122,4 +122,12 @@ var upgrades = [
 		"trigger_time": "shop",
 		"weight": 14
 	},
+	{
+		"pretty_text": "Mistake Fanatic",
+		"explanation": "Mistakes are ignored",
+		"id": "ignore_mistakes",
+		"price": 9,
+		"trigger_time": "mistake_made",
+		"weight": 5
+	},
 ]
