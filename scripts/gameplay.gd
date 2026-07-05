@@ -11,7 +11,7 @@ var multiple_coin : String
 var palette
 var round_total : int
 var player_total : int
-var typed_already
+var sentence_already_filled
 var used_predictive = false
 var base = 1
 var mult = 1
@@ -19,7 +19,7 @@ var total_score = 0
 var sentences_used = 0
 var percentage_of_time = 0
 var double_speed_amount = 0
-var latest_letter = ""
+var typed_letter = ""
 var reroll_amount = 1
 var total_rerolls
 var can_tab_to_fill = false
@@ -57,20 +57,20 @@ func _process(_delta: float) -> void:
 
 
 func _on_sentence_take_text_changed(new_text: String) -> void:
-	typed_already = new_text
+	sentence_already_filled = new_text
 	if !timer_active:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
 		change_upgrades_that_change()
-	var next_letter = sentence_left[0].to_lower()
-	latest_letter = new_text[-1].to_lower()
-	if latest_letter == next_letter:
+	var letter_to_be_typed = sentence_left[0].to_lower()
+	typed_letter = new_text[-1].to_lower()
+	if typed_letter == letter_to_be_typed:
 		sentence_left = sentence_left.substr(1,-1)
 		
 		base += 1
 		$"../Panels/Timer_bar/Base_Rotate".agitate()
 		
-		if latest_letter.to_lower() == " ": #When word finished
+		if typed_letter.to_lower() == " ": #When word finished
 			mult += 1
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
 		
@@ -79,12 +79,12 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 		
-		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
-		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		sentence_already_filled = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + sentence_already_filled + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
 		mistakes_made += 1
-		double_speed_amount += 45
+		double_speed_amount += 30
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
@@ -205,7 +205,7 @@ func get_word_start_index(text: String, char_index: int) -> int:
 func tab_autofill() -> void:
 	if can_tab_to_fill:
 		can_tab_to_fill = false
-		var index_currently_typed = typed_already.length() - 1
+		var index_currently_typed = sentence_already_filled.length() - 1
 		var index_of_word = get_word_start_index(Sentences.correct_sentence, index_currently_typed)
 		var length_of_containing_word = 0
 		var index_helper = index_of_word
@@ -213,9 +213,9 @@ func tab_autofill() -> void:
 			index_helper += 1
 			length_of_containing_word += 1
 		sentence_left = sentence_left.substr((length_of_containing_word - (index_currently_typed - index_of_word)),-1)
-		typed_already = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
+		sentence_already_filled = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
 		$Gameplay/TypingProgress.value += (length_of_containing_word - (index_currently_typed - index_of_word))
-		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + typed_already + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
+		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + sentence_already_filled + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
 		if sentence_left.is_empty():
 			sentence_finished()
 
@@ -242,7 +242,7 @@ func _on_gameplay_holder_new_round(round_reward) -> void:
 
 func upgrade_apply(upgrade):
 	if upgrade.id == "a_upgrade":
-		if latest_letter.to_lower() == "a":
+		if typed_letter.to_lower() == "a":
 			mult += 2
 			base += 2
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
@@ -255,7 +255,7 @@ func upgrade_apply(upgrade):
 	elif upgrade.id == "double_letters_bypass":
 		if sentence_left == "": #prevents overstepping index
 			pass
-		elif latest_letter == sentence_left[0].to_lower(): #if current letter is also next letter
+		elif typed_letter == sentence_left[0].to_lower(): #if current letter is also next letter
 			mult += 2
 			sentence_left = sentence_left.substr(1,-1)
 			$Gameplay/TypingProgress.value += 1
@@ -263,7 +263,7 @@ func upgrade_apply(upgrade):
 			return true
 	
 	elif upgrade.id == "s_upgrade":
-		if latest_letter.to_lower() == "s":
+		if typed_letter.to_lower() == "s":
 			mult = snapped((mult  * 1.25), 1)
 			return true
 	
@@ -285,7 +285,7 @@ func upgrade_apply(upgrade):
 		return true
 	
 	elif upgrade.id == "z_upgrade":
-		if latest_letter.to_lower() == "z":
+		if typed_letter.to_lower() == "z":
 			mult *= 2
 			return true
 	
