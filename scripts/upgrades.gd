@@ -130,4 +130,12 @@ var upgrades = [
 		"trigger_time": "mistake_made",
 		"weight": 10
 	},
+	{
+		"pretty_text": "Even Steven",
+		"explanation": "Every typed \"e\" gives +10 base",
+		"id": "e_upgrade",
+		"price": 6,
+		"trigger_time": "on_type",
+		"weight": 6
+	},
 ]

@@ -266,6 +266,7 @@ func upgrade_apply(upgrade):
 			pass
 		elif typed_letter == sentence_left[0].to_lower(): #if current letter is also next letter
 			mult += 2
+			sentence_already_filled += ("[color=%s]" % palette.completed_text) + sentence_left[0].to_lower() + ("[/color][color=%s]" % palette.other_text)
 			sentence_left = sentence_left.substr(1,-1)
 			$Gameplay/TypingProgress.value += 1
 			check_upgrades("on_type", upgrade.id)
@@ -331,6 +332,11 @@ func upgrade_apply(upgrade):
 		$Gameplay/TypingProgress.value += 1
 		double_speed_amount -= 10
 		return true
+	
+	elif upgrade.id == "e_upgrade":
+		if typed_letter.to_lower() == "e":
+			base += 10
+			return true
 	
 	else:
 		return false
