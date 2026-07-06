@@ -50,3 +50,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jy5r4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_14dtq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tdh72")
 text = "Cash Out: £00"
+
+[node name="MoneySources" type="RichTextLabel" parent="." unique_id=1609278096]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 144.0
+offset_right = 584.0
+offset_bottom = 320.0
+theme_override_font_sizes/normal_font_size = 23
+text = "Round earnings: £00
+Hands left (£1 per): £00
+"

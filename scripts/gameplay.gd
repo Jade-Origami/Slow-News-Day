@@ -171,9 +171,8 @@ func round_finished() -> void:
 
 
 func reward_screen():
-	$"..".initiate_reward_screen(calculate_rewards())
+	$"..".initiate_reward_screen(calculate_rewards(), (PlayerStats.sentences_allowed - sentences_used))
 	refresh_Score_Panel()
-	check_upgrades("reward")
 
 
 func calculate_rewards():
@@ -258,7 +257,8 @@ func upgrade_apply(upgrade):
 			return true
 	
 	elif upgrade.id == "flat_coin_increase":
-		$"..".add_money(2)
+		$"../Reward_Panel/MoneySources".text += "\nHigher Wages: £2"
+		$"../Reward_Panel".total_to_give += 2
 		return true
 	
 	elif upgrade.id == "double_letters_bypass":

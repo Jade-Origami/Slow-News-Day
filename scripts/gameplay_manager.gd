@@ -1,8 +1,8 @@
 extends Node2D
 signal level_select
 signal new_round (round_reward)
-signal shop_start (amount_from_round)
-signal open_reward_screen
+signal shop_start 
+signal open_reward_screen (amount_from_round)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,11 +27,10 @@ func initiate_level_select():
 	$ShopScene.hide()
 	$Level_Selector_Panel.show()
 
-func initiate_reward_screen(amount):
-	open_reward_screen.emit(amount)
+func initiate_reward_screen(amount, hands_left):
+	open_reward_screen.emit(amount, hands_left)
 	$GameplayScreen.hide()
 	$Reward_Panel.show()
-	
 
 func add_money(amount):
 	PlayerStats.coins += amount
