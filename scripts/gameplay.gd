@@ -207,17 +207,12 @@ func _on_discard_button_pressed() -> void:
 
 
 func tab_autofill() -> void:
-	can_tab_to_fill = true
 	if can_tab_to_fill:
 		var index_of_typed = strip_bbcode(sentence_already_filled).length()
 		var end_index_of_word = index_of_typed 
 		while end_index_of_word < Sentences.correct_sentence.length() and Sentences.correct_sentence[end_index_of_word] != " ":
 			end_index_of_word += 1
 		var rest_of_word = Sentences.correct_sentence.substr(index_of_typed, (end_index_of_word - index_of_typed))
-		
-		print(index_of_typed)
-		print(end_index_of_word)
-		print(rest_of_word)
 		
 		sentence_left = Sentences.correct_sentence.substr(end_index_of_word,-1)
 		sentence_already_filled += ("[color=%s]" % palette.completed_text) + rest_of_word + ("[/color][color=%s]" % palette.other_text)
