@@ -22,7 +22,7 @@ var double_speed_amount = 0
 var typed_letter = ""
 var reroll_amount = 1
 var total_rerolls
-var can_tab_to_fill = false
+var can_tab_to_fill
 var mistake_overlay_timer = 0
 var coin_round_reward : int
 var set_before_round_active_upgrades = [null, null, null, null]
@@ -61,6 +61,9 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	if !timer_active:
 		timer_active = true
 		$Rotate_Discard/Discard_Button.hide()
+		
+		set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades.duplicate(true) #stop upgrades from being rearranged during round
+		
 		change_upgrades_that_change()
 	
 	letter_to_be_typed = sentence_left[0].to_lower()
@@ -160,8 +163,10 @@ func sentence_start():
 		$Rotate_Discard/Discard_Button.show()
 	mistakes_made = 0
 	is_first_letter = true
-	refresh_Score_Panel()
+	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
 	check_upgrades("sentence_start")
+	refresh_Score_Panel()
+	
 
 
 func round_finished() -> void:
@@ -211,22 +216,25 @@ func get_word_start_index(text: String, char_index: int) -> int:
 
 
 func tab_autofill() -> void:
+	can_tab_to_fill = true
 	if can_tab_to_fill:
-		can_tab_to_fill = false
-		var index_currently_typed = sentence_already_filled.length() - 1
-		var index_of_word = get_word_start_index(Sentences.correct_sentence, index_currently_typed)
-		var length_of_containing_word = 0
-		var index_helper = index_of_word
-		while Sentences.correct_sentence[index_helper] != " " and index_helper != (Sentences.correct_sentence.length()-1):
+		var index_of_typed = strip_bbcode(sentence_already_filled).length() -1
+		var index_helper = index_of_typed
+		while Sentences.correct_sentence[index_helper] != " " or index_helper > 0:
+			index_helper -= 1
+		var start_index_of_word = index_helper
+		index_helper += 1
+		while Sentences.correct_sentence[index_helper] != " " or index_helper == Sentences.correct_sentence.length():
 			index_helper += 1
-			length_of_containing_word += 1
-		sentence_left = sentence_left.substr((length_of_containing_word - (index_currently_typed - index_of_word)),-1)
-		sentence_already_filled = Sentences.correct_sentence.to_lower().trim_suffix(sentence_left.to_lower())
-		$Gameplay/TypingProgress.value += (length_of_containing_word - (index_currently_typed - index_of_word))
-		$Gameplay/SentenceShow.text = ("[color=%s]" % palette.completed_text) + sentence_already_filled + ("[/color][color=%s]" % palette.other_text) + sentence_left + "!" 
-		if sentence_left.is_empty():
-			sentence_finished()
+		var end_index_of_word = index_helper
+		print(start_index_of_word)
+		print(end_index_of_word)
+		can_tab_to_fill = false
 
+func strip_bbcode(source: String) -> String:
+	var regex = RegEx.new()
+	regex.compile("\\[.+?\\]")
+	return regex.sub(source, "", true)
 
 func _on_next_button_pressed() -> void:
 	sentence_start()
@@ -242,6 +250,8 @@ func _on_gameplay_holder_new_round(round_reward) -> void:
 	refresh_Score_Panel()
 	$"../Panels/Timer_bar/RequiredScore/Rotate/ScoreArea/ScoreRead".text = str(PlayerStats.target_this_round)
 	reroll_amount = 1
+	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
+	can_tab_to_fill = false
 	check_upgrades("round_start")
 	total_rerolls = reroll_amount
 	$Rotate_Discard/Discard_Button.text = "Reroll (" + str(reroll_amount) + "/" + str(total_rerolls) + ")"
@@ -266,7 +276,7 @@ func upgrade_apply(upgrade):
 			pass
 		elif typed_letter == sentence_left[0].to_lower(): #if current letter is also next letter
 			mult += 2
-			sentence_already_filled += ("[color=%s]" % palette.completed_text) + sentence_left[0].to_lower() + ("[/color][color=%s]" % palette.other_text)
+			sentence_already_filled += ("[color=brown]") + sentence_left[0].to_lower() + ("[/color][color=%s]" % palette.other_text)
 			sentence_left = sentence_left.substr(1,-1)
 			$Gameplay/TypingProgress.value += 1
 			check_upgrades("on_type", upgrade.id)
@@ -291,6 +301,7 @@ func upgrade_apply(upgrade):
 		return true
 	
 	elif upgrade.id == "tab_to_fill":
+		print("acitvated")
 		can_tab_to_fill = true
 		return true
 	
@@ -338,6 +349,14 @@ func upgrade_apply(upgrade):
 			base += 10
 			return true
 	
+	elif upgrade.id == "count_upgrade":
+		var total_upgrades = 0
+		for i in range(set_before_round_active_upgrades.size()):
+			if set_before_round_active_upgrades[i] != null:
+				total_upgrades += 1
+		mult += total_upgrades * 3
+		return true
+	
 	else:
 		return false
 
@@ -350,6 +369,8 @@ func check_upgrades(time, bypass = null):
 		elif upgrade.id == bypass:
 			pass
 		elif upgrade.trigger_time == time:
+			print(upgrade.trigger_time)
+			print(time)
 			if upgrade_apply(upgrade): #upgrade applies
 				if i == 0:
 					$"../Panels/Upgrades_Panel/Rotate_Item_1".agitate()
@@ -378,7 +399,6 @@ func furthest_non_null_index(arr: Array) -> int:
 
 
 func change_upgrades_that_change():
-	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades.duplicate(true) #stop upgrades from being rearranged during round
 	for i in range(set_before_round_active_upgrades.size()):
 		change_specific_upgrade(i)
 

@@ -136,6 +136,14 @@ var upgrades = [
 		"id": "e_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
-		"weight": 6
+		"weight": 7
+	},
+	{
+		"pretty_text": "Abstract Artpiece",
+		"explanation": "+3 mult for every upgrade",
+		"id": "count_upgrade",
+		"price": 6,
+		"trigger_time": "sentence_end",
+		"weight": 8
 	},
 ]
