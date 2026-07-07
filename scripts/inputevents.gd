@@ -5,7 +5,6 @@ func _gui_input(event):
 		if event.keycode == KEY_BACKSPACE:
 			accept_event()
 		elif event.keycode == KEY_TAB:
-			print("TAB pressed")
 			$"..".tab_autofill()
 		elif !$"..".timer_active:
 			if !$"..".is_first_letter:
