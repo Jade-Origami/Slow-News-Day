@@ -206,30 +206,29 @@ func _on_discard_button_pressed() -> void:
 		sentence_start()
 
 
-func get_word_start_index(text: String, char_index: int) -> int:
-	# Find the last space before char_index
-	var last_space: int = -1
-	for i in range(char_index):
-		if text[i] == ' ':
-			last_space = i
-	return last_space + 1
-
-
 func tab_autofill() -> void:
 	can_tab_to_fill = true
 	if can_tab_to_fill:
-		var index_of_typed = strip_bbcode(sentence_already_filled).length() -1
-		var index_helper = index_of_typed
-		while Sentences.correct_sentence[index_helper] != " " or index_helper > 0:
-			index_helper -= 1
-		var start_index_of_word = index_helper
-		index_helper += 1
-		while Sentences.correct_sentence[index_helper] != " " or index_helper == Sentences.correct_sentence.length():
-			index_helper += 1
-		var end_index_of_word = index_helper
-		print(start_index_of_word)
+		var index_of_typed = strip_bbcode(sentence_already_filled).length()
+		var end_index_of_word = index_of_typed 
+		while end_index_of_word < Sentences.correct_sentence.length() and Sentences.correct_sentence[end_index_of_word] != " ":
+			end_index_of_word += 1
+		var rest_of_word = Sentences.correct_sentence.substr(index_of_typed, (end_index_of_word - index_of_typed))
+		
+		print(index_of_typed)
 		print(end_index_of_word)
+		print(rest_of_word)
+		
+		sentence_left = Sentences.correct_sentence.substr(end_index_of_word,-1)
+		sentence_already_filled += ("[color=%s]" % palette.completed_text) + rest_of_word + ("[/color][color=%s]" % palette.other_text)
+		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
+		$Gameplay/TypingProgress.value += rest_of_word.length()
+		
 		can_tab_to_fill = false
+		
+		if sentence_left.is_empty(): #Sentence has been finished
+			check_upgrades("sentence_end")
+			sentence_finished()
 
 func strip_bbcode(source: String) -> String:
 	var regex = RegEx.new()
