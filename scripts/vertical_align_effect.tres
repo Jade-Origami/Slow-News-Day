@@ -1,0 +1,6 @@
+[gd_resource type="RichTextEffect" script_class="RichTextVAlign" format=3 uid="uid://dojdfj7wionvf"]
+
+[ext_resource type="Script" uid="uid://b86trrtm1kuef" path="res://scripts/vertical_align_text.gd" id="1_83h46"]
+
+[resource]
+script = ExtResource("1_83h46")

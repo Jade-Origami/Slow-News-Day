@@ -176,15 +176,8 @@ func round_finished() -> void:
 
 
 func reward_screen():
-	$"..".initiate_reward_screen(calculate_rewards(), (PlayerStats.sentences_allowed - sentences_used))
+	$"..".initiate_reward_screen(coin_round_reward, (PlayerStats.sentences_allowed - sentences_used))
 	refresh_Score_Panel()
-
-
-func calculate_rewards():
-	var coins_increase = ((4 - sentences_used) * 1) + coin_round_reward
-	if coins_increase < 1:
-		coins_increase = 1
-	return coins_increase
 
 
 func apply_styling() -> void:

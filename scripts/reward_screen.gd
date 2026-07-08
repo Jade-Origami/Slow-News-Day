@@ -27,12 +27,23 @@ func _on_shop_button_pressed() -> void:
 	$"..".initiate_shop()
 
 func money_sources():
+	#initialise
 	$MoneySources.text = ""
 	total_to_give = 0
+	#set round reward (3, 4, ,5)
 	$MoneySources.text += "Round Earnings: £" + str(round_reward)
 	total_to_give += round_reward
+	#£1 per hand left
 	var hands_reward = hands_left * 1
-	$MoneySources.text += "\nHands Left (£1 per): £" + str(hands_left)
+	$MoneySources.text += "\n[font_size=40][color=#ac77ff][b]" + str(hands_left) + "[/b][/color][/font_size][valign y=-8.5]  Remaining Hands (£1 each) [/valign]"
 	total_to_give += hands_reward
+	#interest (£1 per £5 player currently has)
+	@warning_ignore("integer_division")
+	var interest_reward = floor(PlayerStats.coins / 5) * 1
+	if interest_reward > 5:
+		interest_reward = 5
+	$MoneySources.text += "\n[font_size=40][color=#f0c45b][b]" + str(interest_reward) + "[/b][/color][/font_size][valign y=-8.5]  £1 interest per £5 held (max £5) [/valign]"
+	total_to_give += interest_reward
+	#check for upgrades that add on reward text
 	$"../GameplayScreen".check_upgrades("reward")
 	return total_to_give
