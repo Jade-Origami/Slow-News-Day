@@ -35,7 +35,7 @@ func money_sources():
 	total_to_give += round_reward
 	#£1 per hand left
 	var hands_reward = hands_left * 1
-	$MoneySources.text += "\n[font_size=40][color=#ac77ff][b]" + str(hands_left) + "[/b][/color][/font_size][valign y=-8.5]  Remaining Hands (£1 each) [/valign]"
+	$MoneySources.text += "\n[font_size=40][color=#ac77ff][b]" + str(hands_left) + "[/b][/color][/font_size][valign y=-8.5]  Remaining Stories (£1 each) [/valign]"
 	total_to_give += hands_reward
 	#interest (£1 per £5 player currently has)
 	@warning_ignore("integer_division")

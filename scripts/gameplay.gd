@@ -154,6 +154,10 @@ func sentence_start():
 		$Gameplay/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
 		Sentences.correct_sentence = Sentences.create_boss_sentence(is_upgrade_present("ignore_mistakes"))
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
+	
+	if boss_active and check_boss_debuff("affect_sentence"):
+		boss_debuffs()
+	
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
 	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
@@ -162,7 +166,7 @@ func sentence_start():
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
 	
 	if boss_active and check_boss_debuff("sentence_start"):
-			boss_debuffs()
+		boss_debuffs()
 	
 	sentence_already_filled = ""
 	time_passed = 0
@@ -436,6 +440,7 @@ func refresh_Score_Panel():
 
 
 func boss_debuffs():
+	print(boss_effect)
 	if boss_effect.id == "no_vowels":
 		if typed_letter not in ["a", "e", "i", "o", "u"]:
 			base += 1
@@ -446,23 +451,33 @@ func boss_debuffs():
 				$"../Panels/Timer_bar/Mult_Rotate".agitate()
 			
 			check_upgrades("on_type")
+	
 	if boss_effect.id == "less_time":
 		max_timer_value = int(Sentences.correct_sentence.length() * 14)
 		$"../Panels/Timer_bar".max_value = max_timer_value
-	pass
+	
+	if boss_effect.id == "double_story":
+		Sentences.correct_sentence += ". also; " + Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+		Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
+
 
 func select_boss_effect():
 	var boss_effects = [
 		{
-			"pretty_text" = "Vowels don't count",
-			"id" = "no_vowels",
-			"trigger_time" = "on_type"
+			"pretty_text": "Vowels don't count",
+			"id": "no_vowels",
+			"trigger_time": "on_type"
 		},
 		{
-			"pretty_text" = "Less time per story",
-			"id" = "less_time",
-			"trigger_time" = "sentence_start"
-		}
+			"pretty_text": "Less time per story",
+			"id": "less_time",
+			"trigger_time": "sentence_start"
+		},
+		{
+			"pretty_text": "Two Stories",
+			"id": "double_story",
+			"trigger_time": "affect_sentence",
+		},
 	]
 	return boss_effects.pick_random()
 
