@@ -84,7 +84,6 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		if boss_active and check_boss_debuff("on_type"):
 			boss_debuffs()
 		else:
-			
 			base += 1
 			$"../Panels/Timer_bar/Base_Rotate".agitate()
 			
@@ -147,12 +146,12 @@ score: " + str(score_this_sentence)
 
 func sentence_start():
 	if !boss_active:
-		$Gameplay/Boss_Effect.hide()
+		$Gameplay/Boss_Effect_Rotate/Boss_Effect.hide()
 		Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
 	else: #boss round!
-		$Gameplay/Boss_Effect.show()
+		$Gameplay/Boss_Effect_Rotate/Boss_Effect.show()
 		boss_effect = select_boss_effect()
-		$Gameplay/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
+		$Gameplay/Boss_Effect_Rotate/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
 		Sentences.correct_sentence = Sentences.create_boss_sentence(is_upgrade_present("ignore_mistakes"))
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 	
@@ -285,10 +284,9 @@ func upgrade_apply(upgrade, typed_bypass = false):
 		if sentence_left == "": #prevents overstepping index
 			pass
 		elif typed_letter == sentence_left[0].to_lower(): #if current letter is also next letter
-			mult += 2
+			mult += 6
 			sentence_already_filled += ("[color=brown]") + sentence_left[0].to_lower() + ("[/color][color=%s]" % palette.other_text)
 			sentence_left = sentence_left.substr(1,-1)
-			$Gameplay/TypingProgress.value += 1
 			check_upgrades("on_type", upgrade.id)
 			return true
 	
@@ -454,24 +452,37 @@ func refresh_Score_Panel():
 
 
 func boss_debuffs():
+	var trigger_agitation = false
 	if boss_effect.id == "no_vowels":
 		if typed_letter not in ["a", "e", "i", "o", "u"]:
 			base += 1
 			$"../Panels/Timer_bar/Base_Rotate".agitate()
-			
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
 				$"../Panels/Timer_bar/Mult_Rotate".agitate()
-			
 			check_upgrades("on_type")
+			trigger_agitation = true
 	
-	if boss_effect.id == "less_time":
+	elif boss_effect.id == "less_time":
 		max_timer_value = int(Sentences.correct_sentence.length() * 14)
 		$"../Panels/Timer_bar".max_value = max_timer_value
+		trigger_agitation = true
 	
-	if boss_effect.id == "double_story":
+	elif boss_effect.id == "double_story":
 		Sentences.correct_sentence += "; " + Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
 		Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
+		trigger_agitation = true
+	
+	elif boss_effect.id == "no_mult_space":
+		base += 1
+		$"../Panels/Timer_bar/Base_Rotate".agitate()
+		check_upgrades("on_type")
+		if typed_letter == " ":
+			trigger_agitation = true
+	
+	
+	if trigger_agitation:
+		$Gameplay/Boss_Effect_Rotate.agitate()
 
 
 func select_boss_effect():
@@ -490,6 +501,11 @@ func select_boss_effect():
 			"pretty_text": "Two Stories",
 			"id": "double_story",
 			"trigger_time": "affect_sentence",
+		},
+		{
+			"pretty_text": "No mult for completed words",
+			"id": "no_mult_space",
+			"trigger_time": "on_type",
 		},
 	]
 	return boss_effects.pick_random()

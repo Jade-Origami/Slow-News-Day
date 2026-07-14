@@ -4,7 +4,7 @@ extends Node
 var upgrades = [
 	{
 		"pretty_text": "Ghost Writer",
-		"explanation": "Automatically types the next letter in a double-letter group and +3 mult when it does",
+		"explanation": "Automatically types the next letter in a double-letter group and +6 mult when it does",
 		"id": "double_letters_bypass",
 		"price": 4,
 		"trigger_time": "on_type",

@@ -140,7 +140,10 @@ offset_right = 250.0
 offset_bottom = 352.38
 theme_override_styles/panel = SubResource("StyleBoxFlat_nm4f2")
 
-[node name="Boss_Effect" type="RichTextLabel" parent="Gameplay" unique_id=1376734444]
+[node name="Boss_Effect_Rotate" type="Node2D" parent="Gameplay" unique_id=1625928642]
+script = ExtResource("2_82mmq")
+
+[node name="Boss_Effect" type="RichTextLabel" parent="Gameplay/Boss_Effect_Rotate" unique_id=1376734444]
 z_index = 2
 offset_left = -246.0
 offset_top = 208.38
