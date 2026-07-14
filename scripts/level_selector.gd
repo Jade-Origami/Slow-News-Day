@@ -17,19 +17,19 @@ func _ready() -> void:
 func _on_stage_1_pressed() -> void:
 	PlayerStats.target_this_round = round_1_required
 	round_reward = 3
-	$"..".initiate_round(round_reward)
+	$"..".initiate_round(round_reward, false)
 
 
 func _on_stage_2_pressed() -> void:
 	PlayerStats.target_this_round = round_2_required
 	round_reward = 4
-	$"..".initiate_round(round_reward)
+	$"..".initiate_round(round_reward, false)
 
 
 func _on_stage_3_pressed() -> void:
 	PlayerStats.target_this_round = round_3_required
 	round_reward = 5
-	$"..".initiate_round(round_reward)
+	$"..".initiate_round(round_reward, true) #boss round!
 
 
 func _on_gameplay_holder_level_select() -> void:

@@ -54,8 +54,16 @@ var sentence_structures = [
 	["adj", "and", "adj", "noun", "verb", "noun"],
 ]
 
-func create_sentence(different_space_char) -> String:
-	var sentence_structure = sentence_structures.pick_random()
+var boss_sentence_structures = [
+	["adj", "and", "adj", "noun", "adv", "and", "adv", "verb", "adj", "noun"]
+]
+
+func create_sentence(different_space_char, overide = false) -> String:
+	var sentence_structure
+	if !overide:
+		sentence_structure = sentence_structures.pick_random()
+	else:
+		sentence_structure = boss_sentence_structures.pick_random()
 	var sentence = ""
 	var space_char = " "
 	if different_space_char:
@@ -76,3 +84,6 @@ func create_sentence(different_space_char) -> String:
 		
 		sentence += word_to_add.replacen(" ", space_char) + space_char
 	return sentence
+
+func create_boss_sentence(different_space_char):
+	return create_sentence(different_space_char, true)

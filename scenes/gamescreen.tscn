@@ -140,6 +140,21 @@ offset_right = 250.0
 offset_bottom = 352.38
 theme_override_styles/panel = SubResource("StyleBoxFlat_nm4f2")
 
+[node name="Boss_Effect" type="RichTextLabel" parent="Gameplay" unique_id=1376734444]
+z_index = 2
+offset_left = -246.0
+offset_top = 208.38
+offset_right = 250.0
+offset_bottom = 352.38
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 34
+bbcode_enabled = true
+text = "[b][color=black]BOSS ROUND:[/color][/b]
+boss effect here if active
+
+"
+horizontal_alignment = 1
+
 [node name="Rotate_Discard" type="Node2D" parent="." unique_id=980317954]
 position = Vector2(80, 584)
 script = ExtResource("2_82mmq")

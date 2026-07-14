@@ -12,8 +12,8 @@ func _ready() -> void:
 	$Level_Selector_Panel.show()
 
 
-func initiate_round(round_reward):
-	new_round.emit(round_reward)
+func initiate_round(round_reward, boss_round):
+	new_round.emit(round_reward, boss_round)
 	$GameplayScreen.show()
 	$Level_Selector_Panel.hide()
 

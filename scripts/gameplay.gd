@@ -27,6 +27,8 @@ var mistake_overlay_timer = 0
 var coin_round_reward : int
 var set_before_round_active_upgrades = [null, null, null, null]
 var letter_to_be_typed
+var boss_active = false
+var boss_effect = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -78,18 +80,22 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	if typed_letter == letter_to_be_typed:
 		sentence_left = sentence_left.substr(1,-1)
 		
-		base += 1
-		$"../Panels/Timer_bar/Base_Rotate".agitate()
-		
-		if typed_letter.to_lower() == " ": #When word finished
-			mult += 1
-			$"../Panels/Timer_bar/Mult_Rotate".agitate()
-		
-		check_upgrades("on_type")
-		
+		if boss_active and check_boss_debuff("on_type"):
+			boss_debuffs()
+		else:
+			
+			base += 1
+			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			
+			if typed_letter.to_lower() == " ": #When word finished
+				mult += 1
+				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			
+			check_upgrades("on_type")
+				
 		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
-		
+			
 		if space_char ==  "_" and typed_letter == " ":
 			typed_letter = "_"
 		
@@ -139,7 +145,14 @@ score: " + str(score_this_sentence)
 
 
 func sentence_start():
-	Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+	if !boss_active:
+		$Gameplay/Boss_Effect.hide()
+		Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+	else: #boss round!
+		$Gameplay/Boss_Effect.show()
+		boss_effect = select_boss_effect()
+		$Gameplay/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
+		Sentences.correct_sentence = Sentences.create_boss_sentence(is_upgrade_present("ignore_mistakes"))
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
@@ -147,6 +160,9 @@ func sentence_start():
 	max_timer_value = int(Sentences.correct_sentence.length() * 23)
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
+	
+	if boss_active and check_boss_debuff("sentence_start"):
+			boss_debuffs()
 	
 	sentence_already_filled = ""
 	time_passed = 0
@@ -227,7 +243,8 @@ func _on_next_button_pressed() -> void:
 	sentence_start()
 
 
-func _on_gameplay_holder_new_round(round_reward) -> void:
+func _on_gameplay_holder_new_round(round_reward, boss_round) -> void:
+	boss_active = boss_round
 	coin_round_reward = round_reward
 	total_score = 0
 	sentences_used = 0
@@ -356,8 +373,6 @@ func check_upgrades(time, bypass = null):
 		elif upgrade.id == bypass:
 			pass
 		elif upgrade.trigger_time == time:
-			print(upgrade.trigger_time)
-			print(time)
 			if upgrade_apply(upgrade): #upgrade applies
 				if i == 0:
 					$"../Panels/Upgrades_Panel/Rotate_Item_1".agitate()
@@ -418,3 +433,41 @@ func refresh_Score_Panel():
 	$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 	$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
 	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
+
+
+func boss_debuffs():
+	if boss_effect.id == "no_vowels":
+		if typed_letter not in ["a", "e", "i", "o", "u"]:
+			base += 1
+			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			
+			if typed_letter.to_lower() == " ": #When word finished
+				mult += 1
+				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			
+			check_upgrades("on_type")
+	if boss_effect.id == "less_time":
+		max_timer_value = int(Sentences.correct_sentence.length() * 14)
+		$"../Panels/Timer_bar".max_value = max_timer_value
+	pass
+
+func select_boss_effect():
+	var boss_effects = [
+		{
+			"pretty_text" = "Vowels don't count",
+			"id" = "no_vowels",
+			"trigger_time" = "on_type"
+		},
+		{
+			"pretty_text" = "Less time per story",
+			"id" = "less_time",
+			"trigger_time" = "sentence_start"
+		}
+	]
+	return boss_effects.pick_random()
+
+
+func check_boss_debuff(time):
+	if boss_effect.trigger_time == time:
+		return true
+	return false
