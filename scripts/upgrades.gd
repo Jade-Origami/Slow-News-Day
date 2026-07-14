@@ -146,4 +146,20 @@ var upgrades = [
 		"trigger_time": "sentence_end",
 		"weight": 8
 	},
+	{
+		"pretty_text": "Eye of Sauron",
+		"explanation": "Every typed \"i\" accumulates 1 mult per round",
+		"id": "i_upgrade",
+		"price": 7,
+		"trigger_time": "on_type",
+		"weight": 10
+	},
+	{
+		"pretty_text": "False Vowel",
+		"explanation": "Every typed \"Y\" triggers vowel upgrades",
+		"id": "y_upgrade",
+		"price": 13,
+		"trigger_time": "on_type",
+		"weight": 2
+	},
 ]

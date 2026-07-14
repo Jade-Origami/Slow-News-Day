@@ -29,6 +29,7 @@ var set_before_round_active_upgrades = [null, null, null, null]
 var letter_to_be_typed
 var boss_active = false
 var boss_effect = null
+var i_score
 
 
 # Called when the node enters the scene tree for the first time.
@@ -192,6 +193,7 @@ func sentence_start():
 func round_finished() -> void:
 	PlayerStats.completed_rounds += 1
 	$Gameplay/TypingProgress.value = 0
+	i_score = 0
 	reward_screen()
 
 
@@ -266,9 +268,9 @@ func _on_gameplay_holder_new_round(round_reward, boss_round) -> void:
 	sentence_start()
 
 
-func upgrade_apply(upgrade):
+func upgrade_apply(upgrade, typed_bypass = false):
 	if upgrade.id == "a_upgrade":
-		if typed_letter.to_lower() == "a":
+		if typed_letter.to_lower() == "a" or typed_bypass:
 			mult += 2
 			base += 2
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
@@ -309,7 +311,6 @@ func upgrade_apply(upgrade):
 		return true
 	
 	elif upgrade.id == "tab_to_fill":
-		print("acitvated")
 		can_tab_to_fill = true
 		return true
 	
@@ -353,7 +354,7 @@ func upgrade_apply(upgrade):
 		return true
 	
 	elif upgrade.id == "e_upgrade":
-		if typed_letter.to_lower() == "e":
+		if typed_letter.to_lower() == "e" or typed_bypass:
 			base += 10
 			return true
 	
@@ -365,11 +366,24 @@ func upgrade_apply(upgrade):
 		mult += total_upgrades * 3
 		return true
 	
+	elif upgrade.id == "i_upgrade":
+		if typed_letter.to_lower() == "i" or typed_bypass:
+			i_score += 1
+			mult += i_score
+			$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			refresh_Score_Panel()
+			return true
+	
+	elif upgrade.id == "y_upgrade":
+		if typed_letter.to_lower() == "y":
+			check_upgrades("on_type", "y_upgrade", true)
+			return true
+	
 	else:
 		return false
 
 
-func check_upgrades(time, bypass = null):
+func check_upgrades(time, bypass = null, typed_bypass = false):
 	for i in range(set_before_round_active_upgrades.size()):
 		var upgrade = set_before_round_active_upgrades[i]
 		if upgrade == null:
@@ -377,7 +391,7 @@ func check_upgrades(time, bypass = null):
 		elif upgrade.id == bypass:
 			pass
 		elif upgrade.trigger_time == time:
-			if upgrade_apply(upgrade): #upgrade applies
+			if upgrade_apply(upgrade, typed_bypass): #upgrade applies
 				if i == 0:
 					$"../Panels/Upgrades_Panel/Rotate_Item_1".agitate()
 				elif i == 1:
@@ -440,7 +454,6 @@ func refresh_Score_Panel():
 
 
 func boss_debuffs():
-	print(boss_effect)
 	if boss_effect.id == "no_vowels":
 		if typed_letter not in ["a", "e", "i", "o", "u"]:
 			base += 1
@@ -457,7 +470,7 @@ func boss_debuffs():
 		$"../Panels/Timer_bar".max_value = max_timer_value
 	
 	if boss_effect.id == "double_story":
-		Sentences.correct_sentence += ". also; " + Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+		Sentences.correct_sentence += "; " + Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
 		Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 
 
