@@ -186,4 +186,4 @@ text = "Next Story"
 
 [connection signal="text_changed" from="SentenceTake" to="." method="_on_sentence_take_text_changed"]
 [connection signal="pressed" from="Rotate_Discard/Discard_Button" to="." method="_on_discard_button_pressed"]
-[connection signal="pressed" from="Rotate_Discard/Next_Button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Rotate_Discard/Next_Button" to="." method="sentence_start"]

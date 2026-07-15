@@ -41,7 +41,7 @@ var verbs = [
 	"pinches", "kicks", "licks", "flicks at", "throws a stone at", "pulls at", "frowns at",
 	"rubs", "brawls with", "holds", "eats whole", "sits on", "flips", "circles",
 	"encircles", "repots", "transmogrifies", "snaps", "manifests", "expunges", "chooses",
-	"attends", "ends up at", "wears", "swims with", "rides", "thinks about"
+	"attends funeral of", "ends up with", "wears", "swims with", "rides", "thinks about"
 ]
 
 var adverbs = [
@@ -65,16 +65,13 @@ var boss_sentence_structures = [
 	["adj", "and", "adj", "noun", "adv", "and", "adv", "verb", "adj", "noun"]
 ]
 
-func create_sentence(different_space_char, overide = false) -> String:
+func create_sentence(boss_overide = false) -> String:
 	var sentence_structure
-	if !overide:
+	if !boss_overide:
 		sentence_structure = sentence_structures.pick_random()
 	else:
 		sentence_structure = boss_sentence_structures.pick_random()
 	var sentence = ""
-	var space_char = " "
-	if different_space_char:
-		space_char = "_"
 	for word in sentence_structure:
 		var word_to_add : String
 		match word:
@@ -91,8 +88,8 @@ func create_sentence(different_space_char, overide = false) -> String:
 			_:
 				word_to_add = word
 		
-		sentence += word_to_add.replacen(" ", space_char) + space_char
+		sentence += word_to_add + " "
 	return sentence
 
-func create_boss_sentence(different_space_char):
-	return create_sentence(different_space_char, true)
+func create_boss_sentence():
+	return create_sentence(true)

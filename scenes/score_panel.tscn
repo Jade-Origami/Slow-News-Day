@@ -241,7 +241,7 @@ theme_override_colors/font_disabled_color = Color(0.96035105, 0.96035105, 0.9603
 theme_override_font_sizes/font_size = 25
 theme_override_styles/disabled = SubResource("StyleBoxFlat_bp0ix")
 disabled = true
-text = "Hands"
+text = "Stories"
 metadata/_edit_use_anchors_ = true
 
 [node name="Coins_Rotate" type="Node2D" parent="." unique_id=330715971]

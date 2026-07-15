@@ -99,7 +99,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 			typed_letter = "_"
 		
 		sentence_already_filled += ("[color=%s]" % palette.completed_text) + typed_letter + ("[/color][color=%s]" % palette.other_text)
-		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
+		set_SentenceShow_text(sentence_already_filled + sentence_left) 
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
 		mistakes_made += 1
@@ -150,7 +150,7 @@ func sentence_start():
 	else: #boss round!
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.show()
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
-		Sentences.correct_sentence = Sentences.create_boss_sentence(is_upgrade_present("ignore_mistakes"))
+		Sentences.correct_sentence = Sentences.create_boss_sentence()
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 	
 	if boss_effect != null and check_boss_debuff("affect_sentence"):
@@ -158,7 +158,7 @@ func sentence_start():
 	
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
-	$Gameplay/SentenceShow.text = ("[color=%s]" % palette.other_text) + Sentences.correct_sentence + "!"
+	set_SentenceShow_text(("[color=%s]" % palette.other_text) + sentence_left)
 	max_timer_value = int(Sentences.correct_sentence.length() * 23)
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
@@ -228,7 +228,7 @@ func tab_autofill() -> void:
 		
 		sentence_left = Sentences.correct_sentence.substr(end_index_of_word,-1)
 		sentence_already_filled += ("[color=%s]" % palette.completed_text) + rest_of_word + ("[/color][color=%s]" % palette.other_text)
-		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
+		set_SentenceShow_text(sentence_already_filled + sentence_left)
 		$Gameplay/TypingProgress.value += rest_of_word.length()
 		
 		can_tab_to_fill = false
@@ -242,10 +242,6 @@ func strip_bbcode(source: String) -> String:
 	var regex = RegEx.new()
 	regex.compile("\\[.+?\\]")
 	return regex.sub(source, "", true)
-
-
-func _on_next_button_pressed() -> void:
-	sentence_start()
 
 
 func _on_gameplay_holder_new_round(round_reward, boss_round_effect = null) -> void:
@@ -345,7 +341,7 @@ func upgrade_apply(upgrade, typed_bypass = false):
 		if mistake_print == " ":
 			mistake_print = "_"
 		sentence_already_filled += "[color=red]" + mistake_print + ("[/color][color=%s]" % palette.other_text)
-		$Gameplay/SentenceShow.text = sentence_already_filled + sentence_left + "!" 
+		set_SentenceShow_text(sentence_already_filled + sentence_left)
 		$Gameplay/TypingProgress.value += 1
 		double_speed_amount -= 10
 		return true
@@ -489,3 +485,11 @@ func check_boss_debuff(time):
 	if boss_effect.trigger_time == time:
 		return true
 	return false
+
+func set_SentenceShow_text(text):
+	var to_fill
+	if is_upgrade_present("ignore_mistakes"):
+		to_fill = text.replacen(" ", "_") + "!"
+	else:
+		to_fill = text + "!"
+	$Gameplay/SentenceShow.text = to_fill 

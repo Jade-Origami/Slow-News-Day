@@ -2,7 +2,6 @@ extends Node
 
 
 var coins = 0
-var round_time_mult = 1
 var completed_rounds = 0
 var target_this_round : int
 var sentences_allowed = 4

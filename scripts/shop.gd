@@ -65,22 +65,22 @@ func reroll() -> void:
 	while item_1 in $"../Panels/Upgrades_Panel".active_upgrades:
 		item_1 = weighted_random(Upgrades.upgrades)
 	$Rotate_1/Item_1.text = item_1.pretty_text
-	$Rotate_1/Item_1/Buy_Button.text = str(item_1.price) + " Coins"
+	$Rotate_1/Item_1/Buy_Button.text = "£" + str(item_1.price)
 	shop_items[0] = item_1.id
 	item_2 = weighted_random(Upgrades.upgrades)
 	while item_2.id in shop_items or item_2 in $"../Panels/Upgrades_Panel".active_upgrades:
 		item_2 = weighted_random(Upgrades.upgrades)
 	$Rotate_2/Item_2.text = item_2.pretty_text
-	$Rotate_2/Item_2/Buy_Button.text = str(item_2.price) + " Coins"
+	$Rotate_2/Item_2/Buy_Button.text = "£" + str(item_2.price)
 	shop_items[1] = item_2.id
 	item_3 = weighted_random(Upgrades.upgrades)
 	while item_3.id in shop_items or item_3 in $"../Panels/Upgrades_Panel".active_upgrades:
 		item_3 = weighted_random(Upgrades.upgrades)
 	$Rotate_3/Item_3.text = item_3.pretty_text
-	$Rotate_3/Item_3/Buy_Button.text = str(item_3.price) + " Coins"
+	$Rotate_3/Item_3/Buy_Button.text = "£" + str(item_3.price)
 	shop_items[2] = item_3.id
 	reroll_cost += 1
-	$Rotate_Reroll/Reroll_button.text = "Reroll: " + str(reroll_cost) + " Coins"
+	$Rotate_Reroll/Reroll_button.text = "Reroll: £" + str(reroll_cost)
 	$Rotate_1/Item_1/Buy_Button.hide()
 	$Rotate_2/Item_2/Buy_Button.hide()
 	$Rotate_1/Item_1.show()
