@@ -80,6 +80,8 @@ theme_override_styles/pressed = ExtResource("2_0s7kc")
 theme_override_styles/hover = ExtResource("2_0s7kc")
 theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 1"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_1/Item" unique_id=1676119624]
 visible = false
@@ -130,6 +132,8 @@ theme_override_styles/pressed = ExtResource("2_0s7kc")
 theme_override_styles/hover = ExtResource("2_0s7kc")
 theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 2"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_2/Item" unique_id=1679977878]
 visible = false
@@ -196,6 +200,8 @@ theme_override_styles/pressed = ExtResource("2_0s7kc")
 theme_override_styles/hover = ExtResource("2_0s7kc")
 theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 3"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_3/Item" unique_id=1344829349]
 visible = false
@@ -262,6 +268,8 @@ theme_override_styles/pressed = ExtResource("2_0s7kc")
 theme_override_styles/hover = ExtResource("2_0s7kc")
 theme_override_styles/disabled = ExtResource("2_0s7kc")
 text = "Item 4"
+text_overrun_behavior = 2
+autowrap_mode = 3
 
 [node name="Sell_Button" type="Button" parent="Rotate_Item_4/Item" unique_id=1367531224]
 visible = false
@@ -303,17 +311,25 @@ theme_override_font_sizes/normal_font_size = 22
 text = "0/4"
 horizontal_alignment = 2
 
+[connection signal="mouse_entered" from="Rotate_Item_1/Item" to="." method="_on_item_1_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_Item_1/Item" to="." method="_on_item_1_mouse_exited"]
 [connection signal="pressed" from="Rotate_Item_1/Item" to="." method="_on_item_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_1/Item/Sell_Button" to="." method="_on_sell_button_1_pressed"]
 [connection signal="pressed" from="Rotate_Item_1/Item/Down_Button" to="." method="Item_1_Down"]
+[connection signal="mouse_entered" from="Rotate_Item_2/Item" to="." method="_on_item_2_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_Item_2/Item" to="." method="_on_item_2_mouse_exited"]
 [connection signal="pressed" from="Rotate_Item_2/Item" to="." method="_on_item_2_pressed"]
 [connection signal="pressed" from="Rotate_Item_2/Item/Sell_Button" to="." method="_on_sell_button_2_pressed"]
 [connection signal="pressed" from="Rotate_Item_2/Item/Up_Button" to="." method="Item_2_Up"]
 [connection signal="pressed" from="Rotate_Item_2/Item/Down_Button" to="." method="Item_2_Down"]
+[connection signal="mouse_entered" from="Rotate_Item_3/Item" to="." method="_on_item_3_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_Item_3/Item" to="." method="_on_item_3_mouse_exited"]
 [connection signal="pressed" from="Rotate_Item_3/Item" to="." method="_on_item_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_3/Item/Sell_Button" to="." method="_on_sell_button_3_pressed"]
 [connection signal="pressed" from="Rotate_Item_3/Item/Up_Button" to="." method="Item_3_Up"]
 [connection signal="pressed" from="Rotate_Item_3/Item/Down_Button" to="." method="Item_3_Down"]
+[connection signal="mouse_entered" from="Rotate_Item_4/Item" to="." method="_on_item_4_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_Item_4/Item" to="." method="_on_item_4_mouse_exited"]
 [connection signal="pressed" from="Rotate_Item_4/Item" to="." method="_on_item_4_pressed"]
 [connection signal="pressed" from="Rotate_Item_4/Item/Sell_Button" to="." method="_on_sell_button_4_pressed"]
 [connection signal="pressed" from="Rotate_Item_4/Item/Up_Button" to="." method="Item_4_Up"]
