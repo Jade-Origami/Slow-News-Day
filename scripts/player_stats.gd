@@ -1,7 +1,7 @@
 extends Node
 
 
-var coins = 9999
+var coins = 0
 var round_time_mult = 1
 var completed_rounds = 0
 var target_this_round : int
@@ -15,8 +15,7 @@ var palettes = [
 		"other_text": "#5F414F",
 		"shop_colour_normal": Color("#EAB595"),
 		"shop_colour_hover": Color("de9b71ff"),
-		"shop_colour_pressed": Color("c88257ff"),
-		"shop_font": "#000000"
+		"shop_colour_pressed": Color("c88257ff")
 	},
 	{
 		"background": Color("#138086"),
@@ -24,8 +23,7 @@ var palettes = [
 		"other_text": "#FFFFFF",
 		"shop_colour_normal": Color("#CD7672"),
 		"shop_colour_hover": Color("bc6561ff"),
-		"shop_colour_pressed": Color("af5a58ff"),
-		"shop_font": "#000000"
+		"shop_colour_pressed": Color("af5a58ff")
 	},
 	{
 		"background": Color("#3C4CAD"),
@@ -33,8 +31,7 @@ var palettes = [
 		"other_text": "#FFFFFF" ,
 		"shop_colour_normal": Color("#FAA7B8"),
 		"shop_colour_hover": Color("f786a1ff"),
-		"shop_colour_pressed": Color("f26b8fff"),
-		"shop_font": "#000000"
+		"shop_colour_pressed": Color("f26b8fff")
 	},
 	{
 		"background": Color("#CCABDB"),
@@ -42,7 +39,6 @@ var palettes = [
 		"other_text": "#5F414F",
 		"shop_colour_normal": Color("#FA897B"),
 		"shop_colour_hover": Color("f56456ff"),
-		"shop_colour_pressed": Color("f35a4cff"),
-		"shop_font": "#000000"
+		"shop_colour_pressed": Color("f35a4cff")
 	}
 ]
