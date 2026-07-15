@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ddtkxyigw5b4g"]
 
-[ext_resource type="Script" uid="uid://bk1oj24qes0w" path="res://scripts/debug_scene.gd" id="1_3e1qr"]
+[ext_resource type="Script" uid="uid://bk1oj24qes0w" path="res://scripts/debug_scene.gd" id="1_fgkus"]
 
-[node name="debug scene" type="Node2D" unique_id=954179254]
-script = ExtResource("1_3e1qr")
+[node name="Title_Screen" type="Node2D" unique_id=954179254]
+script = ExtResource("1_fgkus")
 
 [node name="Gamescreen" type="Button" parent="." unique_id=2070216097]
 offset_left = 488.0

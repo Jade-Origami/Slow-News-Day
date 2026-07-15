@@ -8,7 +8,7 @@ var upgrades = [
 		"id": "double_letters_bypass",
 		"price": 4,
 		"trigger_time": "on_type",
-		"weight": 10
+		"weight": 13
 	},
 	{
 		"pretty_text": "Higher Wages",
@@ -16,7 +16,7 @@ var upgrades = [
 		"id": "flat_coin_increase",
 		"price": 3,
 		"trigger_time": "reward",
-		"weight": 20
+		"weight": 19
 	},
 	{
 		"pretty_text": "Longer Deadlines",
@@ -24,7 +24,7 @@ var upgrades = [
 		"id": "round_time_increase",
 		"price": 4,
 		"trigger_time": "sentence_start",
-		"weight": 20
+		"weight": 19
 	},
 	{
 		"pretty_text": "Autocorrect",
@@ -32,7 +32,7 @@ var upgrades = [
 		"id": "mistake_penalty",
 		"price": 6,
 		"trigger_time": "mistake_made",
-		"weight": 15
+		"weight": 13
 	},
 	{
 		"pretty_text": "Editor's Note",
@@ -40,7 +40,7 @@ var upgrades = [
 		"id": "reroll_sentence",
 		"price": 2,
 		"trigger_time": "round_start",
-		"weight": 20
+		"weight": 19
 	},
 	{
 		"pretty_text": "Predictive Text",
@@ -48,7 +48,7 @@ var upgrades = [
 		"id": "tab_to_fill",
 		"price": 6,
 		"trigger_time": "round_start",
-		"weight": 10
+		"weight": 8
 	},
 	{
 		"pretty_text": "Ace Writer",
@@ -56,7 +56,7 @@ var upgrades = [
 		"id": "a_upgrade",
 		"price": 5,
 		"trigger_time": "on_type",
-		"weight": 6
+		"weight": 13
 	},
 	{
 		"pretty_text": "Sublime Text",
@@ -64,7 +64,7 @@ var upgrades = [
 		"id": "s_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
-		"weight": 5
+		"weight": 8
 	},
 	{
 		"pretty_text": "Zippy Keys",
@@ -72,7 +72,7 @@ var upgrades = [
 		"id": "z_upgrade",
 		"price": 4,
 		"trigger_time": "on_type",
-		"weight": 10
+		"weight": 13
 	},
 	{
 		"pretty_text": "Trusted Tabloid",
@@ -80,7 +80,7 @@ var upgrades = [
 		"id": "flat_mult",
 		"price": 4,
 		"trigger_time": "sentence_end",
-		"weight": 20
+		"weight": 19
 	},
 	{
 		"pretty_text": "Upgrade Stencil",
@@ -96,7 +96,7 @@ var upgrades = [
 		"id": "copy_above",
 		"price": 10,
 		"trigger_time": "changes",
-		"weight": 5
+		"weight": 4
 	},
 	{
 		"pretty_text": "Brainstorm",
@@ -104,7 +104,7 @@ var upgrades = [
 		"id": "copy_bottom",
 		"price": 10,
 		"trigger_time": "changes",
-		"weight": 5
+		"weight": 4
 	},
 	{
 		"pretty_text": "Surplus Items",
@@ -112,7 +112,7 @@ var upgrades = [
 		"id": "shop_surplus",
 		"price": 6,
 		"trigger_time": "shop",
-		"weight": 15
+		"weight": 13
 	},
 	{
 		"pretty_text": "Valued Customer",
@@ -120,7 +120,7 @@ var upgrades = [
 		"id": "low_reroll",
 		"price": 5,
 		"trigger_time": "shop",
-		"weight": 14
+		"weight": 13
 	},
 	{
 		"pretty_text": "Mistake Fanatic",
@@ -128,7 +128,7 @@ var upgrades = [
 		"id": "ignore_mistakes",
 		"price": 5,
 		"trigger_time": "mistake_made",
-		"weight": 10
+		"weight": 8
 	},
 	{
 		"pretty_text": "Even Steven",
@@ -136,7 +136,7 @@ var upgrades = [
 		"id": "e_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
-		"weight": 7
+		"weight": 8
 	},
 	{
 		"pretty_text": "Abstract Artpiece",
@@ -152,7 +152,7 @@ var upgrades = [
 		"id": "i_upgrade",
 		"price": 7,
 		"trigger_time": "on_type",
-		"weight": 10
+		"weight": 8
 	},
 	{
 		"pretty_text": "False Vowel",
@@ -160,14 +160,20 @@ var upgrades = [
 		"id": "y_upgrade",
 		"price": 13,
 		"trigger_time": "on_type",
-		"weight": 2
+		"weight": 4
 	},
-		{
+	{
 		"pretty_text": "Business Insider",
 		"explanation": "Interest max increases by £2",
 		"id": "up_interest",
 		"price": 8,
 		"trigger_time": "round_end",
-		"weight": 7
+		"weight": 13
 	},
 ]
+
+
+#common: 19
+#uncommon: 13
+#rare: 8
+#tricky: 4
