@@ -7,17 +7,18 @@ var nouns = [
 	"shoe", "slipper", "leaf", "glass", "booklet", "pottery", "hand cream",
 	"book", "flag", "man", "woman", "enby", "person", "drum", "nail polish", "poster",
 	"paper", "wii sports", "origami", "kitten", "cat", "dog", "puppy", "fox", "snail",
-	"nintendo 3ds", "deodorant", "controller", "prison warden", "door", "sloth",
+	"nintendo 3DS", "deodorant", "controller", "prison warden", "door", "sloth",
 	"mountain climber", "tyre", "guitar", "mouse", "rat", "spray bottle", "tintin",
 	"slinky", "vaseline", "lanyard", "slipper", "skirt", "shirt", "vampire", "sun",
 	"daughter", "son", "follower", "streamer", "wire", "USB stick", "keychain",
-	"lost key", "pair of pyjamas", "scissors", "flashcard", "lamp", "timer", "magnet",
+	"lost key", "towel", "scissors", "flashcard", "lamp", "timer", "magnet",
 	"scarf", "bag", "music festival", "examiner", "lunatic", "chicken", "egg",
 	"tree", "tie", "dress", "laptop", "pokemon", "hair", "locker",
 	"plant", "flower", "clock", "sand", "mountain", "mat", "rug", "seat",
 	"tree", "child", "spouse", "fish", "government", "whale", "fool",
 	"thermometer", "metronome", "mum", "dad", "train", "gallery", "cinema",
-	"zebra", "zoo", "newspaper", "letter", "radio", "shark", "blahaj"
+	"zebra", "zoo", "newspaper", "letter", "radio", "shark", "blahaj",
+	"biscuit", "mother", "father"
 ]
 
 var adjectives = [
@@ -38,8 +39,8 @@ var adjectives = [
 var verbs_present = [
 	"steals", "sings about", "wants", "runs alongside", "punches", "rips", "pushes", "drowns",
 	"agitates", "annoys", "pioneers", "destroys", "discovers", "saves", "growls at", "barks at",
-	"meows at", "yips at", "snarls at", "bites at", "kisses", "marries", "hugs", "confuses",
-	"pinches", "kicks", "licks", "flicks at", "throws a stone at", "pulls at", "frowns at",
+	"meows at", "yips at", "snarls at", "bites", "kisses", "marries", "hugs", "confuses",
+	"pinches", "kicks", "licks", "flicks", "throws a stone at", "pulls at", "frowns at",
 	"rubs", "brawls", "holds", "eats whole", "sits on", "flips", "circles", "slaps",
 	"encircles", "repots", "transmogrifies", "snaps", "manifests", "expunges", "chooses",
 	"attends funeral of", "ends up with", "wears", "swims with", "rides", "thinks about",
@@ -56,14 +57,14 @@ var adverbs_present = [
 ]
 
 var adverbs_future = [
-	"to", "will", "wants to", "might", "won't", "will not", ""
+	"to", "will", "wants to", "might", "won't", "will not", "likes to"
 ]
 
 var verbs_future = [
 	"steal", "sing about", "want", "run alongside", "punch", "rip", "push", "drown",
 	"agitate", "annoy", "pioneer", "destroy", "discover", "save", "growl at", "bark at",
-	"meow at", "yip at", "snarl at", "bite at", "kiss", "marry", "hug", "confuse",
-	"pinch", "kick", "lick", "flick at", "throw a stone at", "pull at", "frown at",
+	"meow at", "yip at", "snarl at", "bite", "kiss", "marry", "hug", "confuse",
+	"pinch", "kick", "lick", "flick", "throw a stone at", "pull at", "frown at",
 	"rub", "brawl", "hold", "eat whole", "sit on", "flip", "circle", "slap",
 	"encircle", "repot", "transmogrify", "snap", "manifest", "expunge", "choose",
 	"attend funeral of", "end up with", "wear", "swim with", "ride", "think about",
@@ -72,7 +73,7 @@ var verbs_future = [
 
 var flairs = [
 	"Reported", "Breaking", "Breaking News", "Local", "Science", "Space",
-	"Arts",
+	"Arts", "Tech", "Environment"
 ]
 
 var connectives = [

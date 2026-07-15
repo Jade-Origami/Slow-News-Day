@@ -470,7 +470,7 @@ func boss_debuffs():
 		if typed_letter == " ":
 			trigger_agitation = true
 	
-	elif boss_effect == "no_left":
+	elif boss_effect.id == "no_left":
 		if typed_letter.to_lower() not in ["q", "w", "e", "a", "s", "d", "z", "x", "c"]:
 			base += 1
 			$"../Panels/Timer_bar/Base_Rotate".agitate()
@@ -481,7 +481,7 @@ func boss_debuffs():
 		else:
 			trigger_agitation = true
 	
-	elif boss_effect == "no_centre":
+	elif boss_effect.id == "no_centre":
 		if typed_letter.to_lower() not in ["r", "t", "y", "f", "g", "h", "v", "b", "n"]:
 			base += 1
 			$"../Panels/Timer_bar/Base_Rotate".agitate()
@@ -492,7 +492,7 @@ func boss_debuffs():
 		else:
 			trigger_agitation = true
 	
-	elif boss_effect == "no_right":
+	elif boss_effect.id == "no_right":
 		if typed_letter.to_lower() not in ["u", "i", "o", "p", "j", "k", "l", "m"]:
 			base += 1
 			$"../Panels/Timer_bar/Base_Rotate".agitate()
