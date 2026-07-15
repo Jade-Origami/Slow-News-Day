@@ -162,4 +162,12 @@ var upgrades = [
 		"trigger_time": "on_type",
 		"weight": 2
 	},
+		{
+		"pretty_text": "Business Insider",
+		"explanation": "Interest max increases by £2",
+		"id": "up_interest",
+		"price": 8,
+		"trigger_time": "round_end",
+		"weight": 7
+	},
 ]

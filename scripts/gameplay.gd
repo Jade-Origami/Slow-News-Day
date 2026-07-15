@@ -71,12 +71,6 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	letter_to_be_typed = sentence_left[0].to_lower()
 	typed_letter = new_text[-1].to_lower()
 	
-	var space_char = " "
-	if is_upgrade_present("ignore_mistakes"):
-		space_char = "_"
-		if letter_to_be_typed == "_":
-			letter_to_be_typed = " "
-	
 	if typed_letter == letter_to_be_typed:
 		sentence_left = sentence_left.substr(1,-1)
 		
@@ -94,10 +88,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 				
 		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
 		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
-			
-		if space_char ==  "_" and typed_letter == " ":
-			typed_letter = "_"
-		
+
 		sentence_already_filled += ("[color=%s]" % palette.completed_text) + typed_letter + ("[/color][color=%s]" % palette.other_text)
 		set_SentenceShow_text(sentence_already_filled + sentence_left) 
 		$Gameplay/TypingProgress.value += 1
@@ -262,9 +253,9 @@ func _on_gameplay_holder_new_round(round_reward, boss_round_effect = null) -> vo
 	sentence_start()
 
 
-func upgrade_apply(upgrade, typed_bypass = false):
+func upgrade_apply(upgrade, vowel_bypass = false):
 	if upgrade.id == "a_upgrade":
-		if typed_letter.to_lower() == "a" or typed_bypass:
+		if typed_letter.to_lower() == "a" or vowel_bypass:
 			mult += 2
 			base += 2
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
@@ -347,7 +338,7 @@ func upgrade_apply(upgrade, typed_bypass = false):
 		return true
 	
 	elif upgrade.id == "e_upgrade":
-		if typed_letter.to_lower() == "e" or typed_bypass:
+		if typed_letter.to_lower() == "e" or vowel_bypass:
 			base += 10
 			return true
 	
@@ -360,7 +351,7 @@ func upgrade_apply(upgrade, typed_bypass = false):
 		return true
 	
 	elif upgrade.id == "i_upgrade":
-		if typed_letter.to_lower() == "i" or typed_bypass:
+		if typed_letter.to_lower() == "i" or vowel_bypass:
 			i_score += 1
 			mult += i_score
 			$"../Panels/Timer_bar/Mult_Rotate".agitate()
@@ -371,6 +362,9 @@ func upgrade_apply(upgrade, typed_bypass = false):
 		if typed_letter.to_lower() == "y":
 			check_upgrades("on_type", "y_upgrade", true)
 			return true
+	
+	elif upgrade.id == "up_interest":
+		$"../Reward_Panel".max_interest += 2
 	
 	else:
 		return false

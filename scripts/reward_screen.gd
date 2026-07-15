@@ -4,6 +4,7 @@ var round_reward
 var hands_left
 var pending_give_amount
 var total_to_give
+var max_interest
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +28,8 @@ func _on_shop_button_pressed() -> void:
 	$"..".initiate_shop()
 
 func money_sources():
+	max_interest = 5
+	$"../GameplayScreen".check_upgrades("round_end")
 	#initialise
 	$MoneySources.text = ""
 	total_to_give = 0
@@ -40,9 +43,9 @@ func money_sources():
 	#interest (£1 per £5 player currently has)
 	@warning_ignore("integer_division")
 	var interest_reward = floor(PlayerStats.coins / 5) * 1
-	if interest_reward > 5:
-		interest_reward = 5
-	$MoneySources.text += "\n[font_size=40][color=#f0c45b][b]" + str(interest_reward) + "[/b][/color][/font_size][valign y=-8.5]  £1 interest per £5 held (max £5) [/valign]"
+	if interest_reward > max_interest:
+		interest_reward = max_interest
+	$MoneySources.text += "\n[font_size=40][color=#f0c45b][b]" + str(interest_reward) + "[/b][/color][/font_size][valign y=-8.5]  £1 interest per £5 held (max £" + str(max_interest) + ") [/valign]"
 	total_to_give += interest_reward
 	#check for upgrades that add on reward text
 	$"../GameplayScreen".check_upgrades("reward")

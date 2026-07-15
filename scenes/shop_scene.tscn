@@ -193,6 +193,7 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.172833, 0.17283255, 0.17283264, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_fkwdu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qo6fm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_a6bpy")
@@ -225,17 +226,18 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_7iqsd")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mk041")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wsk4o")
 text = "Coins"
 
 [node name="Rotate_3" type="Node2D" parent="." unique_id=2094369185]
+visible = false
 position = Vector2(112, 280)
 script = ExtResource("3_fdhsn")
 
 [node name="Item_3" type="Button" parent="Rotate_3" unique_id=1754266222]
-visible = false
 offset_left = -112.0
 offset_top = -72.0
 offset_right = 112.0
@@ -259,6 +261,7 @@ offset_bottom = 192.0
 theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_3icxh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oh6l1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_smcpb")
