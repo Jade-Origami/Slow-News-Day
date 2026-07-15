@@ -137,7 +137,7 @@ score: " + str(score_this_sentence)
 func sentence_start():
 	if boss_effect == null:
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.hide()
-		Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+		Sentences.correct_sentence = Sentences.create_sentence()
 	else: #boss round!
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.show()
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
@@ -459,7 +459,7 @@ func boss_debuffs():
 		trigger_agitation = true
 	
 	elif boss_effect.id == "double_story":
-		Sentences.correct_sentence += "; " + Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
+		Sentences.correct_sentence += "; " + Sentences.create_sentence()
 		Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 		trigger_agitation = true
 	
@@ -468,6 +468,39 @@ func boss_debuffs():
 		$"../Panels/Timer_bar/Base_Rotate".agitate()
 		check_upgrades("on_type")
 		if typed_letter == " ":
+			trigger_agitation = true
+	
+	elif boss_effect == "no_left":
+		if typed_letter.to_lower() not in ["q", "w", "e", "a", "s", "d", "z", "x", "c"]:
+			base += 1
+			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			if typed_letter.to_lower() == " ": #When word finished
+				mult += 1
+				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			check_upgrades("on_type")
+		else:
+			trigger_agitation = true
+	
+	elif boss_effect == "no_centre":
+		if typed_letter.to_lower() not in ["r", "t", "y", "f", "g", "h", "v", "b", "n"]:
+			base += 1
+			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			if typed_letter.to_lower() == " ": #When word finished
+				mult += 1
+				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			check_upgrades("on_type")
+		else:
+			trigger_agitation = true
+	
+	elif boss_effect == "no_right":
+		if typed_letter.to_lower() not in ["u", "i", "o", "p", "j", "k", "l", "m"]:
+			base += 1
+			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			if typed_letter.to_lower() == " ": #When word finished
+				mult += 1
+				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			check_upgrades("on_type")
+		else:
 			trigger_agitation = true
 	
 	

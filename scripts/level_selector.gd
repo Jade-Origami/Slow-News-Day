@@ -96,5 +96,23 @@ func select_boss_effect():
 			"trigger_time": "none",
 			"score_effect": 2
 		},
+		{
+			"pretty_text": "Left third of keyboard doesn't count",
+			"id": "no_left",
+			"trigger_time": "on_type",
+			"score_effect": 0.75
+		},
+		{
+			"pretty_text": "Centre third of keyboard doesn't count",
+			"id": "no_centre",
+			"trigger_time": "on_type",
+			"score_effect": 0.75
+		},
+		{
+			"pretty_text": "Right third of keyboard doesn't count",
+			"id": "no_right",
+			"trigger_time": "on_type",
+			"score_effect": 0.75
+		},
 	]
 	return boss_effects.pick_random()
