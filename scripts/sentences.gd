@@ -9,12 +9,15 @@ var nouns = [
 	"paper", "wii sports", "origami", "kitten", "cat", "dog", "puppy", "fox", "snail",
 	"nintendo 3ds", "deodorant", "controller", "prison warden", "door", "sloth",
 	"mountain climber", "tire", "guitar", "mouse", "rat", "spray bottle", "tintin",
-	"slinky", "vaseline", "lanyard", "trouser leg", "skirt", "shirt", "vampire", "sun",
+	"slinky", "vaseline", "lanyard", "slipper", "skirt", "shirt", "vampire", "sun",
 	"daughter", "son", "follower", "streamer", "wire", "USB stick", "keychain",
 	"lost key", "pair of pyjamas", "scissors", "flashcard", "lamp", "timer", "magnet",
 	"scarf", "bag", "music festival", "examiner", "lunatic", "chicken", "egg",
-	"tree", "tie", "dress", "wii sports resort", "pokemon", "hair", "locker",
-	"plant", "flower", "clock", "sand", "mountain"
+	"tree", "tie", "dress", "laptop", "pokemon", "hair", "locker",
+	"plant", "flower", "clock", "sand", "mountain", "mat", "rug", "seat",
+	"tree", "child", "spouse", "fish", "government", "whale", "fool",
+	"thermometer", "metronome", "mum", "dad", "train", "gallery", "cinema",
+	"zeotrope", "zebra", "zoo", "newspaper", "letter", "radio"
 ]
 
 var adjectives = [
@@ -26,7 +29,9 @@ var adjectives = [
 	"purple", "puzzled", "confused", "unusual", "cold", "warm", "ace",
 	"straight", "disappointed", "new", "swanky", "drunk", "nonplussed",
 	"young", "fickle", "idiotic", "ridiculous", "pointless", "orange",
-	"hairy"
+	"hairy", "wooden", "iron", "plastic", "metal", "copper", "ceramic",
+	"accident-prone", "bashful", "cloth", "flimsy", "conceited",
+	"playful", "sizeable", "happily"
 ]
 
 var verbs = [
@@ -35,7 +40,8 @@ var verbs = [
 	"meows at", "yips at", "snarls at", "bites at", "kisses", "marries", "hugs", "confuses",
 	"pinches", "kicks", "licks", "flicks at", "throws a stone at", "pulls at", "frowns at",
 	"rubs", "brawls with", "holds", "eats whole", "sits on", "flips", "circles",
-	"encircles", "repots", "transmogrifies", "snaps", "manifests", "expunges"
+	"encircles", "repots", "transmogrifies", "snaps", "manifests", "expunges", "chooses",
+	"attends", "ends up at", "wears", "swims with", "rides", "thinks about"
 ]
 
 var adverbs = [
@@ -52,6 +58,7 @@ var connectives = [
 var sentence_structures = [
 	["adj", "noun", "adv", "verb", "adj", "noun"],
 	["adj", "and", "adj", "noun", "verb", "noun"],
+	["noun", "verb", "noun", "conn", "noun", "verb", "noun"]
 ]
 
 var boss_sentence_structures = [
@@ -79,6 +86,8 @@ func create_sentence(different_space_char, overide = false) -> String:
 				word_to_add = adverbs.pick_random()
 			"verb":
 				word_to_add = verbs.pick_random()
+			"conn":
+				word_to_add = connectives.pick_random()
 			_:
 				word_to_add = word
 		
