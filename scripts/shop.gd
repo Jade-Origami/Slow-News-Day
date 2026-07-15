@@ -11,11 +11,6 @@ func _on_new_round_pressed() -> void:
 
 
 func _on_item_1_pressed() -> void:
-	reset_item_views()
-	if $Rotate_1/Item_1/Buy_Button.visible:
-		$Rotate_1/Item_1.text = item_1.pretty_text
-	else:
-		$Rotate_1/Item_1.text = item_1.explanation
 	$Rotate_1/Item_1/Buy_Button.visible = !$Rotate_1/Item_1/Buy_Button.visible
 	$Rotate_2/Item_2/Buy_Button.hide()
 	$Rotate_3/Item_3/Buy_Button.hide()
@@ -32,11 +27,6 @@ func _item_1_bought() -> void:
 
 
 func _on_item_2_pressed() -> void:
-	reset_item_views()
-	if $Rotate_2/Item_2/Buy_Button.visible:
-		$Rotate_2/Item_2.text = item_2.pretty_text
-	else:
-		$Rotate_2/Item_2.text = item_2.explanation
 	$Rotate_2/Item_2/Buy_Button.visible = !$Rotate_2/Item_2/Buy_Button.visible
 	$Rotate_1/Item_1/Buy_Button.hide()
 	$Rotate_3/Item_3/Buy_Button.hide()
@@ -54,11 +44,6 @@ func _item_2_bought() -> void:
 
 
 func _on_item_3_pressed() -> void:
-	reset_item_views()
-	if $Rotate_3/Item_3/Buy_Button.visible:
-		$Rotate_3/Item_3.text = item_3.pretty_text
-	else:
-		$Rotate_3/Item_3.text = item_3.explanation
 	$Rotate_3/Item_3/Buy_Button.visible = !$Rotate_3/Item_3/Buy_Button.visible
 	$Rotate_1/Item_1/Buy_Button.hide()
 	$Rotate_2/Item_2/Buy_Button.hide()
@@ -117,12 +102,6 @@ func _on_reroll_button_pressed() -> void:
 	$Rotate_Reroll.agitate()
 
 
-func reset_item_views():
-	$Rotate_1/Item_1.text = item_1.pretty_text
-	$Rotate_2/Item_2.text = item_2.pretty_text
-	$Rotate_3/Item_3.text = item_3.pretty_text
-
-
 func _on_gameplay_holder_shop_start() -> void:
 	if $"../GameplayScreen".is_upgrade_present("low_reroll"):
 		reroll_cost = -1
@@ -142,3 +121,18 @@ func weighted_random(list):
 		if random_weight <= accumulative_total:
 			return list[i]
 	return 0
+
+func _on_item_1_mouse_entered() -> void:
+	$Rotate_1/Item_1.text = item_1.explanation 
+func _on_item_1_mouse_exited() -> void:
+	$Rotate_1/Item_1.text = item_1.pretty_text
+
+func _on_item_2_mouse_entered() -> void:
+	$Rotate_2/Item_2.text = item_2.explanation 
+func _on_item_2_mouse_exited() -> void:
+	$Rotate_2/Item_2.text = item_2.pretty_text
+
+func _on_item_3_mouse_entered() -> void:
+	$Rotate_3/Item_3.text = item_3.explanation 
+func _on_item_3_mouse_exited() -> void:
+	$Rotate_3/Item_3.text = item_3.pretty_text

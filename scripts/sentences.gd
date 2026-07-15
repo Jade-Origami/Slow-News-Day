@@ -8,7 +8,7 @@ var nouns = [
 	"book", "flag", "man", "woman", "enby", "person", "drum", "nail polish", "poster",
 	"paper", "wii sports", "origami", "kitten", "cat", "dog", "puppy", "fox", "snail",
 	"nintendo 3ds", "deodorant", "controller", "prison warden", "door", "sloth",
-	"mountain climber", "tire", "guitar", "mouse", "rat", "spray bottle", "tintin",
+	"mountain climber", "tyre", "guitar", "mouse", "rat", "spray bottle", "tintin",
 	"slinky", "vaseline", "lanyard", "slipper", "skirt", "shirt", "vampire", "sun",
 	"daughter", "son", "follower", "streamer", "wire", "USB stick", "keychain",
 	"lost key", "pair of pyjamas", "scissors", "flashcard", "lamp", "timer", "magnet",
@@ -17,7 +17,7 @@ var nouns = [
 	"plant", "flower", "clock", "sand", "mountain", "mat", "rug", "seat",
 	"tree", "child", "spouse", "fish", "government", "whale", "fool",
 	"thermometer", "metronome", "mum", "dad", "train", "gallery", "cinema",
-	"zeotrope", "zebra", "zoo", "newspaper", "letter", "radio"
+	"zebra", "zoo", "newspaper", "letter", "radio"
 ]
 
 var adjectives = [
@@ -52,7 +52,7 @@ var adverbs = [
 ]
 
 var connectives = [
-	"and", "but", "so", "therefore"
+	"and", "but", "so"
 ]
 
 var sentence_structures = [

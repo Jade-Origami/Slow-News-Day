@@ -27,7 +27,6 @@ var mistake_overlay_timer = 0
 var coin_round_reward : int
 var set_before_round_active_upgrades = [null, null, null, null]
 var letter_to_be_typed
-var boss_active = false
 var boss_effect = null
 var i_score
 
@@ -81,7 +80,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	if typed_letter == letter_to_be_typed:
 		sentence_left = sentence_left.substr(1,-1)
 		
-		if boss_active and check_boss_debuff("on_type"):
+		if boss_effect != null and check_boss_debuff("on_type"):
 			boss_debuffs()
 		else:
 			base += 1
@@ -145,17 +144,16 @@ score: " + str(score_this_sentence)
 
 
 func sentence_start():
-	if !boss_active:
+	if boss_effect == null:
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.hide()
 		Sentences.correct_sentence = Sentences.create_sentence(is_upgrade_present("ignore_mistakes"))
 	else: #boss round!
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.show()
-		boss_effect = select_boss_effect()
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
 		Sentences.correct_sentence = Sentences.create_boss_sentence(is_upgrade_present("ignore_mistakes"))
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
 	
-	if boss_active and check_boss_debuff("affect_sentence"):
+	if boss_effect != null and check_boss_debuff("affect_sentence"):
 		boss_debuffs()
 	
 	sentence_left = Sentences.correct_sentence
@@ -165,7 +163,7 @@ func sentence_start():
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
 	
-	if boss_active and check_boss_debuff("sentence_start"):
+	if boss_effect != null and check_boss_debuff("sentence_start"):
 		boss_debuffs()
 	
 	sentence_already_filled = ""
@@ -239,24 +237,24 @@ func tab_autofill() -> void:
 			check_upgrades("sentence_end")
 			sentence_finished()
 
+
 func strip_bbcode(source: String) -> String:
 	var regex = RegEx.new()
 	regex.compile("\\[.+?\\]")
 	return regex.sub(source, "", true)
 
+
 func _on_next_button_pressed() -> void:
 	sentence_start()
 
 
-func _on_gameplay_holder_new_round(round_reward, boss_round) -> void:
-	boss_active = boss_round
+func _on_gameplay_holder_new_round(round_reward, boss_round_effect = null) -> void:
+	boss_effect = boss_round_effect
 	coin_round_reward = round_reward
 	total_score = 0
 	sentences_used = 0
 	apply_styling()
-	#$"../Panel/ShopButton".hide()
 	$"../Panels/Timer_bar/TotalScore/Rotate".agitate()
-	refresh_Score_Panel()
 	$"../Panels/Timer_bar/RequiredScore/Rotate/ScoreArea/ScoreRead".text = str(PlayerStats.target_this_round)
 	reroll_amount = 1
 	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
@@ -264,6 +262,7 @@ func _on_gameplay_holder_new_round(round_reward, boss_round) -> void:
 	check_upgrades("round_start")
 	total_rerolls = reroll_amount
 	$Rotate_Discard/Discard_Button.text = "Reroll (" + str(reroll_amount) + "/" + str(total_rerolls) + ")"
+	refresh_Score_Panel()
 	sentence_start()
 
 
@@ -461,6 +460,7 @@ func boss_debuffs():
 				mult += 1
 				$"../Panels/Timer_bar/Mult_Rotate".agitate()
 			check_upgrades("on_type")
+		else:
 			trigger_agitation = true
 	
 	elif boss_effect.id == "less_time":
@@ -483,32 +483,6 @@ func boss_debuffs():
 	
 	if trigger_agitation:
 		$Gameplay/Boss_Effect_Rotate.agitate()
-
-
-func select_boss_effect():
-	var boss_effects = [
-		{
-			"pretty_text": "Vowels don't count",
-			"id": "no_vowels",
-			"trigger_time": "on_type"
-		},
-		{
-			"pretty_text": "Less time per story",
-			"id": "less_time",
-			"trigger_time": "sentence_start"
-		},
-		{
-			"pretty_text": "Two Stories",
-			"id": "double_story",
-			"trigger_time": "affect_sentence",
-		},
-		{
-			"pretty_text": "No mult for completed words",
-			"id": "no_mult_space",
-			"trigger_time": "on_type",
-		},
-	]
-	return boss_effects.pick_random()
 
 
 func check_boss_debuff(time):

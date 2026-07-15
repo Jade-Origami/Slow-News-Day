@@ -279,10 +279,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_av8qb")
 text = "Reroll: {coins}"
 
 [connection signal="pressed" from="newRound" to="." method="_on_new_round_pressed"]
+[connection signal="mouse_entered" from="Rotate_1/Item_1" to="." method="_on_item_1_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_1/Item_1" to="." method="_on_item_1_mouse_exited"]
 [connection signal="pressed" from="Rotate_1/Item_1" to="." method="_on_item_1_pressed"]
 [connection signal="pressed" from="Rotate_1/Item_1/Buy_Button" to="." method="_item_1_bought"]
+[connection signal="mouse_entered" from="Rotate_2/Item_2" to="." method="_on_item_2_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_2/Item_2" to="." method="_on_item_2_mouse_exited"]
 [connection signal="pressed" from="Rotate_2/Item_2" to="." method="_on_item_2_pressed"]
 [connection signal="pressed" from="Rotate_2/Item_2/Buy_Button" to="." method="_item_2_bought"]
+[connection signal="mouse_entered" from="Rotate_3/Item_3" to="." method="_on_item_3_mouse_entered"]
+[connection signal="mouse_exited" from="Rotate_3/Item_3" to="." method="_on_item_3_mouse_exited"]
 [connection signal="pressed" from="Rotate_3/Item_3" to="." method="_on_item_3_pressed"]
 [connection signal="pressed" from="Rotate_3/Item_3/Buy_Button" to="." method="_item_3_bought"]
 [connection signal="pressed" from="Rotate_Reroll/Reroll_button" to="." method="_on_reroll_button_pressed"]

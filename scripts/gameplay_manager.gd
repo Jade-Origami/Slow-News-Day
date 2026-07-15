@@ -1,6 +1,6 @@
 extends Node2D
 signal level_select
-signal new_round (round_reward)
+signal new_round (round_reward, boss_effect)
 signal shop_start 
 signal open_reward_screen (amount_from_round)
 
@@ -12,8 +12,8 @@ func _ready() -> void:
 	$Level_Selector_Panel.show()
 
 
-func initiate_round(round_reward, boss_round):
-	new_round.emit(round_reward, boss_round)
+func initiate_round(round_reward, boss_effect):
+	new_round.emit(round_reward, boss_effect)
 	$GameplayScreen.show()
 	$Level_Selector_Panel.hide()
 
