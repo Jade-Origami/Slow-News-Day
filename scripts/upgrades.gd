@@ -4,7 +4,7 @@ extends Node
 var upgrades = [
 	{
 		"pretty_text": "Ghost Writer",
-		"explanation": "Automatically types the next letter in a double-letter group and +6 mult when it does",
+		"explanation": "Automatically types the next letter in a double-letter group and +6 [WC] when it does",
 		"id": "double_letters_bypass",
 		"price": 4,
 		"trigger_time": "on_type",
@@ -52,7 +52,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Ace Writer",
-		"explanation": "Every typed \"A\" gives +2 mult and +2 base",
+		"explanation": "Every typed \"A\" gives +2 [WC] and +2 [LC]",
 		"id": "a_upgrade",
 		"price": 5,
 		"trigger_time": "on_type",
@@ -60,7 +60,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Sublime Text",
-		"explanation": "Every typed \"S\" gives x1.25 mult",
+		"explanation": "Every typed \"S\" gives x1.25 [WC]",
 		"id": "s_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
@@ -68,7 +68,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Zippy Keys",
-		"explanation": "every typed \"Z\" gives x2 mult ",
+		"explanation": "every typed \"Z\" gives x2 [WC]",
 		"id": "z_upgrade",
 		"price": 4,
 		"trigger_time": "on_type",
@@ -76,7 +76,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Trusted Tabloid",
-		"explanation": "+4 mult every sentence",
+		"explanation": "+4 [WC] every sentence",
 		"id": "flat_mult",
 		"price": 4,
 		"trigger_time": "sentence_end",
@@ -84,7 +84,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Upgrade Stencil",
-		"explanation": "x1.5 mult for every empty upgrade slot (this included)",
+		"explanation": "x1.5 [WC] for every empty upgrade slot (this included)",
 		"id": "empty_slot",
 		"price": 6,
 		"trigger_time": "sentence_end",
@@ -132,7 +132,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Even Steven",
-		"explanation": "Every typed \"e\" gives +10 base",
+		"explanation": "Every typed \"e\" gives +10 [LC]",
 		"id": "e_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
@@ -140,7 +140,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Abstract Artpiece",
-		"explanation": "+3 mult for every upgrade",
+		"explanation": "+3 [WC] for every upgrade",
 		"id": "count_upgrade",
 		"price": 6,
 		"trigger_time": "sentence_end",
@@ -148,7 +148,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Eye of Sauron",
-		"explanation": "Every typed \"i\" accumulates 1 mult per round",
+		"explanation": "Every typed \"i\" accumulates 1 [WC] per round",
 		"id": "i_upgrade",
 		"price": 7,
 		"trigger_time": "on_type",

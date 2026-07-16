@@ -49,6 +49,20 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0ix"]
+bg_color = Color(0.67304265, 0.46641088, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwh8y"]
+bg_color = Color(0.9419479, 0.7675507, 0.35745594, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amt3t"]
 bg_color = Color(0.19215687, 0.5411765, 0.80784315, 1)
 corner_radius_top_left = 15
@@ -70,22 +84,10 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0ix"]
-bg_color = Color(0.67304265, 0.46641088, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwh8y"]
-bg_color = Color(0.9419479, 0.7675507, 0.35745594, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [node name="Timer_bar" type="ProgressBar" unique_id=908773948]
 anchors_preset = -1
+anchor_right = -0.013888889
+anchor_bottom = 0.11111111
 offset_right = 288.0
 offset_bottom = 408.0
 theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
@@ -170,66 +172,8 @@ Score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Base_Rotate" type="Node2D" parent="." unique_id=1777456104]
-position = Vector2(64, 208)
-script = ExtResource("1_lwh8y")
-
-[node name="Base" type="Panel" parent="Base_Rotate" unique_id=779002401]
-offset_left = -40.0
-offset_top = -32.0
-offset_right = 40.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_amt3t")
-
-[node name="Text" type="RichTextLabel" parent="Base_Rotate/Base" unique_id=1503328310]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 64.0
-theme_override_font_sizes/normal_font_size = 20
-text = "Base"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Mult_Rotate" type="Node2D" parent="." unique_id=898455618]
-position = Vector2(208, 208)
-script = ExtResource("1_lwh8y")
-
-[node name="Mult" type="Panel" parent="Mult_Rotate" unique_id=472700183]
-physics_interpolation_mode = 1
-offset_left = -40.0
-offset_top = -32.0
-offset_right = 40.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tx78e")
-
-[node name="Text" type="RichTextLabel" parent="Mult_Rotate/Mult" unique_id=1736750213]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 64.0
-theme_override_font_sizes/normal_font_size = 20
-text = "Mult"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Panel" parent="." unique_id=1740147097]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 240.0
-offset_right = 176.0
-offset_bottom = 304.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3xl2o")
-
-[node name="Text" type="RichTextLabel" parent="Timer" unique_id=803345130]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 64.0
-theme_override_font_sizes/normal_font_size = 20
-text = "Timer"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Hands_Rotate" type="Node2D" parent="." unique_id=1976796842]
-position = Vector2(200, 352)
+position = Vector2(200, 424)
 script = ExtResource("1_lwh8y")
 
 [node name="Hands_Counter" type="Button" parent="Hands_Rotate" unique_id=1660878830]
@@ -245,7 +189,7 @@ text = "Stories"
 metadata/_edit_use_anchors_ = true
 
 [node name="Coins_Rotate" type="Node2D" parent="." unique_id=330715971]
-position = Vector2(72, 352)
+position = Vector2(72, 424)
 script = ExtResource("1_lwh8y")
 
 [node name="Coins_Counter" type="Button" parent="Coins_Rotate" unique_id=1344737547]
@@ -260,13 +204,113 @@ disabled = true
 text = "Coins"
 metadata/_edit_use_anchors_ = true
 
-[node name="X" type="RichTextLabel" parent="." unique_id=1149398001]
+[node name="Numbers_Panel" type="Panel" parent="." unique_id=1275385336]
 layout_mode = 0
-offset_left = 104.0
+offset_left = 24.0
 offset_top = 176.0
-offset_right = 168.0
-offset_bottom = 240.0
-theme_override_font_sizes/normal_font_size = 29
+offset_right = 248.0
+offset_bottom = 376.0
+
+[node name="Base_Rotate" type="Node2D" parent="Numbers_Panel" unique_id=1777456104]
+z_index = 1
+position = Vector2(48, 64)
+script = ExtResource("1_lwh8y")
+
+[node name="Base" type="Panel" parent="Numbers_Panel/Base_Rotate" unique_id=779002401]
+offset_left = -36.0
+offset_top = -32.0
+offset_right = 36.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amt3t")
+
+[node name="Text" type="RichTextLabel" parent="Numbers_Panel/Base_Rotate/Base" unique_id=1503328310]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Letter Count"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Explanation" type="RichTextLabel" parent="Numbers_Panel/Base_Rotate" unique_id=1240663949]
+offset_left = -36.0
+offset_top = -64.0
+offset_right = 36.0
+offset_bottom = -32.0
+theme_override_font_sizes/normal_font_size = 11
+text = "Letter Count [LC]"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Mult_Rotate" type="Node2D" parent="Numbers_Panel" unique_id=898455618]
+z_index = 1
+position = Vector2(176, 64)
+script = ExtResource("1_lwh8y")
+
+[node name="Mult" type="Panel" parent="Numbers_Panel/Mult_Rotate" unique_id=472700183]
+physics_interpolation_mode = 1
+offset_left = -36.0
+offset_top = -32.0
+offset_right = 36.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tx78e")
+
+[node name="Text" type="RichTextLabel" parent="Numbers_Panel/Mult_Rotate/Mult" unique_id=1736750213]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Word Count"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Explanation" type="RichTextLabel" parent="Numbers_Panel/Mult_Rotate" unique_id=1732374164]
+offset_left = -36.0
+offset_top = -64.0
+offset_right = 36.0
+offset_bottom = -32.0
+theme_override_font_sizes/normal_font_size = 11
+text = "Word Count [WC]"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Timer" type="Panel" parent="Numbers_Panel" unique_id=1740147097]
+z_index = 1
+layout_mode = 0
+offset_left = 76.0
+offset_top = 120.0
+offset_right = 148.0
+offset_bottom = 184.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xl2o")
+
+[node name="Text" type="RichTextLabel" parent="Numbers_Panel/Timer" unique_id=803345130]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Time Spent"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Explanation" type="RichTextLabel" parent="Numbers_Panel/Timer" unique_id=1813360017]
+layout_mode = 0
+offset_left = -68.0
+offset_top = 16.0
+offset_right = 4.0
+offset_bottom = 48.0
+theme_override_font_sizes/normal_font_size = 11
+text = "Timer Number"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TimesText" type="RichTextLabel" parent="Numbers_Panel" unique_id=350739292]
+z_index = 1
+layout_mode = 0
+offset_left = 76.0
+offset_top = 56.0
+offset_right = 148.0
+offset_bottom = 128.0
+theme_override_font_sizes/normal_font_size = 34
 text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1

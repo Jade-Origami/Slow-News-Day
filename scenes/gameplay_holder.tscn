@@ -40,7 +40,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_viwtt")
 layout_mode = 1
 anchor_left = -0.013888889
 anchor_top = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 5.0
 offset_right = 272.0
 
 [node name="Rotate" parent="Panels/Timer_bar/RequiredScore" parent_id_path=PackedInt32Array(908773948, 333713621) index="0" unique_id=1802186373]

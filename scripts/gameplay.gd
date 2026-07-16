@@ -41,7 +41,7 @@ func timer_increment() -> void:
 	time_passed += 1
 	$"../Panels/Timer_bar".value = time_passed
 	percentage_of_time = 1.25 - snapped((float(time_passed) / max_timer_value), 0.01)
-	$"../Panels/Timer_bar/Timer/Text".text = str(percentage_of_time)
+	$"../Panels/Timer_bar/Numbers_Panel/Timer/Text".text = str(percentage_of_time)
 	if time_passed >= max_timer_value:
 		timer_active = false
 
@@ -68,28 +68,28 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 		
 		change_upgrades_that_change()
 	
-	letter_to_be_typed = sentence_left[0].to_lower()
-	typed_letter = new_text[-1].to_lower()
+	letter_to_be_typed = sentence_left[0]
+	typed_letter = new_text[-1]
 	
-	if typed_letter == letter_to_be_typed:
+	if typed_letter.to_lower() == letter_to_be_typed.to_lower():
 		sentence_left = sentence_left.substr(1,-1)
 		
 		if boss_effect != null and check_boss_debuff("on_type"):
 			boss_debuffs()
 		else:
 			base += 1
-			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 			
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
-				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+				$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			
 			check_upgrades("on_type")
 				
-		$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
-		$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
+		$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate/Base/Text".text = str(base)
+		$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate/Mult/Text".text = str(mult)
 
-		sentence_already_filled += ("[color=%s]" % palette.completed_text) + typed_letter + ("[/color][color=%s]" % palette.other_text)
+		sentence_already_filled += ("[color=%s]" % palette.completed_text) + letter_to_be_typed + ("[/color][color=%s]" % palette.other_text)
 		set_SentenceShow_text(sentence_already_filled + sentence_left) 
 		$Gameplay/TypingProgress.value += 1
 	else: #Mistake has been made
@@ -163,9 +163,9 @@ func sentence_start():
 	$Gameplay/TypingProgress.value = 0
 	base = 1
 	mult = 1
-	$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
-	$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
-	$"../Panels/Timer_bar/Timer/Text".text = str(1.25)
+	$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate/Base/Text".text = str(base)
+	$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate/Mult/Text".text = str(mult)
+	$"../Panels/Timer_bar/Numbers_Panel/Timer/Text".text = str(1.25)
 	$Rotate_Discard/Next_Button.hide()
 	$Rotate_Discard/Discard_Button.hide()
 	if reroll_amount > 0:
@@ -258,7 +258,7 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 		if typed_letter.to_lower() == "a" or vowel_bypass:
 			mult += 2
 			base += 2
-			$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			return true
 	
 	elif upgrade.id == "flat_coin_increase":
@@ -305,7 +305,7 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 	
 	elif upgrade.id == "flat_mult":
 		mult += 4
-		$"../Panels/Timer_bar/Mult_Rotate".agitate()
+		$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 		refresh_Score_Panel()
 		return true
 	
@@ -354,7 +354,7 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 		if typed_letter.to_lower() == "i" or vowel_bypass:
 			i_score += 1
 			mult += i_score
-			$"../Panels/Timer_bar/Mult_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			refresh_Score_Panel()
 			return true
 	
@@ -435,8 +435,8 @@ func change_specific_upgrade(pos):
 
 func refresh_Score_Panel(): 
 	$"../Panels/Timer_bar/TotalScore/Rotate/ScoreArea/ScoreRead".text = str(total_score)
-	$"../Panels/Timer_bar/Base_Rotate/Base/Text".text = str(base)
-	$"../Panels/Timer_bar/Mult_Rotate/Mult/Text".text = str(mult)
+	$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate/Base/Text".text = str(base)
+	$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate/Mult/Text".text = str(mult)
 	$"../Panels/Timer_bar/Hands_Rotate/Hands_Counter".text = str(sentences_used) + " / " + str(PlayerStats.sentences_allowed)
 
 
@@ -445,10 +445,10 @@ func boss_debuffs():
 	if boss_effect.id == "no_vowels":
 		if typed_letter not in ["a", "e", "i", "o", "u"]:
 			base += 1
-			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
-				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+				$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			check_upgrades("on_type")
 		else:
 			trigger_agitation = true
@@ -465,7 +465,7 @@ func boss_debuffs():
 	
 	elif boss_effect.id == "no_mult_space":
 		base += 1
-		$"../Panels/Timer_bar/Base_Rotate".agitate()
+		$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 		check_upgrades("on_type")
 		if typed_letter == " ":
 			trigger_agitation = true
@@ -473,10 +473,10 @@ func boss_debuffs():
 	elif boss_effect.id == "no_left":
 		if typed_letter.to_lower() not in ["q", "w", "e", "a", "s", "d", "z", "x", "c"]:
 			base += 1
-			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
-				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+				$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			check_upgrades("on_type")
 		else:
 			trigger_agitation = true
@@ -484,10 +484,10 @@ func boss_debuffs():
 	elif boss_effect.id == "no_centre":
 		if typed_letter.to_lower() not in ["r", "t", "y", "f", "g", "h", "v", "b", "n"]:
 			base += 1
-			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
-				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+				$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			check_upgrades("on_type")
 		else:
 			trigger_agitation = true
@@ -495,10 +495,10 @@ func boss_debuffs():
 	elif boss_effect.id == "no_right":
 		if typed_letter.to_lower() not in ["u", "i", "o", "p", "j", "k", "l", "m"]:
 			base += 1
-			$"../Panels/Timer_bar/Base_Rotate".agitate()
+			$"../Panels/Timer_bar/Numbers_Panel/Base_Rotate".agitate()
 			if typed_letter.to_lower() == " ": #When word finished
 				mult += 1
-				$"../Panels/Timer_bar/Mult_Rotate".agitate()
+				$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			check_upgrades("on_type")
 		else:
 			trigger_agitation = true
