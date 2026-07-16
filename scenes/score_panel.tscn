@@ -86,10 +86,8 @@ corner_radius_bottom_left = 15
 
 [node name="Timer_bar" type="ProgressBar" unique_id=908773948]
 anchors_preset = -1
-anchor_right = -0.013888889
-anchor_bottom = 0.11111111
 offset_right = 288.0
-offset_bottom = 408.0
+offset_bottom = 480.0
 theme_override_styles/background = SubResource("StyleBoxFlat_otpj5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r3crv")
 fill_mode = 2
