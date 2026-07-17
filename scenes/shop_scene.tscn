@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cko6dwdh0aihq" path="res://scripts/shop.gd" id="1_hovpq"]
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="3_fdhsn"]
+[ext_resource type="PackedScene" uid="uid://cc0laquw0mk8d" path="res://scenes/button_container.tscn" id="3_hovpq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylxq0"]
 bg_color = Color(0.49803922, 0.6745098, 0.8392157, 1)
@@ -24,27 +25,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g438"]
-bg_color = Color(0.92535293, 0.9253528, 0.9253529, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0fw"]
-bg_color = Color(0.7962427, 0.79624313, 0.796243, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71p40"]
-bg_color = Color(0.9079417, 0.9079417, 0.90794164, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkwdu"]
 bg_color = Color(1, 0.6666667, 0.40784314, 1)
 corner_radius_bottom_right = 6
@@ -60,27 +40,6 @@ bg_color = Color(1, 0.814525, 0.68012947, 1)
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4af7v"]
-bg_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dav6d"]
-bg_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi6au"]
-bg_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iqsd"]
 bg_color = Color(1, 0.6673617, 0.40968722, 1)
 corner_radius_bottom_right = 6
@@ -95,27 +54,6 @@ corner_radius_bottom_left = 6
 bg_color = Color(1, 0.8156863, 0.6784314, 1)
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h6nl"]
-bg_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rvmk"]
-bg_color = Color(0.79607844, 0.79607844, 0.79607844, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuotj"]
-bg_color = Color(0.9098039, 0.9098039, 0.9098039, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3icxh"]
 bg_color = Color(1, 0.6666667, 0.40784314, 1)
@@ -170,19 +108,11 @@ text = "Next round"
 position = Vector2(112, 72)
 script = ExtResource("3_fdhsn")
 
-[node name="Item_1" type="Button" parent="Rotate_1" unique_id=2028086448]
+[node name="Item_1" parent="Rotate_1" unique_id=693523702 instance=ExtResource("3_hovpq")]
 offset_left = -112.0
 offset_top = -72.0
 offset_right = 112.0
 offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_1g438")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_hp0fw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_71p40")
-text = "Item 1"
-autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_1/Item_1" unique_id=395467926]
 layout_mode = 0
@@ -203,19 +133,11 @@ text = "Coins"
 position = Vector2(400, 72)
 script = ExtResource("3_fdhsn")
 
-[node name="Item_2" type="Button" parent="Rotate_2" unique_id=1989279313]
+[node name="Item_2" parent="Rotate_2" unique_id=2033966009 instance=ExtResource("3_hovpq")]
 offset_left = -112.0
 offset_top = -72.0
 offset_right = 112.0
 offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_4af7v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dav6d")
-theme_override_styles/hover = SubResource("StyleBoxFlat_gi6au")
-text = "Item 2"
-autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_2/Item_2" unique_id=1832687138]
 layout_mode = 0
@@ -233,24 +155,14 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wsk4o")
 text = "Coins"
 
 [node name="Rotate_3" type="Node2D" parent="." unique_id=2094369185]
-visible = false
 position = Vector2(112, 280)
 script = ExtResource("3_fdhsn")
 
-[node name="Item_3" type="Button" parent="Rotate_3" unique_id=1754266222]
+[node name="Item_3" parent="Rotate_3" unique_id=911793375 instance=ExtResource("3_hovpq")]
 offset_left = -112.0
 offset_top = -72.0
 offset_right = 112.0
 offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_focus_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_pressed_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_colors/font_hover_color = Color(0.17254902, 0.17254902, 0.17254902, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_0h6nl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3rvmk")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fuotj")
-text = "Item 3"
-autowrap_mode = 3
 
 [node name="Buy_Button" type="Button" parent="Rotate_3/Item_3" unique_id=227296107]
 layout_mode = 0

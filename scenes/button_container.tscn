@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cc0laquw0mk8d"]
+
+[ext_resource type="StyleBox" uid="uid://c71yiyil10vb0" path="res://sprites/styles/upgrades.tres" id="1_2f0xl"]
+[ext_resource type="Script" uid="uid://brmr16ajai41y" path="res://scripts/button_container.gd" id="1_wr3ft"]
+
+[node name="Button" type="Button" unique_id=693523702]
+offset_right = 136.0
+offset_bottom = 96.0
+theme_override_styles/normal = ExtResource("1_2f0xl")
+theme_override_styles/pressed = ExtResource("1_2f0xl")
+theme_override_styles/hover = ExtResource("1_2f0xl")
+script = ExtResource("1_wr3ft")
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=755854225]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+bbcode_enabled = true
+text = "[color=red]item[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1

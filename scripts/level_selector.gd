@@ -85,7 +85,7 @@ func select_boss_effect():
 			"score_effect": 1.5
 		},
 		{
-			"pretty_text": "No [WC] for completed words",
+			"pretty_text": "No WC for completed words",
 			"id": "no_mult_space",
 			"trigger_time": "on_type",
 			"score_effect": 1

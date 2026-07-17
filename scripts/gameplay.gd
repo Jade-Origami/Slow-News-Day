@@ -278,7 +278,7 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 	
 	elif upgrade.id == "s_upgrade":
 		if typed_letter.to_lower() == "s":
-			mult = snapped((mult  * 1.25), 1)
+			mult = snapped((mult  * 1.5), 1)
 			return true
 	
 	elif upgrade.id == "mistake_penalty":

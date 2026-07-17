@@ -304,10 +304,10 @@ vertical_alignment = 2
 [node name="TimesText" type="RichTextLabel" parent="Numbers_Panel" unique_id=350739292]
 z_index = 1
 layout_mode = 0
-offset_left = 76.0
-offset_top = 56.0
-offset_right = 148.0
-offset_bottom = 128.0
+offset_left = 84.0
+offset_top = 64.0
+offset_right = 140.0
+offset_bottom = 120.0
 theme_override_font_sizes/normal_font_size = 34
 text = "X"
 horizontal_alignment = 1

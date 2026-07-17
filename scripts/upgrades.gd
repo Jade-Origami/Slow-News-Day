@@ -1,10 +1,20 @@
 extends Node
 
+var time_symbol = "⏱"
+
+func mult_text(pretext):
+	return "[color=#ea362d]" + pretext + " WC[/color]"
+func base_text(pretext):
+	return "[color=#318ace]" + pretext + " LC[/color]"
+func timer_text(conttext):
+	return "[color=#cd00e8]" + conttext + "[/color]"
+func coin_text(conttext):
+	return "[color=#f0c45b]" + conttext + "[/color]"
 
 var upgrades = [
 	{
 		"pretty_text": "Ghost Writer",
-		"explanation": "Automatically types the next letter in a double-letter group and +6 [WC] when it does",
+		"explanation": "Types second double letter & %s" % [mult_text("+6")],
 		"id": "double_letters_bypass",
 		"price": 4,
 		"trigger_time": "on_type",
@@ -12,7 +22,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Higher Wages",
-		"explanation": "+2 coins at end of round",
+		"explanation": "%s at end of round" % [coin_text("+£2")],
 		"id": "flat_coin_increase",
 		"price": 3,
 		"trigger_time": "reward",
@@ -20,15 +30,15 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Longer Deadlines",
-		"explanation": "Increase timer max by 1/4",
+		"explanation": "%s max" % [timer_text("+1/4 " + time_symbol)],
 		"id": "round_time_increase",
 		"price": 4,
 		"trigger_time": "sentence_start",
-		"weight": 19
+		"weight": 13
 	},
 	{
 		"pretty_text": "Autocorrect",
-		"explanation": "decrease the time that the timer is sped up by after a mistake by 1/4",
+		"explanation": "%s mistake penalty" % [timer_text("-1/4 " + time_symbol)],
 		"id": "mistake_penalty",
 		"price": 6,
 		"trigger_time": "mistake_made",
@@ -52,7 +62,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Ace Writer",
-		"explanation": "Every typed \"A\" gives +2 [WC] and +2 [LC]",
+		"explanation": "Every typed \"A\" gives %s and %s" % [mult_text("+2"), base_text("+2")],
 		"id": "a_upgrade",
 		"price": 5,
 		"trigger_time": "on_type",
@@ -60,7 +70,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Sublime Text",
-		"explanation": "Every typed \"S\" gives x1.25 [WC]",
+		"explanation": "Every typed \"S\" gives %s" % [mult_text("x1.5")],
 		"id": "s_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
@@ -68,7 +78,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Zippy Keys",
-		"explanation": "every typed \"Z\" gives x2 [WC]",
+		"explanation": "every typed \"Z\" gives %s" % [mult_text("x2")],
 		"id": "z_upgrade",
 		"price": 4,
 		"trigger_time": "on_type",
@@ -76,7 +86,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Trusted Tabloid",
-		"explanation": "+4 [WC] every sentence",
+		"explanation": "%s every sentence" % [mult_text("+4")],
 		"id": "flat_mult",
 		"price": 4,
 		"trigger_time": "sentence_end",
@@ -84,7 +94,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Upgrade Stencil",
-		"explanation": "x1.5 [WC] for every empty upgrade slot (this included)",
+		"explanation": "%s for every empty upgrade slot (this included)" % [mult_text("x1.5")],
 		"id": "empty_slot",
 		"price": 6,
 		"trigger_time": "sentence_end",
@@ -116,7 +126,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Valued Customer",
-		"explanation": "Rerolls start at 0",
+		"explanation": "Rerolls start at %s" %[coin_text("£0")],
 		"id": "low_reroll",
 		"price": 5,
 		"trigger_time": "shop",
@@ -132,7 +142,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Even Steven",
-		"explanation": "Every typed \"e\" gives +10 [LC]",
+		"explanation": "Every typed \"e\" gives %s" % [base_text("+10")],
 		"id": "e_upgrade",
 		"price": 6,
 		"trigger_time": "on_type",
@@ -140,7 +150,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Abstract Artpiece",
-		"explanation": "+3 [WC] for every upgrade",
+		"explanation": "%s for every upgrade" % [mult_text("+3")],
 		"id": "count_upgrade",
 		"price": 6,
 		"trigger_time": "sentence_end",
@@ -148,7 +158,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Eye of Sauron",
-		"explanation": "Every typed \"i\" accumulates 1 [WC] per round",
+		"explanation": "Every typed \"i\" %s per round" % [mult_text("accumulates +1")],
 		"id": "i_upgrade",
 		"price": 7,
 		"trigger_time": "on_type",
@@ -164,7 +174,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Business Insider",
-		"explanation": "Interest max increases by £2",
+		"explanation": "Interest max increases by %s" % [coin_text("£2")],
 		"id": "up_interest",
 		"price": 8,
 		"trigger_time": "round_end",

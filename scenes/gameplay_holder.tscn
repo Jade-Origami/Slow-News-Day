@@ -31,6 +31,22 @@ visible = false
 [node name="Gameplay" parent="GameplayScreen" index="2" unique_id=1801247505]
 position = Vector2(608, 272)
 
+[node name="SentenceShow" parent="GameplayScreen/Gameplay" index="0" unique_id=1225372798]
+offset_right = 240.0
+
+[node name="TypingProgress" parent="GameplayScreen/Gameplay" index="1" unique_id=1090657300]
+offset_right = 248.0
+
+[node name="Newspaper_Title" parent="GameplayScreen/Gameplay" index="2" unique_id=1628593781]
+offset_right = 256.0
+
+[node name="Newspaper" parent="GameplayScreen/Gameplay" index="3" unique_id=375755720]
+offset_right = 248.0
+
+[node name="Boss_Effect" parent="GameplayScreen/Gameplay/Boss_Effect_Rotate" parent_id_path=PackedInt32Array(724252821, 1625928642) index="0" unique_id=1376734444]
+offset_left = -216.0
+offset_right = 216.0
+
 [node name="Panels" type="Panel" parent="." unique_id=893437777]
 offset_right = 16.0
 offset_bottom = 16.0
@@ -47,6 +63,18 @@ script = ExtResource("4_vm4wg")
 
 [node name="Rotate" parent="Panels/Timer_bar/TotalScore" parent_id_path=PackedInt32Array(908773948, 1157663363) index="0" unique_id=868934519]
 script = ExtResource("4_vm4wg")
+
+[node name="Explanation" parent="Panels/Timer_bar/Numbers_Panel/Base_Rotate" parent_id_path=PackedInt32Array(908773948, 1777456104) index="1" unique_id=1240663949]
+offset_top = -48.0
+text = "Letter Count"
+
+[node name="Explanation" parent="Panels/Timer_bar/Numbers_Panel/Mult_Rotate" parent_id_path=PackedInt32Array(908773948, 898455618) index="1" unique_id=1732374164]
+offset_top = -48.0
+text = "Word Count"
+
+[node name="TimesText" parent="Panels/Timer_bar/Numbers_Panel" parent_id_path=PackedInt32Array(908773948, 1275385336) index="3" unique_id=350739292]
+offset_left = 80.0
+offset_right = 144.0
 
 [node name="Upgrades_Panel" parent="Panels" unique_id=883776731 instance=ExtResource("1_6i4yd")]
 layout_mode = 0
@@ -66,13 +94,13 @@ offset_top = 488.0
 offset_right = 784.0
 offset_bottom = 560.0
 
-[node name="Buy_Button" parent="ShopScene/Rotate_1/Item_1" parent_id_path=PackedInt32Array(1063027230, 2028086448) index="0" unique_id=395467926]
+[node name="Buy_Button" parent="ShopScene/Rotate_1/Item_1" parent_id_path=PackedInt32Array(1063027230, 693523702) index="1" unique_id=395467926]
 visible = false
 
-[node name="Buy_Button" parent="ShopScene/Rotate_2/Item_2" parent_id_path=PackedInt32Array(1063027230, 1989279313) index="0" unique_id=1832687138]
+[node name="Buy_Button" parent="ShopScene/Rotate_2/Item_2" parent_id_path=PackedInt32Array(1063027230, 2033966009) index="1" unique_id=1832687138]
 visible = false
 
-[node name="Buy_Button" parent="ShopScene/Rotate_3/Item_3" parent_id_path=PackedInt32Array(1063027230, 1754266222) index="0" unique_id=227296107]
+[node name="Buy_Button" parent="ShopScene/Rotate_3/Item_3" parent_id_path=PackedInt32Array(1063027230, 911793375) index="1" unique_id=227296107]
 visible = false
 
 [node name="Rotate_Reroll" parent="ShopScene" index="4" unique_id=1635466870]

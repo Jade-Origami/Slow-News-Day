@@ -203,21 +203,29 @@ func Item_4_Up() -> void:
 
 
 func _on_item_1_mouse_entered() -> void:
-	$Rotate_Item_1/Item.text = active_upgrades[0].explanation
+	if active_upgrades[0] != null:
+		$Rotate_Item_1/Item.text = active_upgrades[0].explanation
 func _on_item_1_mouse_exited() -> void:
-	$Rotate_Item_1/Item.text = active_upgrades[0].pretty_text
+	if active_upgrades[0] != null:
+		$Rotate_Item_1/Item.text = active_upgrades[0].pretty_text
 
 func _on_item_2_mouse_entered() -> void:
-	$Rotate_Item_2/Item.text = active_upgrades[1].explanation
+	if active_upgrades[1] != null:
+		$Rotate_Item_2/Item.text = active_upgrades[1].explanation
 func _on_item_2_mouse_exited() -> void:
-	$Rotate_Item_2/Item.text = active_upgrades[1].pretty_text
+	if active_upgrades[1] != null:
+		$Rotate_Item_2/Item.text = active_upgrades[1].pretty_text
 
 func _on_item_3_mouse_entered() -> void:
-	$Rotate_Item_3/Item.text = active_upgrades[2].explanation
+	if active_upgrades[2] != null:
+		$Rotate_Item_3/Item.text = active_upgrades[2].explanation
 func _on_item_3_mouse_exited() -> void:
-	$Rotate_Item_3/Item.text = active_upgrades[2].pretty_text
+	if active_upgrades[2] != null:
+		$Rotate_Item_3/Item.text = active_upgrades[2].pretty_text
 
 func _on_item_4_mouse_entered() -> void:
-	$Rotate_Item_4/Item.text = active_upgrades[3].explanation
+	if active_upgrades[3] != null:
+		$Rotate_Item_4/Item.text = active_upgrades[3].explanation
 func _on_item_4_mouse_exited() -> void:
-	$Rotate_Item_4/Item.text = active_upgrades[3].pretty_text
+	if active_upgrades[3] != null:
+		$Rotate_Item_4/Item.text = active_upgrades[3].pretty_text
