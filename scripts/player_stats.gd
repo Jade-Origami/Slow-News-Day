@@ -5,6 +5,7 @@ var coins = 0
 var completed_rounds = 0
 var target_this_round : int
 var sentences_allowed = 4
+var highest_scoring_sentence = 0
 
 
 var palettes = [

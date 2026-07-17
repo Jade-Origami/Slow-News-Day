@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dg6750dak1hdv"]
+
+[node name="WinScreen" type="Node2D" unique_id=1654764673]
+
+[node name="Panel" type="Panel" parent="." unique_id=2011521679]
+offset_right = 424.0
+offset_bottom = 512.0
+
+[node name="Win_Text" type="RichTextLabel" parent="Panel" unique_id=350418336]
+layout_mode = 0
+offset_right = 424.0
+offset_bottom = 96.0
+theme_override_font_sizes/bold_font_size = 59
+theme_override_font_sizes/bold_italics_font_size = 69
+bbcode_enabled = true
+text = "[rainbow freq=1 sat=0.85 val=0.85 speed=0.1][wave amp=75 freq=3 connected=1][b][i]YOU WIN[/i][/b][/wave][/rainbow]"
+horizontal_alignment = 1
+vertical_alignment = 1

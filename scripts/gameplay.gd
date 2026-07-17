@@ -29,6 +29,7 @@ var set_before_round_active_upgrades = [null, null, null, null]
 var letter_to_be_typed
 var boss_effect = null
 var i_score
+var time_mult = 23
 
 
 # Called when the node enters the scene tree for the first time.
@@ -113,6 +114,10 @@ func sentence_finished() -> void:
 	var score_this_sentence = int(floor((base * mult) * percentage_of_time)) + 10
 	if score_this_sentence < 10:
 		score_this_sentence = 10
+	
+	if score_this_sentence > PlayerStats.highest_scoring_sentence:
+		PlayerStats.highest_scoring_sentence = score_this_sentence
+	
 	total_score += score_this_sentence
 	var multiple_mistakes
 	if mistakes_made == 1:
@@ -143,6 +148,7 @@ func sentence_start():
 		$Gameplay/Boss_Effect_Rotate/Boss_Effect.text = "[b][color=black]BOSS ROUND:[/color][/b]\n" + boss_effect.pretty_text
 		Sentences.correct_sentence = Sentences.create_boss_sentence()
 	Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
+	time_mult = 23
 	
 	if boss_effect != null and check_boss_debuff("affect_sentence"):
 		boss_debuffs()
@@ -150,12 +156,9 @@ func sentence_start():
 	sentence_left = Sentences.correct_sentence
 	$Gameplay/TypingProgress.max_value = Sentences.correct_sentence.length()
 	set_SentenceShow_text(("[color=%s]" % palette.other_text) + sentence_left)
-	max_timer_value = int(Sentences.correct_sentence.length() * 23)
+	max_timer_value = int(Sentences.correct_sentence.length() * time_mult)
 	$"../Panels/Timer_bar".max_value = max_timer_value
 	$Gameplay.rotation_degrees = randi_range(-25, 25)
-	
-	if boss_effect != null and check_boss_debuff("sentence_start"):
-		boss_debuffs()
 	
 	sentence_already_filled = ""
 	time_passed = 0
@@ -186,8 +189,11 @@ func round_finished() -> void:
 
 
 func reward_screen():
-	$"..".initiate_reward_screen(coin_round_reward, (PlayerStats.sentences_allowed - sentences_used))
-	refresh_Score_Panel()
+	if $"../Level_Selector_Panel".level_num == 8 and boss_effect != null: #final level and boss beaten
+		pass
+	else:
+		$"..".initiate_reward_screen(coin_round_reward, (PlayerStats.sentences_allowed - sentences_used))
+		
 
 
 func apply_styling() -> void:
@@ -246,6 +252,7 @@ func _on_gameplay_holder_new_round(round_reward, boss_round_effect = null) -> vo
 	reroll_amount = 1
 	set_before_round_active_upgrades = $"../Panels/Upgrades_Panel".active_upgrades
 	can_tab_to_fill = false
+	PlayerStats.sentences_allowed = 4
 	check_upgrades("round_start")
 	total_rerolls = reroll_amount
 	$Rotate_Discard/Discard_Button.text = "Reroll (" + str(reroll_amount) + "/" + str(total_rerolls) + ")"
@@ -365,6 +372,16 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 	
 	elif upgrade.id == "up_interest":
 		$"../Reward_Panel".max_interest += 2
+		return true
+	
+	elif upgrade.id == "hand_increase":
+		PlayerStats.sentences_allowed += 1
+		return true
+	
+	elif upgrade.id == "drink_card":
+		if typed_letter.to_lower() in ["c", "o", "f", "e", "t", "a"]:
+			base += 5
+			return true
 	
 	else:
 		return false
@@ -454,13 +471,13 @@ func boss_debuffs():
 			trigger_agitation = true
 	
 	elif boss_effect.id == "less_time":
-		max_timer_value = int(Sentences.correct_sentence.length() * 14)
-		$"../Panels/Timer_bar".max_value = max_timer_value
+		time_mult = 14
 		trigger_agitation = true
 	
 	elif boss_effect.id == "double_story":
 		Sentences.correct_sentence += "; " + Sentences.create_sentence()
 		Sentences.correct_sentence = Sentences.correct_sentence.left(-1)
+		time_mult = 20
 		trigger_agitation = true
 	
 	elif boss_effect.id == "no_mult_space":

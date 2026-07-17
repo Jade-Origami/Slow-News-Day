@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b53mkv13sbr12" path="res://scripts/level_selector.gd" id="1_aeu7d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkdyj"]
+bg_color = Color(0, 0, 0, 0.3137255)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.446777, 0.44677705, 0.44677705, 0.5647059)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeu7d"]
 bg_color = Color(0.2074669, 0.60695016, 0.33810252, 1)
 corner_radius_top_left = 8
@@ -96,6 +105,7 @@ corner_radius_bottom_left = 8
 [node name="Level_Selector_Panel" type="Panel" unique_id=438823998]
 offset_right = 632.0
 offset_bottom = 408.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wkdyj")
 script = ExtResource("1_aeu7d")
 
 [node name="Stage_1" type="Button" parent="." unique_id=556212078]
@@ -149,12 +159,27 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_v1k4p")
 text = "Stage 3: 
 {points} points"
 
+[node name="Panel" type="Panel" parent="Stage_3" unique_id=812151081]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 144.0
+offset_right = 160.0
+offset_bottom = 256.0
+
+[node name="Effect" type="RichTextLabel" parent="Stage_3/Panel" unique_id=164860169]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 112.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Boss Effect:"
+horizontal_alignment = 1
+
 [node name="Level_Read" type="Button" parent="." unique_id=541556005]
 layout_mode = 0
 offset_left = 232.0
-offset_top = 256.0
+offset_top = 280.0
 offset_right = 400.0
-offset_bottom = 368.0
+offset_bottom = 392.0
 theme_override_colors/font_disabled_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wioao")

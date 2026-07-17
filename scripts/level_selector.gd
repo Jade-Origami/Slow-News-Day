@@ -58,11 +58,12 @@ func start_of_new_level():
 	round_1_required = level_requirements[level_num]
 	round_2_required = level_requirements[level_num] * 1.5
 	round_3_required = level_requirements[level_num] * 2 * boss_this_level.score_effect
-
+	
 	$Stage_1.text = "Round 1:\n" + str(round_1_required) + " points"
 	$Stage_2.text = "Round 2:\n" + str(round_2_required) + " points"
 	$Stage_3.text = "Round 3:\n" + str(round_3_required) + " points"
-
+	
+	$Stage_3/Panel/Effect.text = "Boss Effect:\n" + boss_this_level.pretty_text
 
 func select_boss_effect():
 	var boss_effects = [
@@ -75,14 +76,14 @@ func select_boss_effect():
 		{
 			"pretty_text": "Less time per story",
 			"id": "less_time",
-			"trigger_time": "sentence_start",
+			"trigger_time": "affect_sentence",
 			"score_effect": 1
 		},
 		{
 			"pretty_text": "Two Stories",
 			"id": "double_story",
 			"trigger_time": "affect_sentence",
-			"score_effect": 1.5
+			"score_effect": 2
 		},
 		{
 			"pretty_text": "No WC for completed words",
@@ -94,7 +95,7 @@ func select_boss_effect():
 			"pretty_text": "Extra-high required score",
 			"id": "high_required",
 			"trigger_time": "none",
-			"score_effect": 2
+			"score_effect": 2.75
 		},
 		{
 			"pretty_text": "Left third of keyboard doesn't count",

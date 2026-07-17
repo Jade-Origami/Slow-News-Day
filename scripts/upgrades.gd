@@ -10,6 +10,8 @@ func timer_text(conttext):
 	return "[color=#cd00e8]" + conttext + "[/color]"
 func coin_text(conttext):
 	return "[color=#f0c45b]" + conttext + "[/color]"
+func hand_text(conttext):
+	return "[color=#ac77ff]" + conttext + "[/color]"
 
 var upgrades = [
 	{
@@ -174,10 +176,26 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Business Insider",
-		"explanation": "Interest max increases by %s" % [coin_text("£2")],
+		"explanation": "Interest max increases by %s " % [coin_text("£2")],
 		"id": "up_interest",
 		"price": 8,
 		"trigger_time": "round_end",
+		"weight": 13
+	},
+	{
+		"pretty_text": "Ruler's Mania",
+		"explanation": hand_text("+1 hand"),
+		"id": "hand_increase",
+		"price": 10,
+		"trigger_time": "round_start",
+		"weight": 4
+	},
+	{
+		"pretty_text": "Loyalty Card",
+		"explanation": "%s for every letter in the word \"coffee\" or \"tea\"" % [base_text("+5")],
+		"id": "drink_card",
+		"price": 7,
+		"trigger_time": "on_type",
 		"weight": 13
 	},
 ]

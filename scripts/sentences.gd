@@ -18,7 +18,9 @@ var nouns = [
 	"tree", "child", "spouse", "fish", "government", "whale", "fool",
 	"thermometer", "metronome", "mum", "dad", "train", "gallery", "cinema",
 	"zebra", "zoo", "newspaper", "letter", "radio", "shark", "blahaj",
-	"biscuit", "mother", "father"
+	"biscuit", "mother", "father", "wife", "huband", "cube", "sphere",
+	"prism", "cylinder", "pig", "hare", "amethyst", "jade", "rock",
+	"quartz", "obsidian"
 ]
 
 var adjectives = [
@@ -33,7 +35,7 @@ var adjectives = [
 	"hairy", "wooden", "iron", "plastic", "metal", "copper", "ceramic",
 	"accident-prone", "bashful", "cloth", "flimsy", "conceited", "sober",
 	"playful", "sizeable", "happy", "morose", "sad", "excited", "large",
-	"small", "big", "tiny", "local"
+	"small", "big", "tiny", "local", "bisexual", "queer"
 ]
 
 var verbs_present = [

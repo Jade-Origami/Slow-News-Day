@@ -226,7 +226,7 @@ layout_mode = 0
 offset_right = 72.0
 offset_bottom = 64.0
 theme_override_font_sizes/normal_font_size = 20
-text = "Letter Count"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -258,7 +258,7 @@ layout_mode = 0
 offset_right = 72.0
 offset_bottom = 64.0
 theme_override_font_sizes/normal_font_size = 20
-text = "Word Count"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -286,7 +286,7 @@ layout_mode = 0
 offset_right = 72.0
 offset_bottom = 64.0
 theme_override_font_sizes/normal_font_size = 20
-text = "Time Spent"
+text = "1.25"
 horizontal_alignment = 1
 vertical_alignment = 1
 
