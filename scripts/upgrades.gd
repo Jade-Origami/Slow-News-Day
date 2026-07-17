@@ -198,6 +198,22 @@ var upgrades = [
 		"trigger_time": "on_type",
 		"weight": 13
 	},
+	{
+		"pretty_text": "Scoop of the Year",
+		"explanation": "%s for typed letters with dips" % [coin_text("+£1")],
+		"id": "dip_letter",
+		"price": 8,
+		"trigger_time": "on_type",
+		"weight": 8
+	},
+	{
+		"pretty_text": "Coupon Code",
+		"explanation": "upgrades can appear multiple times in the shop",
+		"id": "multi_show",
+		"price": 6,
+		"trigger_time": "shop",
+		"weight": 8
+	},
 ]
 
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t2xkd6wby2r6"]
 
 [ext_resource type="Script" uid="uid://rgrlnox6r05d" path="res://scripts/reward_screen.gd" id="1_jy5r4"]
+[ext_resource type="RichTextEffect" uid="uid://dojdfj7wionvf" path="res://scripts/vertical_align_effect.tres" id="2_14dtq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dlji"]
 bg_color = Color(0.15847227, 0.15847233, 0.15847221, 1)
@@ -58,6 +59,10 @@ offset_top = 144.0
 offset_right = 584.0
 offset_bottom = 320.0
 theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
 text = "Round earnings: £00
 Hands left (£1 per): £00
 "
+custom_effects = [ExtResource("2_14dtq")]
+
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]

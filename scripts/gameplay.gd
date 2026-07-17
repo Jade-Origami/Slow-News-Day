@@ -383,6 +383,11 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 			base += 5
 			return true
 	
+	elif upgrade.id == "dip_letter":
+		if typed_letter.to_lower() in ["y", "u", "j", "k", "x", "v"]:
+			$"..".add_money(1)
+			return true
+	
 	else:
 		return false
 

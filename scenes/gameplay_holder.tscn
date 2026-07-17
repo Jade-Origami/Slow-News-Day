@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bmddksfr8nqhx" path="res://scripts/rotate_controller.gd" id="4_vm4wg"]
 [ext_resource type="PackedScene" uid="uid://b2emkececoexq" path="res://scenes/shop_scene.tscn" id="6_gkdmu"]
 [ext_resource type="PackedScene" uid="uid://t2xkd6wby2r6" path="res://scenes/reward_screen.tscn" id="7_7mjts"]
-[ext_resource type="RichTextEffect" uid="uid://dojdfj7wionvf" path="res://scripts/vertical_align_effect.tres" id="9_c3vg3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_viwtt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -120,15 +119,10 @@ offset_top = 120.0
 offset_right = 912.0
 offset_bottom = 656.0
 
-[node name="MoneySources" parent="Reward_Panel" index="1" unique_id=1609278096]
-bbcode_enabled = true
-custom_effects = [ExtResource("9_c3vg3")]
-
 [connection signal="level_select" from="." to="Level_Selector_Panel" method="_on_gameplay_holder_level_select"]
 [connection signal="new_round" from="." to="GameplayScreen" method="_on_gameplay_holder_new_round"]
 [connection signal="open_reward_screen" from="." to="Reward_Panel" method="_on_gameplay_holder_open_reward_screen"]
 [connection signal="shop_start" from="." to="ShopScene" method="_on_gameplay_holder_shop_start"]
-[connection signal="pressed" from="Reward_Panel/ShopButton" to="Reward_Panel" method="_on_shop_button_pressed"]
 
 [editable path="GameplayScreen"]
 [editable path="Panels/Timer_bar"]

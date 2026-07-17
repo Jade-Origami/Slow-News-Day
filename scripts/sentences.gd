@@ -18,9 +18,9 @@ var nouns = [
 	"tree", "child", "spouse", "fish", "government", "whale", "fool",
 	"thermometer", "metronome", "mum", "dad", "train", "gallery", "cinema",
 	"zebra", "zoo", "newspaper", "letter", "radio", "shark", "blahaj",
-	"biscuit", "mother", "father", "wife", "huband", "cube", "sphere",
+	"biscuit", "mother", "father", "wife", "husband", "cube", "sphere",
 	"prism", "cylinder", "pig", "hare", "amethyst", "jade", "rock",
-	"quartz", "obsidian"
+	"quartz", "obsidian", "partner"
 ]
 
 var adjectives = [
