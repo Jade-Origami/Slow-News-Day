@@ -184,7 +184,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Ruler's Mania",
-		"explanation": hand_text("+1 hand"),
+		"explanation": hand_text("+1 Story"),
 		"id": "hand_increase",
 		"price": 10,
 		"trigger_time": "round_start",

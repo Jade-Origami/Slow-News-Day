@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bpoqj53fico53"
+path="res://.godot/imported/FreeSerif-4aeK.ttf-49ed6efa7ab2fea9c32782c20ed38f79.fontdata"
+
+[deps]
+
+source_file="res://sprites/styles/FreeSerif-4aeK.ttf"
+dest_files=["res://.godot/imported/FreeSerif-4aeK.ttf-49ed6efa7ab2fea9c32782c20ed38f79.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[Resource("uid://bspy11jeni8pp", "res://sprites/styles/Symbola.ttf")]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

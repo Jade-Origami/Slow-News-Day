@@ -292,9 +292,9 @@ vertical_alignment = 1
 
 [node name="Explanation" type="RichTextLabel" parent="Numbers_Panel/Timer" unique_id=1813360017]
 layout_mode = 0
-offset_left = -68.0
+offset_left = -60.0
 offset_top = 16.0
-offset_right = 4.0
+offset_right = -4.0
 offset_bottom = 48.0
 theme_override_font_sizes/normal_font_size = 11
 text = "Timer Number"

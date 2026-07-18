@@ -26,6 +26,10 @@ Sentences="*uid://dhtaqa2r4sc0x"
 window/size/mode=4
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="uid://bpoqj53fico53"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
