@@ -30,6 +30,7 @@ var letter_to_be_typed
 var boss_effect = null
 var i_score
 var time_mult = 23
+var combo = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -96,6 +97,7 @@ func _on_sentence_take_text_changed(new_text: String) -> void:
 	else: #Mistake has been made
 		mistakes_made += 1
 		double_speed_amount = 40
+		combo = 0
 		check_upgrades("mistake_made")
 		$Gameplay.agitate()
 		mistake_overlay_timer = 15
@@ -384,8 +386,16 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 			return true
 	
 	elif upgrade.id == "dip_letter":
-		if typed_letter.to_lower() in ["y", "u", "j", "k", "x", "v"]:
+		if typed_letter.to_lower() in ["y", "u", "j", "k", "x", "v", "w"]:
 			$"..".add_money(1)
+			return true
+	
+	elif upgrade.id == "consecutive_typing":
+		combo += 1
+		if combo >= 20:
+			mult += 2
+			$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
+			combo = 0
 			return true
 	
 	else:
