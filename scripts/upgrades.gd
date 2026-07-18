@@ -222,14 +222,6 @@ var upgrades = [
 		"trigger_time": "on_type",
 		"weight": 8
 	},
-	{
-		"pretty_text": "Teacher's Pet",
-		"explanation": "Alliteration awards %s and %s" % [mult_text("+10"), base_text("+5")],
-		"id": "alliteration_buff",
-		"price": 8,
-		"trigger_time": "on_type",
-		"weight": 8
-	},
 ]
 
 
