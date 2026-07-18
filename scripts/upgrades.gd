@@ -100,7 +100,7 @@ var upgrades = [
 		"id": "empty_slot",
 		"price": 6,
 		"trigger_time": "sentence_end",
-		"weight": 8
+		"weight": 4
 	},
 	{
 		"pretty_text": "Blueprint",
