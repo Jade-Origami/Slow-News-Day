@@ -216,7 +216,7 @@ var upgrades = [
 	},
 	{
 		"pretty_text": "Flow State",
-		"explanation": "Every 20 correct letters in a row gives %s" % [mult_text("+5")],
+		"explanation": "Every 20 correct letters in a row gives %s" % [mult_text("+7")],
 		"id": "consecutive_typing",
 		"price": 8,
 		"trigger_time": "on_type",

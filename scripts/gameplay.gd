@@ -393,7 +393,7 @@ func upgrade_apply(upgrade, vowel_bypass = false):
 	elif upgrade.id == "consecutive_typing":
 		combo += 1
 		if combo >= 20:
-			mult += 2
+			mult += 7
 			$"../Panels/Timer_bar/Numbers_Panel/Mult_Rotate".agitate()
 			combo = 0
 			return true
