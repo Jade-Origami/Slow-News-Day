@@ -1,0 +1,57 @@
+# Workflow to publish Godot HTML5 games to GitHub Pages
+#
+# Make sure your project is configured for Web export
+# to the path `build/web`.
+
+name: 'Publish to GitHub Pages'
+
+env:
+  GODOT_VERSION: 3.2.2 # Remember to manually set image to this version below.
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+
+    container:
+      image: barichello/godot-ci:3.2.2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Move HTML5 templates into position
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Create staging directory
+        run: mkdir -v -p build/web
+
+      - name: Build
+        run: godot -v --export "HTML5" build/web/index.html
+
+      - name: Compress project
+        run: |
+          cd build/web
+          wget https://raw.githubusercontent.com/nodeca/pako/master/dist/pako_inflate.min.js
+          gzip -f index.wasm
+          gzip -f index.pck
+          FIND="<script type='text/javascript' src='index.js'></script>"
+          REPLACE="<script type=\"text/javascript\" src=\"pako_inflate.min.js\"></script>$FIND"
+          sed -i -e "s@$FIND@$REPLACE@" index.html
+          FIND="function loadXHR(resolve, reject, file, tracker) {"
+          REPLACE=$FIND" if (file.substr(-5) === '.wasm' || file.substr(-4) === '.pck') { file += '.gz'; var resolve_orig = resolve; resolve = function(xhr) { return resolve_orig(xhr.responseURL.substr(-3) === '.gz' ? { response: pako.inflate(xhr.response), responseType: xhr.responseType, responseURL: xhr.responseURL, status: xhr.status, statusText: xhr.statusText } : xhr); }; }"
+          sed -i -e "s@$FIND@$REPLACE@" index.js
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          force_orphan: true
+          user_name: 'github-ci[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Publish to gh-pages'
