@@ -249,6 +249,7 @@ func _on_gameplay_holder_new_round(round_reward, boss_round_effect = null) -> vo
 	total_score = 0
 	sentences_used = 0
 	apply_styling()
+	$Gameplay/Newspaper_Title.text = PlayerStats.Newspaper_Names.pick_random()
 	$"../Panels/Timer_bar/TotalScore/Rotate".agitate()
 	$"../Panels/Timer_bar/RequiredScore/Rotate/ScoreArea/ScoreRead".text = str(PlayerStats.target_this_round)
 	reroll_amount = 1

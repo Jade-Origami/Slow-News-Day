@@ -42,3 +42,17 @@ var palettes = [
 		"shop_colour_pressed": Color("f35a4cff")
 	}
 ]
+
+var Newspaper_Names = [
+	"THE NEWSPAPER",
+	"THE NEWS",
+	"THE DAILY NEWS",
+	"WHAT TO KNOW",
+	"NEWS",
+	"JUST SOME PAPER",
+	"THE GAZETTE",
+	"NOT THE NEWS",
+	"NOT A BOMB",
+	"GODOT TIMES",
+	"PODCAST"
+]

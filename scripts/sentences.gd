@@ -75,7 +75,7 @@ var verbs_future = [
 
 var flairs = [
 	"Reported", "Breaking", "Breaking News", "Local", "Science", "Space",
-	"Arts", "Tech", "Environment"
+	"Arts", "Tech", "Environment", "Just in"
 ]
 
 var connectives = [
