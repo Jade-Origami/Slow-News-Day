@@ -1,9 +1,10 @@
 This is a roguelike game (if you know balatro, it's sort of like that) but with the you being a newspaper writer! 
 You get a headline that you have to type out, as if you are typing out an articlce.
 I don't really know how to explain it very well, so here are some images:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7ccfddf3-6ea9-4ee5-adb0-0cf9d011e4d0" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0908988e-ba7a-4157-94cf-b0070fcff966" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/75c009e7-4e2d-4561-b939-7173cd9667da" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2fa33f5c-4124-4ebe-8033-93964602e26d" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ba8c365-389e-4bce-8055-1fbd00cde1f2" />
 
 yeah. looks cool? play it.
 
