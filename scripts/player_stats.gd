@@ -56,5 +56,7 @@ var Newspaper_Names = [
 	"GODOT TIMES",
 	"PODCAST",
 	"THE WEATHER",
-	"SOLTICE PAPER"
+	"SOLTICE PAPER",
+	"PIECE OF PAPER",
+	"THE ONION"
 ]

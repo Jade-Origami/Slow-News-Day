@@ -75,18 +75,38 @@ var verbs_future = [
 
 var flairs = [
 	"Reported", "Breaking", "Breaking News", "Local", "Science", "Space",
-	"Arts", "Tech", "Environment", "Just in"
+	"Arts", "Tech", "Environment", "Just in", "Untapped", "Onion"
 ]
 
 var connectives = [
 	"and", "but", "so", "then", "thus", "before", "after",
 ]
 
+var forenames = [
+	"andy", "greg", "grey", "jade", "lilac", "nicole", "lila", "mike",
+	"yolanda", "millie", "fahran", "ali", "mohammed", "jeff", "jessica",
+	"jeffica", "bob", "steve", "seth", "miku", "teto", "kotone", "makoto",
+	"john", "geoff", "imogen", "katie", "dicken", "tintin", "velma",
+	"daphne", "tom", "scooby", "alma", "shaggy", "alex", "ed", "cave",
+	"boris", "lizz", "rishi", "kier", "maya", "rob, romesh",
+	"james", "chloe"
+]
+
+var surnames = [
+	"martens", "wazowski", "wozniak", "the reporter", "walkers",
+	"horrendous", "hofferson", "gamble", "davies", "horne",
+	"smith", "johnson", "potter", "rowling (boooo)", "jama",
+	"grant", "hemmingworth", "burnham", "starmer", "truss",
+	"sunak", "truman", "acaster", "beckket", "haak",
+	"petts", "ramsey"
+]
+
 var sentence_structures = [
 	["adj", "noun", "adv_p", "verb_p", "adj", "noun"],
 	["adj", "and", "adj", "noun", "verb_p", "noun"],
 	["noun", "verb_p", "noun", "conn", "noun", "verb_p", "noun"],
-	["adj", "noun", "adv_f", "verb_f", "adj", "noun"]
+	["adj", "noun", "adv_f", "verb_f", "adj", "noun"],
+	["fore", "sur", "adv_f", "verb_f", "adj", "fore"]
 ]
 
 var boss_sentence_structures = [
@@ -116,6 +136,10 @@ func create_sentence(structure = sentence_structures) -> String:
 				word_to_add = verbs_future.pick_random()
 			"conn":
 				word_to_add = connectives.pick_random()
+			"fore":
+				word_to_add = forenames.pick_random()
+			"sur":
+				word_to_add = surnames.pick_random()
 			_:
 				word_to_add = word
 		
