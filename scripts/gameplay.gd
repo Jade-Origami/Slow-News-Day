@@ -113,7 +113,7 @@ func sentence_finished() -> void:
 	timer_active = false
 	is_first_letter = false
 	
-	var score_this_sentence = int(floor((base * mult) * percentage_of_time)) + 10
+	var score_this_sentence = int(floor((base * mult) * percentage_of_time))
 	if score_this_sentence < 10:
 		score_this_sentence = 10
 	
