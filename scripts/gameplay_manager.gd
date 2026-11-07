@@ -9,7 +9,7 @@ var level_select_shown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	DisplayServer.keyboard_show()
+	DisplayServer.virtual_keyboard_show("")
 	$GameplayScreen.hide()
 	$ShopScene.hide()
 	$Panels.show()
